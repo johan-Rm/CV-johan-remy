@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>CV — Johan REMY · Architecte Full Stack</title>
+<title>CV — Johan REMY · Développeur Full Stack</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rationale&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -109,7 +109,7 @@
   }
 
   .contact-list li {
-    margin-bottom: 2mm;
+    margin-bottom: 0.8mm;
     word-break: break-word;
     font-size: 8.5pt;
   }
@@ -177,7 +177,7 @@
 
   .headline {
     font-family: 'Rationale', 'Inter', sans-serif;
-    font-size: 22pt;
+    font-size: 20pt;
     line-height: 1.05;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -246,13 +246,6 @@
     page-break-inside: avoid;
   }
 
-  .xp-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 4mm;
-    margin-bottom: 0.6mm;
-  }
   .xp-title {
     font-family: 'Rationale', 'Inter', sans-serif;
     font-size: 12pt;
@@ -272,17 +265,42 @@
     font-size: 8.6pt;
     color: var(--muted);
     margin-bottom: 1.5mm;
-    font-style: italic;
   }
-  .xp-meta .stack {
+  .xp > .xp-title {
+    margin-bottom: 0.6mm;
+  }
+  .xp-location {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .xp-domains {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-style: normal;
+    font-size: 8pt;
+    color: var(--muted);
+    letter-spacing: 0.2px;
+  }
+  .xp-activities {
+    font-style: normal;
+    font-size: 8pt;
+    color: var(--muted);
+    letter-spacing: 0.2px;
+  }
+  .xp-stack {
     color: var(--olive-dark);
     font-style: normal;
+    display: block;
+    margin-top: 0.5mm;
   }
   .xp-body {
     font-size: 9.2pt;
     line-height: 1.5;
+    text-align: justify;
   }
-  .xp-body p + p { margin-top: 1.2mm; }
+  .xp-body p + p { margin-top: 3.5mm; }
 
   .xp-mission {
     font-size: 8.8pt;
@@ -292,14 +310,22 @@
   }
   .xp-mission strong { color: var(--olive-dark); }
 
-  /* --- Page 2 spacing fix --- */
-  .page + .page { margin-top: 16px; }
+  /* --- Page 2 : séparateur fin --- */
+  .page + .page {
+    margin-top: 16px;
+    width: calc(10px + 138mm);
+    grid-template-columns: 10px 1fr;
+  }
+  .page + .page .sidebar {
+    padding: 0;
+    min-width: 0;
+  }
 
   /* --- Print --- */
   @media print {
     body { padding: 0; background: #FFFFFF; }
     .page { box-shadow: none; margin: 0; }
-    .page + .page { margin-top: 0; }
+    .page + .page { margin-top: 0; width: calc(10px + 138mm); }
   }
 </style>
 </head>
@@ -313,18 +339,19 @@
       <span class="first">Johan</span>
       <span class="last">Remy</span>
     </div>
-    <div class="role">Architecte Full Stack</div>
-    <div class="tagline">Je conçois les systèmes. L'IA écrit le code.</div>
-
+    <br>
+    <div class="tagline">Je pilote la vision,<br>l’architecture et la qualité.<br>L'IA écrit le code.</div>
+ 
     <h2>Contact</h2>
     <ul class="contact-list">
       <li>
         <span class="label">Téléphone</span>
-        +212 690 692 432
+        MA · +212 690 692 432<br>
+        FR · +33 784 822 072
       </li>
       <li>
         <span class="label">Email</span>
-        <a href="mailto:johan13.remy@gmail.com">johan13.remy@gmail.com</a>
+        <a href="mailto:johan.remy@graines-digitales.online">johan.remy@graines-digitales.online</a>
       </li>
       <li>
         <span class="label">LinkedIn</span>
@@ -336,7 +363,7 @@
       </li>
       <li>
         <span class="label">Localisation</span>
-        Essaouira (MA) · Cannes (FR)<br>Full remote · Disponible
+        Essaouira (MA) · Cannes (FR)
       </li>
     </ul>
 
@@ -357,10 +384,10 @@
     <div class="skill-group">
       <div class="group-title">Frontend</div>
       <div class="skill-tags">
-        <span>Vue.js</span>
-        <span>Nuxt 2/3/4</span>
-        <span>JavaScript</span>
-        <span>Design System</span>
+        <span>Vue</span>
+        <span>Nuxt</span>
+        <span>TypeScript</span>
+        <span>Tailwind CSS</span>
       </div>
     </div>
 
@@ -373,26 +400,29 @@
         <span>VPS</span>
         <span>CI/CD</span>
         <span>GitLab</span>
+        <span>GitHub</span>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="group-title">IA &amp; Tooling</div>
       <div class="skill-tags">
+        <span>Claude Code</span>
         <span>Codex</span>
         <span>Codeium</span>
-        <span>Spec-Driven</span>
+        <span>VSCode</span>
         <span>Cypress</span>
+        <span>Vitest</span>
       </div>
     </div>
 
     <h2>Méthode</h2>
     <ul class="contact-list" style="font-size:8.6pt;">
-      <li>· Architecture pilotée par specs</li>
-      <li>· Skills réutilisables pour agents IA</li>
-      <li>· Code review · Pair programming</li>
-      <li>· Workflow Git rigoureux</li>
-      <li>· Lead technique · Mentorat</li>
+      <li>· Systèmes orientés agents IA<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(skills · orchestration · codegen)</span></li>
+      <li>· Specs exploitables par l'IA<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(documentation, contrats, workflows)</span></li>
+      <li>· Boucle rapide<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(génération → review → itération)</span></li>
+      <li>· Workflow Git structuré</li>
+      <li>· Lead technique &amp; mentorat</li>
     </ul>
 
     <h2>Langues</h2>
@@ -412,44 +442,38 @@
     <h2>Soft skills</h2>
     <ul class="contact-list" style="font-size:8.8pt;">
       <li>· Vision système &amp; pédagogie</li>
-      <li>· Esprit d'équipe &amp; bienveillance</li>
       <li>· Rigueur &amp; sens du détail</li>
-      <li>· Autonomie &amp; transparence</li>
+      <li>· Bienveillance &amp; exigence technique</li>
       <li>· Transmission &amp; mentorat</li>
     </ul>
 
     <h2>Domaines</h2>
     <div class="skill-tags">
-      <span>SaaS B2B</span>
-      <span>E-commerce</span>
-      <span>CRM / ERP</span>
+      <span>Logiciel SaaS</span>
       <span>GRC</span>
-      <span>Low-Code</span>
-      <span>Dashboards IA</span>
-      <span>Sites headless</span>
-      <span>ETL</span>
+      <span>Start-up</span>
+      <span>Agence web</span>
+      <span>Agence de com</span>
+      <span>Agence immobilière</span>
+      <span>Maisons d'hôtes</span>
+      <span>Groupe Automobile</span>
+      <span>ESN</span>
+      <span>Marketing relationnel</span>
+      <span>Éditique</span>
     </div>
 
-    <h2>Workflow</h2>
-    <ul class="contact-list" style="font-size:8.6pt;">
-      <li>· Specs avant code</li>
-      <li>· Conventional Commits</li>
-      <li>· Pull Request &amp; revue croisée</li>
-      <li>· CI/CD GitLab / GitHub</li>
-      <li>· Tests E2E (Cypress)</li>
-      <li>· Documentation vivante</li>
-    </ul>
 
     <h2>Ce que je cherche</h2>
-    <p style="font-size:8.6pt; line-height:1.55;">
-      Des missions où l'<strong>architecture</strong> compte, où l'IA est un levier
-      sérieux et non un gadget, et où l'équipe est prête à <strong>changer de méthode</strong>.
+    <p style="font-size:8.6pt; line-height:1.55; text-align:justify;">
+      Des projets à fort enjeu technique, sur des systèmes exigeants ou en transformation. Architecture comme levier de performance, IA comme levier de production concret.
     </p>
 
     <h2>Disponibilité</h2>
-    <p style="font-size:8.6pt; line-height:1.55;">
-      Full remote depuis Essaouira ou Cannes.<br>
-      Missions longues ou interventions ponctuelles d'architecture.
+    <p style="font-size:8.6pt; line-height:1.55; text-align:justify;">
+      Full remote · Essaouira / Cannes<br>
+      Déplacements possibles<br>
+      Missions moyen/long terme<br>
+      Ouvert aux CDI sur des projets ambitieux et structurants
     </p>
 
   </aside>
@@ -458,48 +482,45 @@
 
     <header>
       <div class="headline">
-        15 ans de Fullstack —<br>
-        <span class="accent">Specs, IA, Architecture.</span>
+        Senior Développeur Full Stack<br>
+        <span class="accent">100% AI-Generated Code<br>15+ ans</span>
       </div>
-      <div class="sub-headline">Symfony · Nuxt · Python · API Platform · Codex</div>
+      <div class="sub-headline">Symfony · Nuxt · Python · API Platform<br>VSCode · Codex · Claude Code</div>
     </header>
 
     <h2>Profil</h2>
     <div class="summary">
       <p>
-        En 2026, j'ai arrêté de coder avec l'IA. <strong>J'ai construit un système.</strong>
-        Architecture pensée pour les agents, specs exploitables, skills réutilisables —
-        l'IA écrit 100 % du code. Je pilote la vision, l'architecture et la qualité.
+        Conception et réalisation de plateformes web modernes : sites web, applications métier, dashboards, ERP, CRM et API.
       </p>
-      <p>
-        15 ans de Fullstack — Symfony, API Platform, Vue.js, Nuxt, Python.
-        Lead dev en startup, missions freelance exigeantes, code review, pair programming,
-        workflow Git rigoureux.
+      <p style="border-top:1px solid var(--rule); padding-top:2mm;">
+        Grâce à une approche 100 % AI-Generated Code, la production est accélérée tout en conservant un haut niveau d’exigence sur l’architecture, la qualité du code et la maintenabilité.
       </p>
-      <p>
-        <strong>Ce qu'on me recrute pour :</strong> concevoir des architectures solides pilotées par des specs ·
-        faire produire le code par l'IA avec rigueur et cohérence ·
-        travailler en équipe avec méthode et bienveillance ·
-        embarquer une équipe dans une nouvelle façon de travailler.
+      <p style="border-top:1px solid var(--rule); padding-top:2mm;">
+        Intervention sur des projets neufs ou existants, notamment lorsqu’une dette technique importante freine les évolutions et la stabilité du produit.
       </p>
       <div class="tags-row">
         <span>Spec-Driven Dev</span>
-        <span>AI-Assisted</span>
+        <span>AI-Powered</span>
         <span>Clean Architecture</span>
         <span>Lead Dev</span>
-        <span>Full Remote</span>
+        <span>Clean code</span>
+        <span>Documentation</span>
       </div>
     </div>
 
     <h2>Expérience</h2>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Graines Digitales — Freelance</div>
-        <div class="xp-period">Nov. 2016 → aujourd'hui</div>
-      </div>
+      <div class="xp-title">Freelance — Développeur Fullstack</div>
       <div class="xp-meta">
-        Développeur Fullstack · Architecte · <span class="stack">Symfony · Nuxt · Vue.js · Python</span>
+        <div class="xp-domains"><span>Multi-secteurs</span><span>Freelance</span></div>
+        <div class="xp-location">
+          <span>Essaouira</span>
+          <span class="xp-period">Nov. 2016 → aujourd'hui</span>
+        </div>
+        <div class="xp-activities">Modern Sites web · E-commerce · CRM · ERP · Dashboard IA</div>
+        <span class="xp-stack">Symfony · Nuxt · Vue.js · Python · API Platform · Docker · VPS</span>
       </div>
       <div class="xp-body">
         <p>
@@ -533,18 +554,21 @@
           <strong>ABITHEA Littoral Provence</strong> — 2018 · CRM sur-mesure · gestion devis &amp; factures.
         </div>
         <div class="xp-mission">
-          <strong>Altraway CE</strong> — 2016 – 2018 · Plateforme e-commerce voyages · ETL · auto-connexion membres CE.
+          <strong>Altraway CE</strong> — 2016 – 2018 · Amélioration plateforme e-commerce voyages · ETL · auto-connexion membres CE.
         </div>
       </div>
     </div>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Smart Global Governance — Lead Dev Fullstack</div>
-        <div class="xp-period">Janv. 2023 → Juin 2025</div>
-      </div>
+      <div class="xp-title">Smart Global Governance — Lead Développeur Fullstack</div>
       <div class="xp-meta">
-        Freelance · Valbonne · <span class="stack">Nuxt · Python · Vue.js · Golang · Low-Code</span>
+        <div class="xp-domains"><span>Logiciel SaaS · GRC · Start-up</span><span>Freelance</span></div>
+        <div class="xp-location">
+          <span>Valbonne</span>
+          <span class="xp-period">Janv. 2023 → Juin 2025</span>
+        </div>
+        <div class="xp-activities">Dashboard IA · Plateforme GRC · Low-Code</div>
+        <span class="xp-stack">Nuxt · Python · Vue.js · Golang</span>
       </div>
       <div class="xp-body">
         <p>
@@ -554,11 +578,35 @@
         <p>
           <strong>Plateforme GRC Low-Code</strong> (2 ans · Vue.js · Golang · MySQL) — refonte complète de l'UX/UI sur base d'un Design System,
           réécriture du moteur de logique conditionnelle et de son query builder, système Drill Down et loaders avancés pour les workflows.
+          Corrections de bugs, features, amélioration continue de la stabilité et de l'expérience utilisateur.
         </p>
         <p>
           <strong>Dashboard IA — Opti Value</strong> (6 mois · Nuxt · Python · PostgreSQL) — sprint intensif sur un SaaS d'analyse temps réel.
           Clean Architecture, WebSocket orchestré par pattern Mediator, stratégies de chargement avancées (Eager, Smart Prefetch, Deferred Async),
           refactor des endpoints Python, élimination des N+1, optimisation SQL (EXPLAIN/ANALYZE), standardisation des réponses HTTP.
+        </p>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="xp-title">Philae — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-domains"><span>ESN</span><span>Période d'essai</span></div>
+        <div class="xp-location">
+          <span>Aix-en-Provence</span>
+          <span class="xp-period">Avr. → Oct. 2016</span>
+        </div>
+        <div class="xp-activities">Sites web · ETL</div>
+        <span class="xp-stack">PHP · JavaScript · Symfony</span>
+      </div>
+      <div class="xp-body">
+        <p>
+          Mission courte mais dense — recruté pour des interventions front et back, j'ai pris en charge la refonte complète de l'ETL :
+          pipeline d'import de séjours et de vols depuis des sources externes, alimentant une plateforme e-commerce dédiée aux comités d'entreprise.
+        </p>
+        <p>
+          À la fin de la mission, le client principal me garde et propose un contrat full remote.
+          C'est ainsi que débute ma carrière freelance : non par nécessité, mais parce que le travail livré a convaincu.
         </p>
       </div>
     </div>
@@ -576,73 +624,63 @@
     <h2>Expérience (suite)</h2>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Philae — Développeur Fullstack</div>
-        <div class="xp-period">Avr. → Oct. 2016</div>
-      </div>
+      <div class="xp-title">Groupe Automobile IDM — Développeur Fullstack</div>
       <div class="xp-meta">
-        Aix-en-Provence · <span class="stack">Symfony · ETL</span>
+        <div class="xp-domains"><span>Groupe Automobile</span><span>CDI</span></div>
+        <div class="xp-location">
+          <span>Marseille</span>
+          <span class="xp-period">Janv. 2015 → Avr. 2016</span>
+        </div>
+        <div class="xp-activities">Sites web · ERP · Référentiel constructeurs automobiles</div>
+        <span class="xp-stack">Symfony · Sonata · JavaScript · ERP</span>
       </div>
       <div class="xp-body">
         <p>
-          Mission courte mais dense — recruté pour des interventions front et back, j'ai pris en charge la refonte complète de l'ETL :
-          pipeline d'import de séjours et de vols depuis des sources externes, alimentant une plateforme e-commerce dédiée aux comités d'entreprise.
+          Premier poste Symfony — une ambition de longue date. Environnement ERP sous Sonata et une dizaine de sites vitrines par concession automobile.
         </p>
         <p>
-          À la fin de la mission, le client principal me garde et propose un contrat full remote.
-          C'est ainsi que débute ma carrière freelance : non par nécessité, mais parce que le travail livré a convaincu.
+          En plus des développements courants sur les sites, j'ai proposé et mis en œuvre une refonte de l'architecture des formulaires : les règles de validation, jusqu'là dupliquées en dur dans chaque site, ont été centralisées côté back dans l'ERP Symfony — une seule source de vérité pour l'ensemble du groupe.
+        </p>
+        <p>
+          J'ai également intégré un import automatisé des données véhicules depuis le référentiel national, mis en place un moteur de recherche véhicule et participé au développement du configurateur de véhicule.
         </p>
       </div>
     </div>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Groupe Automobile IDM — Dev Fullstack</div>
-        <div class="xp-period">Janv. 2015 → Avr. 2016</div>
-      </div>
+      <div class="xp-title">Quai 13 — Développeur Fullstack</div>
       <div class="xp-meta">
-        Marseille · <span class="stack">Symfony · Sonata · JavaScript · ERP</span>
+        <div class="xp-domains"><span>Agence web</span><span>CDI</span></div>
+        <div class="xp-location">
+          <span>Marseille</span>
+          <span class="xp-period">Mai → Déc. 2014</span>
+        </div>
+        <div class="xp-activities">WordPress · Prestashop</div>
+        <span class="xp-stack">PHP · jQuery · JavaScript · Bootstrap CSS · MySQL · WordPress · Prestashop</span>
       </div>
       <div class="xp-body">
         <p>
-          Premier poste Symfony, ambition de longue date. Environnement ERP sous Sonata,
-          une dizaine de sites vitrines par concession.
+          Continuité en agence web : production de sites WordPress et Prestashop, montée en compétences sur ces deux CMS.
         </p>
         <p>
-          Refonte de l'architecture des formulaires : règles de validation centralisées côté back dans l'ERP — une seule source de vérité pour tout le groupe.
-          Intégration d'un import automatisé des données véhicules depuis le référentiel national,
-          mise en place d'un moteur de recherche véhicule et participation au configurateur.
+          Encadrement de stagiaires et développeurs juniors — premier rôle de transmission, dans la continuité de mon passage chef d'équipe chez Orsid.
+        </p>
+        <p>
+          Avec un dev senior, mise en place d'un script Shell de synchronisation permettant d'intervenir rapidement sur n'importe quel projet : code source, base de données et ressources (images, PDF) synchronisés en une commande. Une première approche de la culture DevEx et du tooling d'équipe.
         </p>
       </div>
     </div>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Quai 13 — Dev Fullstack</div>
-        <div class="xp-period">Mai → Déc. 2014</div>
-      </div>
+      <div class="xp-title">Espace Privé — Développeur Fullstack</div>
       <div class="xp-meta">
-        Marseille · <span class="stack">PHP · jQuery · Bootstrap · MySQL · WordPress · Prestashop</span>
-      </div>
-      <div class="xp-body">
-        <p>
-          Production de sites WordPress et Prestashop en agence. Encadrement de stagiaires et juniors —
-          premier rôle de transmission, dans la continuité de mon passage chef d'équipe chez Orsid.
-        </p>
-        <p>
-          Mise en place d'un script Shell de synchronisation (code source, base de données, ressources)
-          permettant d'intervenir sur n'importe quel projet en une commande — première approche DevEx et tooling d'équipe.
-        </p>
-      </div>
-    </div>
-
-    <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Espace Privé — Dev Fullstack</div>
-        <div class="xp-period">Nov. 2012 → Mai 2014</div>
-      </div>
-      <div class="xp-meta">
-        Marseille · <span class="stack">PHP · jQuery · Bootstrap · MySQL</span>
+        <div class="xp-domains"><span>Agence web</span><span>CDI</span></div>
+        <div class="xp-location">
+          <span>Marseille</span>
+          <span class="xp-period">Nov. 2012 → Mai 2014</span>
+        </div>
+        <div class="xp-activities">Sites web · App web</div>
+        <span class="xp-stack">PHP · jQuery · JavaScript · Bootstrap CSS · MySQL</span>
       </div>
       <div class="xp-body">
         <p>
@@ -657,35 +695,45 @@
     </div>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Varibase — Dev Fullstack</div>
-        <div class="xp-period">Févr. 2011 → Nov. 2012</div>
-      </div>
+      <div class="xp-title">Varibase — Développeur Fullstack</div>
       <div class="xp-meta">
-        Marseille · <span class="stack">PHP · jQuery · MySQL · SQL Server · CRM · C#</span>
+        <div class="xp-domains"><span>Marketing relationnel</span><span>CDI</span></div>
+        <div class="xp-location">
+          <span>Marseille</span>
+          <span class="xp-period">Févr. 2011 → Nov. 2012</span>
+        </div>
+        <div class="xp-activities">Site web · CRM · Intranet · Datamining</div>
+        <span class="xp-stack">PHP · jQuery · JavaScript · MySQL · SQL Server · CRM · C#</span>
       </div>
       <div class="xp-body">
         <p>
-          Recruté pour les landing pages des campagnes marketing, j'ai élargi ma mission en identifiant deux besoins non couverts.
-          Conception d'un outil interne en C# connecté à SQL Server pour automatiser les traitements du dataminer
-          (normalisation, dédoublonnage, segmentation). Mise en place d'un intranet (mini CRM) pour que les équipes
-          marketing consultent les données de campagnes en autonomie.
+          Recruté pour développer les landing pages des campagnes marketing, j'ai rapidement élargi ma mission en identifiant deux besoins non couverts dans l'équipe.
+        </p>
+        <p>
+          J'ai conçu un outil interne en C# connecté à SQL Server pour automatiser les traitements du dataminer : normalisation, dédoublonnage et segmentation des bases de données — lui libérant un temps significatif sur des tâches répétitives.
+        </p>
+        <p>
+          J'ai ensuite mis en place un intranet (mini CRM) permettant aux équipes marketing de consulter directement les données de campagnes, sans solliciter le dataminer à chaque besoin.
         </p>
       </div>
     </div>
 
     <div class="xp">
-      <div class="xp-head">
-        <div class="xp-title">Orsid Provence — Opérateur → Chef d'équipe</div>
-        <div class="xp-period">2000 → 2008</div>
-      </div>
+      <div class="xp-title">Orsid Provence (devenue Doca Poste)<br>Opérateur → Chef d'équipe</div>
       <div class="xp-meta">
-        Aix-en-Provence · <span class="stack">Éditique · Production · Management</span>
+        <div class="xp-domains"><span>Éditique</span><span>CDI</span></div>
+        <div class="xp-location">
+          <span>Aix-en-Provence</span>
+          <span class="xp-period">2000 → 2008</span>
+        </div>
+        <span class="xp-stack">Éditique · Production · Management</span>
       </div>
       <div class="xp-body">
         <p>
           9 ans dans l'éditique au service de grands comptes — production de millions de documents critiques (factures, relevés de compte, fiches de paie).
-          Promu chef d'équipe en 2003 : encadrement de 6 personnes, objectif zéro raté sur des flux à fort volume et haute exigence.
+        </p>
+        <p>
+          Promu chef d'équipe en 2003 après 3 ans : encadrement de 6 personnes, objectif zéro raté sur des flux à fort volume et haute exigence.
         </p>
       </div>
     </div>
