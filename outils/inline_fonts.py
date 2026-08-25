@@ -5,9 +5,7 @@ Chrome instancie les fontes variables de Google Fonts a la volee et les ecrit en
 lisent mal. Ce script fige chaque graisse en fonte statique et l'embarque dans le
 HTML, ce qui donne un PDF en CID TrueType, plus leger et lisible partout.
 
-    python3 outils/inline-fonts.py index.html /tmp/rendu.html
-    google-chrome --headless=new --no-pdf-header-footer \
-        --print-to-pdf=CV-Johan-REMY.pdf file:///tmp/rendu.html
+Module utilise par build-pdf.py, qui est le point d'entree.
 
 Dependances : pip install fonttools brotli
 """
@@ -70,7 +68,8 @@ def freeze(url, weight):
     return buf.getvalue()
 
 
-def main(src, dst):
+def build_font_css():
+    """Renvoie les regles @font-face, fontes embarquees en data URI."""
     rules = []
     for family, style, weight, subset, url, rng in parse_faces(get(CSS_URL).decode()):
         data = freeze(url, weight)
@@ -82,14 +81,4 @@ def main(src, dst):
             + (f"unicode-range:{rng};" if rng else "") + "}")
         print(f"  {family} {style} {weight} ({subset}) -> {len(data) // 1024} Ko",
               file=sys.stderr)
-
-    html = open(src, encoding="utf-8").read()
-    html = re.sub(r'\s*<link rel="preconnect"[^>]*>', "", html)
-    html = re.sub(r'\s*<link href="https://fonts\.googleapis\.com[^>]*>',
-                  "\n<style>" + "".join(rules) + "</style>", html)
-    open(dst, "w", encoding="utf-8").write(html)
-    print(f"ecrit {dst} ({len(html) // 1024} Ko)", file=sys.stderr)
-
-
-if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    return "".join(rules)
