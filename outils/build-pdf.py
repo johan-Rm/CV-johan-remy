@@ -1,17 +1,13 @@
 """Fabrique CV-Johan-REMY.pdf a partir de index.html.
 
-index.html porte le design du site : trois pages hautes cote a cote, colonne
-olive complete sur la premiere, fin lisere sur les suivantes. Le PDF, lui, doit
-tenir sur trois feuilles A4 dont les deux premieres portent la colonne olive,
-ce qui suppose d'en repartir le contenu sur ces deux sections. Aucune regle CSS
-ne sait deplacer un bloc d'un endroit a un autre du document : la transformation
-se fait donc ici, sur une copie.
+index.html porte deja la geometrie finale : trois feuilles A4 empilees, colonne
+olive sur les deux premieres, fin lisere et pleine largeur sur l'annexe. Le site
+et le PDF montrent donc exactement la meme chose, et aucun bloc n'a plus besoin
+d'etre deplace ici.
 
-La feuille 3 est l'annexe des missions freelance : elle garde le lisere fin et
-prend toute la largeur, ses deux colonnes de texte ayant besoin de la place.
-
-index.html reste la source unique du contenu. Ce script n'en modifie jamais
-le contenu, il ne fait que le reorganiser pour l'impression.
+Ce script ne fait que deux choses : figer les fontes en statique, pour que le PDF
+ne dependent pas du reseau, et substituer le bloc @media print par celui qui force
+une section par feuille. Il ne touche jamais au contenu.
 
     python3 outils/build-pdf.py
 
@@ -68,7 +64,6 @@ CSS_IMPRESSION = """  /* --- Print (genere par outils/build-pdf.py) --- */
        cette regle annule le "padding: 0" prevu pour le lisere, qui sinon
        gagne en specificite et colle le texte au bord de la feuille. */
     .page + .page .sidebar { padding: 12mm 9mm; }
-    .page + .page.page-annexe .sidebar { padding: 0; }
     .main    { zoom: 0.71; padding: 13mm 11mm 11mm 11mm; }
 
     /* l'annexe n'a pas de colonne olive : elle prend toute la feuille */
@@ -85,29 +80,7 @@ CSS_IMPRESSION = """  /* --- Print (genere par outils/build-pdf.py) --- */
   }
 """
 
-DEBUT_QUEUE = "    <h2>Langues</h2>"
-FIN_ASIDE = "  </aside>"
-ASIDE_VIDE = '<aside class="sidebar"></aside>'
 DEBUT_CSS = "  /* --- Print --- */"
-
-
-def repartir_colonne(html):
-    """Deplace la queue de la colonne olive (Langues -> Disponibilite) en feuille 2.
-
-    La feuille 3 (annexe) garde sa colonne vide : elle n'est qu'un lisere, ce qui
-    lui laisse toute la largeur de la feuille pour ses deux colonnes de texte.
-    """
-    if DEBUT_QUEUE not in html:
-        raise SystemExit(f"Bloc introuvable dans index.html : {DEBUT_QUEUE.strip()}")
-    debut = html.index(DEBUT_QUEUE)
-    fin = html.index(FIN_ASIDE, debut)
-    queue = html[debut:fin].rstrip() + "\n"
-    html = html[:debut] + html[fin:]
-
-    if ASIDE_VIDE not in html:
-        raise SystemExit(f"Colonne de la feuille 2 introuvable : {ASIDE_VIDE}")
-    return html.replace(
-        ASIDE_VIDE, '<aside class="sidebar">\n\n' + queue + "\n  </aside>", 1)
 
 
 def remplacer_css_impression(html):
@@ -148,7 +121,6 @@ def verifier(pdf):
 
 def main():
     html = SOURCE.read_text(encoding="utf-8")
-    html = repartir_colonne(html)
     html = remplacer_css_impression(html)
 
     print("Fontes figees en statique :", file=sys.stderr)
