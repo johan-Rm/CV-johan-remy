@@ -1,10 +1,14 @@
 """Fabrique CV-Johan-REMY.pdf a partir de index.html.
 
-index.html porte le design du site : deux pages hautes cote a cote, colonne
-olive complete sur la premiere, fin lisere sur la seconde. Le PDF, lui, doit
-tenir sur deux feuilles A4, ce qui suppose de repartir la colonne olive sur
-les deux sections. Aucune regle CSS ne sait deplacer un bloc d'un endroit a
-un autre du document : la transformation se fait donc ici, sur une copie.
+index.html porte le design du site : trois pages hautes cote a cote, colonne
+olive complete sur la premiere, fin lisere sur les suivantes. Le PDF, lui, doit
+tenir sur trois feuilles A4 dont les deux premieres portent la colonne olive,
+ce qui suppose d'en repartir le contenu sur ces deux sections. Aucune regle CSS
+ne sait deplacer un bloc d'un endroit a un autre du document : la transformation
+se fait donc ici, sur une copie.
+
+La feuille 3 est l'annexe des missions freelance : elle garde le lisere fin et
+prend toute la largeur, ses deux colonnes de texte ayant besoin de la place.
 
 index.html reste la source unique du contenu. Ce script n'en modifie jamais
 le contenu, il ne fait que le reorganiser pour l'impression.
@@ -59,7 +63,19 @@ CSS_IMPRESSION = """  /* --- Print (genere par outils/build-pdf.py) --- */
 
     /* densité : un seul réglage par colonne */
     .sidebar { zoom: 0.84; padding: 12mm 9mm; }
-    .main    { zoom: 0.73; padding: 13mm 11mm 11mm 11mm; }
+
+    /* la feuille 2 porte une vraie colonne olive, pas le lisere du site :
+       cette regle annule le "padding: 0" prevu pour le lisere, qui sinon
+       gagne en specificite et colle le texte au bord de la feuille. */
+    .page + .page .sidebar { padding: 12mm 9mm; }
+    .page + .page.page-annexe .sidebar { padding: 0; }
+    .main    { zoom: 0.71; padding: 13mm 11mm 11mm 11mm; }
+
+    /* l'annexe n'a pas de colonne olive : elle prend toute la feuille */
+    .page.page-annexe, .page + .page.page-annexe {
+      grid-template-columns: 10px 1fr;
+    }
+    .page-annexe .main { zoom: 0.73; padding: 13mm 12mm 11mm 10mm; }
 
     .sidebar h2 { margin-top: 6mm; }
     .skill-group { margin-bottom: 2.2mm; }
@@ -76,7 +92,11 @@ DEBUT_CSS = "  /* --- Print --- */"
 
 
 def repartir_colonne(html):
-    """Deplace la queue de la colonne olive (Langues -> Disponibilite) en page 2."""
+    """Deplace la queue de la colonne olive (Langues -> Disponibilite) en feuille 2.
+
+    La feuille 3 (annexe) garde sa colonne vide : elle n'est qu'un lisere, ce qui
+    lui laisse toute la largeur de la feuille pour ses deux colonnes de texte.
+    """
     if DEBUT_QUEUE not in html:
         raise SystemExit(f"Bloc introuvable dans index.html : {DEBUT_QUEUE.strip()}")
     debut = html.index(DEBUT_QUEUE)
@@ -85,9 +105,9 @@ def repartir_colonne(html):
     html = html[:debut] + html[fin:]
 
     if ASIDE_VIDE not in html:
-        raise SystemExit(f"Colonne de la page 2 introuvable : {ASIDE_VIDE}")
+        raise SystemExit(f"Colonne de la feuille 2 introuvable : {ASIDE_VIDE}")
     return html.replace(
-        ASIDE_VIDE, '<aside class="sidebar">\n\n' + queue + "\n  </aside>")
+        ASIDE_VIDE, '<aside class="sidebar">\n\n' + queue + "\n  </aside>", 1)
 
 
 def remplacer_css_impression(html):
@@ -117,10 +137,11 @@ def verifier(pdf):
     texte = subprocess.run(["pdftotext", str(pdf), "-"],
                            capture_output=True, text=True).stdout
     manquants = [s for s in ("Lead technique", "structurants", "convaincu",
-                             "haute exigence") if s not in texte]
+                             "haute exigence", "plateforme en production")
+                 if s not in texte]
     print(f"  {pages} feuilles, {len(texte.split())} mots")
-    if pages != "2":
-        print(f"  ATTENTION : {pages} feuilles au lieu de 2 — ajuster les zoom")
+    if pages != "3":
+        print(f"  ATTENTION : {pages} feuilles au lieu de 3 — ajuster les zoom")
     if manquants:
         print(f"  ATTENTION : contenu tronque, absent du PDF : {manquants}")
 

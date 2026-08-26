@@ -313,6 +313,18 @@
   }
   .xp-body p + p { margin-top: 3.5mm; }
 
+  .xp-axes {
+    list-style: none;
+    margin-top: 2mm;
+  }
+  .xp-axes li {
+    padding-left: 3mm;
+    text-indent: -3mm;
+    margin-bottom: 1.2mm;
+  }
+  .xp-axes li::before { content: "\2014\00a0"; color: var(--olive-light); }
+  .xp-axes strong { color: var(--olive-dark); }
+
   .xp-mission {
     font-size: 8.8pt;
     margin-top: 1mm;
@@ -331,6 +343,74 @@
     padding: 0;
     min-width: 0;
   }
+
+  /* --- Page 3 : annexe pleine largeur, deux colonnes --- */
+  .page-annexe {
+    width: calc(10px + 190mm);
+  }
+
+  /* --- Annexe : detail des missions freelance --- */
+  .detail-intro {
+    font-size: 8.8pt;
+    line-height: 1.5;
+    text-align: justify;
+    margin-bottom: 3.5mm;
+    padding-bottom: 3mm;
+    border-bottom: 1px solid var(--rule);
+  }
+  .detail-intro p + p { margin-top: 1.8mm; }
+  .detail-intro strong { color: var(--olive-dark); }
+
+  .detail-cols {
+    column-count: 2;
+    column-gap: 7mm;
+    column-rule: 1px solid var(--rule);
+  }
+
+  .mission {
+    margin-bottom: 3.5mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .mission-title {
+    font-family: 'Rationale', 'Inter', sans-serif;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--olive-dark);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.8mm;
+    margin-bottom: 1.4mm;
+  }
+  .mission-lead {
+    font-size: 8.2pt;
+    line-height: 1.45;
+    text-align: justify;
+    margin-bottom: 1.4mm;
+  }
+  .mission-livrables, .mission-points { list-style: none; }
+  .mission-livrables {
+    font-size: 8.2pt;
+    line-height: 1.4;
+    color: var(--muted);
+    margin-bottom: 1.4mm;
+  }
+  .mission-livrables li {
+    padding-left: 2.8mm;
+    text-indent: -2.8mm;
+  }
+  .mission-livrables li::before { content: "\2022\00a0"; color: var(--olive-light); }
+  .mission-points {
+    font-size: 8.2pt;
+    line-height: 1.45;
+    text-align: justify;
+  }
+  .mission-points li {
+    padding-left: 3.2mm;
+    text-indent: -3.2mm;
+    margin-bottom: 0.9mm;
+  }
+  .mission-points li::before { content: "\25C6\00a0"; color: var(--olive-light); font-size: 0.8em; }
 
   /* --- Print --- */
   @media print {
@@ -362,6 +442,7 @@
       background: linear-gradient(to right, var(--olive) 0 10px, var(--paper) 10px);
     }
     .page + .page .main { max-width: 148mm; margin: 0 auto; }
+    .page-annexe .main { max-width: none; }
 
     /* marges hautes/basses rejouées sur chaque feuille */
     .sidebar, .main {
@@ -580,42 +661,53 @@
           <span>Essaouira</span>
           <span class="xp-period">Nov. 2016 → aujourd'hui</span>
         </div>
-        <div class="xp-activities">Modern Sites web · E-commerce · CRM · ERP · Dashboard IA</div>
-        <span class="xp-stack">Symfony · Nuxt · Vue.js · Python · API Platform · Docker · VPS</span>
+        <div class="xp-activities">Modern Sites web · E-commerce · CRM · SaaS · Audit &amp; passation</div>
+        <span class="xp-stack">Symfony · API Platform · Nuxt · PostgreSQL · Sylius · EasyAdmin · Docker · VPS</span>
       </div>
       <div class="xp-body">
         <p>
-          Neuf missions menées en parallèle de mon activité principale —
-          sites modernes, CRM sur-mesure, e-commerce, ERP, dashboards IA.
-          Clients variés, contextes exigeants, stack récurrente.
+          Neuf missions menées en parallèle de mon activité principale, <em>détaillées en page 3</em>.
+          Smart Global Governance est détaillée ci-dessous.
         </p>
+        <ul class="xp-axes">
+          <li><strong>Projets conçus et menés de A à Z</strong>, en interlocuteur technique unique : besoin, cadrage,
+            conception, développement, mise en production, hébergement et maintenance —
+            Yudou RH, MLK, Kazen Garden, Villa Gonatouki, Immobilière Essaouira, ABITHEA.
+          </li>
+          <li><strong>Interventions sur plateformes existantes</strong>, base de code et contexte métier déjà en place —
+            Altraway CE, LOGIGROUP, Délit d'Influence.
+          </li>
+          <li><strong>Fil conducteur technique</strong> — Symfony / API Platform en back, Nuxt en front,
+            architecture headless, déploiement Docker sur VPS.
+          </li>
+        </ul>
 
         <div class="xp-mission">
-          <strong>MLK · My Little Kasbah</strong> — 2026 · Site Nuxt 4 · IA-Spec-Driven · code 100 % généré par Codex · Symfony / Sylius · API Platform · Docker · VPS.
+          <strong>Yudou RH · Capnour</strong> — 2026 · Plateforme SaaS de recrutement Europe → Maroc, indexée sur les périodes de présence physique du candidat au Maroc · quatre applications sur socle Nuxt 4 en Layers · API Symfony 8 / API Platform · PostgreSQL · modèle à crédits garanti en base · recherche plein texte · trilingue FR/AR/EN avec RTL · OpenAPI typé de bout en bout · Docker / VPS · delivery multi-agents.
         </div>
         <div class="xp-mission">
-          <strong>Smart Global Governance</strong> — 2023 – 2025 · Dashboard IA Opti Value · Plateforme GRC Low-Code · Nuxt · Python · Vue.js · Golang.
+          <strong>MLK · My Little Kasbah</strong> — 2026 · Site Nuxt 4 · API SaaS Symfony 8 / API Platform · CRM Nuxt 4 · temps réel &amp; push · PageSpeed &gt; 90 · IA-Spec-Driven, code généré par Codex.
         </div>
         <div class="xp-mission">
-          <strong>Kazen Garden</strong> — 2022 · Site Nuxt 3 headless · Symfony / Sylius · API Platform · Docker · VPS.
+          <strong>Kazen Garden</strong> — 2022 · E-commerce Nuxt 3 headless · Symfony / API Platform · dashboard Sylius · double paiement Stripe et banque locale sans SDK · Docker / VPS, CI/CD.
         </div>
         <div class="xp-mission">
-          <strong>Délit d'Influence</strong> — 2021 – 2022 · Conseil &amp; dev Symfony · vitrine · e-commerce · CRM · app web.
+          <strong>Délit d'Influence</strong> — 2021 – 2022 · Conseil &amp; dev Symfony sur quatre applications d'un même écosystème : vitrines, e-commerce maison, CRM interne, app métier.
         </div>
         <div class="xp-mission">
-          <strong>Logigroup</strong> — 2021 · Passation technique e-commerce Ruby · documentation · transfert de connaissances.
+          <strong>LOGIGROUP</strong> — 2021 · Mission en ESN · audit d'un e-commerce Ruby on Rails / React, stack hors de mon quotidien apprise jusqu'au niveau nécessaire pour la documenter · documentation complète · passation sans interruption de service.
         </div>
         <div class="xp-mission">
-          <strong>Villa Gonatouki</strong> — 2020 · Site Nuxt 2 headless · traduction auto Google Cloud · images instantanées.
+          <strong>Villa Gonatouki</strong> — 2020 · Site Nuxt 2 headless · Symfony / API Platform · EasyAdmin · traduction auto Google Cloud, trois langues depuis une saisie unique · images générées à la volée.
         </div>
         <div class="xp-mission">
-          <strong>Immobilière Essaouira</strong> — 2019 – 2020 · Site Nuxt 2 headless Symfony / API Platform · SEO · schema.org.
+          <strong>Immobilière Essaouira</strong> — 2019 – 2020 · Site Nuxt 2 headless · Symfony / API Platform · EasyAdmin · SEO technique, SSR et schema.org — top 3 sur les requêtes cibles.
         </div>
         <div class="xp-mission">
-          <strong>ABITHEA Littoral Provence</strong> — 2018 · CRM sur-mesure · gestion devis &amp; factures.
+          <strong>ABITHEA Littoral Provence</strong> — 2018 · CRM sur-mesure Symfony / EasyAdmin · devis &amp; factures PDF à numérotation légale · suivi des paiements et relances.
         </div>
         <div class="xp-mission">
-          <strong>Altraway CE</strong> — 2016 – 2018 · Amélioration plateforme e-commerce voyages · ETL · auto-connexion membres CE.
+          <strong>Altraway CE</strong> — 2016 – 2018 · Amélioration continue sur deux ans d'un e-commerce voyages CE · PHP / Symfony sur base PrestaShop · ETL catalogues &amp; disponibilités fournisseurs · auto-connexion depuis les portails CE.
         </div>
       </div>
     </div>
@@ -649,6 +741,20 @@
       </div>
     </div>
 
+    </div>
+
+  </main>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+
+  <aside class="sidebar"></aside>
+
+  <main class="main">
+
+    <h2>Expérience (suite)</h2>
+
     <div class="xp">
       <div class="xp-title">Philae — Développeur Fullstack</div>
       <div class="xp-meta">
@@ -670,19 +776,6 @@
           C'est ainsi que débute ma carrière freelance : non par nécessité, mais parce que le travail livré a convaincu.
         </p>
       </div>
-    </div>
-
-  </main>
-</section>
-
-<!-- ============ PAGE 2 ============ -->
-<section class="page">
-
-  <aside class="sidebar"></aside>
-
-  <main class="main">
-
-    <h2>Expérience (suite)</h2>
 
     <div class="xp">
       <div class="xp-title">Groupe Automobile IDM — Développeur Fullstack</div>
@@ -797,6 +890,200 @@
           Promu chef d'équipe en 2003 après 3 ans : encadrement de 6 personnes, objectif zéro raté sur des flux à fort volume et haute exigence.
         </p>
       </div>
+    </div>
+
+  </main>
+</section>
+
+<!-- ============ PAGE 3 ============ -->
+<section class="page page-annexe">
+
+  <aside class="sidebar"></aside>
+
+  <main class="main">
+
+    <h2>Missions freelance — détail</h2>
+
+    <div class="detail-intro">
+      <p>
+        Neuf missions menées en parallèle de mon activité principale, entre 2016 et 2026
+        <em>(la mission Smart Global Governance, 2023 – 2025, est détaillée en page 1)</em>.
+      </p>
+      <p>
+        <strong>Projets conçus et menés de A à Z</strong> — expression du besoin, cadrage, conception, développement,
+        mise en production, hébergement et maintenance, en interlocuteur technique unique du client :
+        Yudou RH, MLK, Kazen Garden, Villa Gonatouki, Immobilière Essaouira, ABITHEA.
+      </p>
+      <p>
+        <strong>Interventions sur plateformes existantes</strong> — reprise d'une base de code et d'un contexte métier
+        déjà en place : Altraway CE (amélioration continue sur deux ans), LOGIGROUP (mission en ESN : audit,
+        documentation et passation), Délit d'Influence (conseil et développements sur un parc applicatif existant).
+      </p>
+      <p>
+        <strong>Fil conducteur technique</strong> — Symfony / API Platform en back, Nuxt en front,
+        architecture headless, déploiement Docker sur VPS.
+      </p>
+    </div>
+
+    <div class="detail-cols">
+
+      <div class="mission">
+        <div class="mission-title">Yudou RH — Capnour · 2026</div>
+        <p class="mission-lead">
+          Capnour, la plateforme SaaS de recrutement de Yudou RH : elle met en relation des profils basés en Europe
+          avec les entreprises marocaines, et a été conçue et menée de A à Z. Sa donnée différenciante :
+          les périodes où le candidat sera physiquement présent au Maroc.
+        </p>
+        <ul class="mission-livrables">
+          <li>un site public développé avec Nuxt 4,</li>
+          <li>trois espaces authentifiés — candidat, entreprise, administration — développés avec Nuxt 4,</li>
+          <li>une API développée avec Symfony 8 et API Platform, sur PostgreSQL,</li>
+          <li>une infrastructure conteneurisée Docker déployée sur VPS, avec préproduction dédiée.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Quatre applications construites sur un socle Nuxt commun en Layers, chacune déployée indépendamment — le partagé est écrit une fois, chaque espace garde son propre poids</li>
+          <li>Modèle économique à crédits : le dévoilement d'un profil débite le compte en une seule opération indivisible, et le solde ne peut pas devenir négatif — garanti par la base de données elle-même, pas seulement par le code</li>
+          <li>Comptes multi-utilisateurs par entreprise, avec deux niveaux de droits, sur une authentification par jeton et renouvellement de session</li>
+          <li>Recherche plein texte côté serveur, adossée à un vocabulaire métier normalisé et enrichi — suggestions et auto-complétion sur les intitulés de poste</li>
+          <li>Intégration d'un ATS tiers : les profils professionnels y restent maîtres et descendent en réplique, les données propres à la plateforme restent locales — une seule source de vérité par tranche de donnée, jamais deux</li>
+          <li>Trilingue français / arabe / anglais, avec l'arabe lu de droite à gauche ; un test bloque toute traduction manquante</li>
+          <li>Contrat d'API typé de bout en bout : la description OpenAPI est générée depuis le back, les types TypeScript du front en sont dérivés, et l'intégration continue refuse tout écart</li>
+          <li>Delivery assisté par IA : le dépôt est découpé en périmètres, chacun confié à un agent spécialisé travaillant sur sa propre branche ; spécifications, invariants d'architecture et conventions sont versionnés et font foi</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">MLK — My Little Kasbah · 2026</div>
+        <ul class="mission-livrables">
+          <li>un site web développé avec Nuxt 4,</li>
+          <li>une API SaaS développée avec Symfony 8 et API Platform,</li>
+          <li>un dashboard d'administration (CRM) développé avec Nuxt 4.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Performance web optimisée (PageSpeed &gt; 90, Fast 4G ~ 80)</li>
+          <li>Préchargement intelligent des images</li>
+          <li>Navigation sans rupture visuelle</li>
+          <li>Maîtrise avancée du state réactif et des transitions UI</li>
+          <li>Orchestration intelligente du chargement des contenus</li>
+          <li>Données en temps réel &amp; notifications push</li>
+          <li>Traduction automatique avec override manuel</li>
+          <li>Architecture documentée &amp; conventions techniques intégrées dans le CI/CD</li>
+          <li>Développement IA-Spec-Driven : spécifications exécutables comme source de vérité, code généré par Codex, revue et architecture maîtrisées</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">Kazen Garden · 2022</div>
+        <ul class="mission-livrables">
+          <li>un site e-commerce développé avec Nuxt 3,</li>
+          <li>une API développée avec Symfony et API Platform,</li>
+          <li>un dashboard e-commerce Sylius,</li>
+          <li>une infrastructure conteneurisée Docker déployée sur VPS.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Tunnel de commande entièrement découplé, front Nuxt consommant l'API Platform</li>
+          <li>Gestion du catalogue, des commandes et du marchandisage autonome pour le client via Sylius</li>
+          <li>Double intégration de paiement : Stripe et une solution bancaire locale, cette dernière sans SDK moderne ni documentation équivalente</li>
+          <li>SEO, performance et internationalisation traités dès la conception</li>
+          <li>Déploiement Docker sur VPS avec pipeline CI/CD automatisé</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">Délit d'Influence · 2021 – 2022</div>
+        <p class="mission-lead">
+          Mission de conseil et de développement Symfony sur un parc applicatif existant :
+        </p>
+        <ul class="mission-livrables">
+          <li>des évolutions et de la maintenance sur des sites vitrines déjà en place,</li>
+          <li>des développements sur une plateforme e-commerce Symfony maison,</li>
+          <li>des évolutions sur un CRM interne et une application web métier.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Reprise d'un e-commerce Symfony maison : lecture d'une base de code sans les garde-fous d'un framework e-commerce du marché, et évolutions sans régression</li>
+          <li>Rendu serveur Symfony / Twig sur l'ensemble du parc</li>
+          <li>Position de conseil technique dans la durée, au-delà du développement : arbitrages d'architecture et priorisation avec le client</li>
+          <li>Intervention sur quatre applications d'un même écosystème, aux historiques et aux niveaux de qualité hétérogènes</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">LOGIGROUP · 2021 — mission en ESN</div>
+        <ul class="mission-livrables">
+          <li>un audit de la plateforme e-commerce existante, développée en Ruby on Rails avec un front React,</li>
+          <li>une documentation technique et fonctionnelle complète,</li>
+          <li>un transfert de connaissances vers l'équipe entrante.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Cartographie de l'application, de ses dépendances et de sa chaîne de déploiement</li>
+          <li>Rédaction de la documentation manquante, condition de la reprise par un tiers</li>
+          <li>Passation menée sans interruption de service</li>
+          <li>Montée en compétence rapide sur une stack hors de mon quotidien — Ruby on Rails et React — jusqu'au niveau nécessaire pour la documenter et la transmettre</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">Villa Gonatouki · 2020</div>
+        <ul class="mission-livrables">
+          <li>un site web développé avec Nuxt 2,</li>
+          <li>une API développée avec Symfony et API Platform,</li>
+          <li>un dashboard d'administration développé avec Symfony EasyAdmin.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Traduction automatique via Google Cloud Translation — publication unique, diffusion multilingue sans coût de traduction</li>
+          <li>Trois langues servies depuis une saisie unique du contenu</li>
+          <li>Génération instantanée des images aux bons formats et poids, pour un site très visuel sans dégrader le chargement</li>
+          <li>Architecture headless : front Nuxt découplé, contenu géré depuis EasyAdmin et exposé par API Platform</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">Immobilière Essaouira · 2019 – 2020</div>
+        <ul class="mission-livrables">
+          <li>un site web développé avec Nuxt 2,</li>
+          <li>une API développée avec Symfony et API Platform,</li>
+          <li>un dashboard d'administration développé avec Symfony EasyAdmin.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>SEO technique traité dès la conception, sur un marché très concurrentiel</li>
+          <li>Rendu serveur (SSR) Nuxt au service de l'indexabilité</li>
+          <li>Données structurées schema.org sur les annonces, ouvrant l'accès aux résultats enrichis</li>
+          <li>Métadonnées dynamiques, maillage interne, performance de chargement</li>
+          <li>Gestion du catalogue de biens autonome pour le client via EasyAdmin</li>
+          <li>Positionnement du site dans les trois premiers résultats sur ses requêtes cibles</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">ABITHEA Littoral Provence · 2018</div>
+        <ul class="mission-livrables">
+          <li>un CRM sur-mesure conçu de A à Z, développé avec Symfony et EasyAdmin, dédié à la gestion des devis et des factures.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Modélisation complète du processus commercial : clients, biens, devis, factures</li>
+          <li>Back-office EasyAdmin adapté au métier plutôt qu'un CRM du marché plié au forceps</li>
+          <li>Génération des devis et factures en PDF, avec numérotation légale continue</li>
+          <li>Suivi des paiements et relances des impayés intégrés à l'outil</li>
+          <li>Suivi du cycle de vente et historisation, en remplacement des fichiers bureautiques</li>
+          <li>Recueil du besoin, développement et accompagnement à la prise en main assurés seul</li>
+        </ul>
+      </div>
+
+      <div class="mission">
+        <div class="mission-title">Altraway CE · 2016 – 2018</div>
+        <ul class="mission-livrables">
+          <li>des évolutions continues sur une plateforme e-commerce de voyages destinée aux comités d'entreprise,</li>
+          <li>un ETL d'intégration des catalogues et disponibilités fournisseurs,</li>
+          <li>un mécanisme d'auto-connexion des salariés depuis les portails de leur CE.</li>
+        </ul>
+        <ul class="mission-points">
+          <li>Stack PHP / Symfony, sur une base PrestaShop</li>
+          <li>Intégration automatisée de catalogues et de disponibilités fournisseurs hétérogènes</li>
+          <li>Auto-connexion depuis les portails CE : suppression de la friction de création de compte à l'entrée du tunnel</li>
+          <li>Mission d'amélioration continue sur deux ans, sur une plateforme en production</li>
+        </ul>
+      </div>
+
     </div>
 
   </main>
