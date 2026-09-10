@@ -1,7 +1,8 @@
 """Fabrique les PDF du CV a partir de ses trois variantes HTML.
 
-Chaque variante porte deja la geometrie finale : trois feuilles A4 empilees,
-colonne olive sur les deux premieres, fin lisere et pleine largeur sur l'annexe.
+Chaque variante porte deja la geometrie finale : quatre feuilles A4 empilees,
+colonne olive sur les deux premieres, fin lisere et pleine largeur sur les deux
+feuilles d'annexe.
 Le site et le PDF montrent donc exactement la meme chose, et aucun bloc n'a plus
 besoin d'etre deplace ici.
 
@@ -25,14 +26,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-try:
-    from inline_fonts import build_font_css  # noqa: E402
-except ModuleNotFoundError as manque:          # fonttools ou brotli absent
-    build_font_css = None
-    RAISON_SANS_FONTES = str(manque)
+from inline_fonts import build_font_css  # noqa: E402
 
 RACINE = Path(__file__).resolve().parent.parent
 TEMPORAIRE = RACINE / ".rendu-pdf.html"
+
+# Une section = une feuille : profil, experience, et deux feuilles d'annexe.
+FEUILLES_ATTENDUES = 4
 
 # Une variante HTML = un PDF. L'ordre est celui de la generation par defaut.
 # Aucun nom de fichier ne nomme un pays ni un marche : le PDF part chez un
@@ -40,7 +40,7 @@ TEMPORAIRE = RACINE / ".rendu-pdf.html"
 # quelqu'un d'autre. Les deux variantes en poste sont donc numerotees, et
 # outils/variantes.md dit laquelle vise quoi.
 VARIANTES = {
-    "index.html": "CV-Johan-REMY.pdf",
+    "V0-CV-Johan-REMY.html": "V0-CV-Johan-REMY.pdf",
     "V1-CV-Johan-REMY.html": "V1-CV-Johan-REMY.pdf",
     "V2-CV-Johan-REMY.html": "V2-CV-Johan-REMY.pdf",
 }
@@ -105,10 +105,10 @@ CSS_IMPRESSION = """  /* --- Print (genere par outils/build-pdf.py) --- */
 DEBUT_CSS = "  /* --- Print --- */"
 
 
-def remplacer_css_impression(html):
+def remplacer_css_impression(html, source="la variante"):
     """Substitue le bloc @media print du site par celui du PDF."""
     if DEBUT_CSS not in html:
-        raise SystemExit(f"Bloc CSS introuvable dans index.html : {DEBUT_CSS.strip()}")
+        raise SystemExit(f"Bloc CSS introuvable dans {source} : {DEBUT_CSS.strip()}")
     debut = html.index(DEBUT_CSS)
     fin = html.index("</style>", debut)
     return html[:debut] + CSS_IMPRESSION + html[fin:]
@@ -145,7 +145,8 @@ def verifier(pdf):
     """Relit le PDF produit : nombre de feuilles et fins de blocs presentes."""
     if not shutil.which("pdftotext") or not shutil.which("pdfinfo"):
         feuilles = compter_feuilles(pdf)
-        note = "" if feuilles == "3" else "  ATTENTION : attendu 3 — ajuster les zoom"
+        note = ("" if feuilles == str(FEUILLES_ATTENDUES)
+                else f"  ATTENTION : attendu {FEUILLES_ATTENDUES} — ajuster les zoom")
         print(f"  {feuilles} feuilles (poppler-utils absent : contenu non relu){note}")
         return
     infos = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, text=True).stdout
@@ -159,19 +160,19 @@ def verifier(pdf):
                              "haute exigence", "plateforme en production")
                  if s not in texte]
     print(f"  {pages} feuilles, {len(texte.split())} mots")
-    if pages != "3":
-        print(f"  ATTENTION : {pages} feuilles au lieu de 3 — ajuster les zoom")
+    if pages != str(FEUILLES_ATTENDUES):
+        print(f"  ATTENTION : {pages} feuilles au lieu de {FEUILLES_ATTENDUES}"
+              " — ajuster les zoom")
     if manquants:
         print(f"  ATTENTION : contenu tronque, absent du PDF : {manquants}")
 
 
 def fabriquer(source, sortie, css_fontes, navigateur, chemin_pour):
     """Rend une variante HTML en PDF, puis relit le resultat."""
-    html = remplacer_css_impression(source.read_text(encoding="utf-8"))
-    if css_fontes is not None:
-        html = re.sub(r'\s*<link rel="preconnect"[^>]*>', "", html)
-        html = re.sub(r'\s*<link href="https://fonts\.googleapis\.com[^>]*>',
-                      "\n<style>" + css_fontes + "</style>", html)
+    html = remplacer_css_impression(source.read_text(encoding="utf-8"), source.name)
+    html = re.sub(r'\s*<link rel="preconnect"[^>]*>', "", html)
+    html = re.sub(r'\s*<link href="https://fonts\.googleapis\.com[^>]*>',
+                  "\n<style>" + css_fontes + "</style>", html)
 
     # le fichier temporaire reste a la racine : la photo est en chemin relatif
     TEMPORAIRE.write_text(html, encoding="utf-8")
@@ -195,13 +196,8 @@ def main(argv):
     if inconnues:
         raise SystemExit(f"Variante inconnue : {inconnues} — attendu : {list(VARIANTES)}")
 
-    if build_font_css is None:
-        print(f"  ({RAISON_SANS_FONTES} : fontes chargees depuis le reseau au rendu,"
-              " le PDF n'est donc pas reproductible hors ligne)")
-        css_fontes = None
-    else:
-        print("Fontes figees en statique :", file=sys.stderr)
-        css_fontes = build_font_css()
+    print("Fontes figees en statique :", file=sys.stderr)
+    css_fontes = build_font_css()
 
     navigateur, chemin_pour = trouver_navigateur()
 
