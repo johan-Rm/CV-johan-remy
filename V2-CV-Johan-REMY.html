@@ -235,8 +235,8 @@
     line-height: 1.55;
     text-align: justify;
   }
-  .summary p + p { margin-top: 2mm; }
-  .summary strong { color: var(--olive-dark); font-weight: 600; }
+  .summary p + p { margin-top: 2.8mm; }
+  .summary strong { color: #000; font-weight: 700; }
 
   .tags-row {
     margin-top: 3mm;
@@ -316,7 +316,8 @@
     line-height: 1.5;
     text-align: justify;
   }
-  .xp-body p + p { margin-top: 3.5mm; }
+  .xp-body p + p { margin-top: 2mm; }
+  .page:nth-of-type(2) .xp { margin-bottom: 3mm; }
 
   .xp-axes {
     list-style: none;
@@ -333,22 +334,21 @@
   .xp-mission {
     font-size: 8.8pt;
     margin-top: 1mm;
-    padding-left: 2mm;
     border-left: 1px dotted var(--rule);
   }
   .xp-mission strong { color: var(--olive-dark); }
 
   /* --- Feuille 3 : annexe, lisere fin et pleine largeur --- */
-  .page-annexe {
+  .page-wide {
     grid-template-columns: 10px 1fr;
   }
-  .page-annexe .sidebar {
+  .page-wide .sidebar {
     zoom: 1;
     padding: 0;
     min-width: 0;
   }
-  .page-annexe .main {
-    zoom: 0.73;
+  .page-wide .main {
+    zoom: 1;
     padding: 13mm 12mm 11mm 10mm;
   }
 
@@ -365,13 +365,13 @@
   .detail-intro strong { color: var(--olive-dark); }
 
   .detail-cols {
-    column-count: 2;
+    column-count: 1;
     column-gap: 7mm;
     column-rule: 1px solid var(--rule);
   }
 
   .mission {
-    margin-bottom: 3.5mm;
+    margin-bottom: 7mm;
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -383,14 +383,17 @@
     color: var(--olive-dark);
     border-bottom: 1px solid var(--rule);
     padding-bottom: 0.8mm;
-    margin-bottom: 1.4mm;
+    margin-bottom: 2mm;
   }
-  .mission-lead {
-    font-size: 8.2pt;
-    line-height: 1.45;
+  .mission > p {
+    font-size: 10pt;
+    line-height: 1.55;
     text-align: justify;
-    margin-bottom: 1.4mm;
+    margin-bottom: 2mm;
   }
+  .mission > p + p { margin-top: 2.8mm; }
+  .mission > p strong, .xp-body p strong { font-weight: 700; }
+
   .mission-livrables, .mission-points { list-style: none; }
   .mission-livrables {
     font-size: 8.2pt;
@@ -422,6 +425,15 @@
     margin: 1.8mm 0 0.8mm;
   }
 
+  /* Expériences présentées dans une seule chronologie sur quatre pages. */
+  .page:nth-of-type(2) .main { zoom: 0.92; }
+  .page-wide .xp-body { font-size: 9pt; line-height: 1.45; }
+  .page-wide .xp { margin-bottom: 4mm; }
+  .page:nth-of-type(3) .main { zoom: 0.95; }
+  .page-wide:last-of-type .xp-body { font-size: 9pt; line-height: 1.45; }
+  .page-wide:last-of-type .xp { margin-bottom: 3mm; }
+  .page-wide:last-of-type .xp-meta { font-size: 8pt; }
+
   /* --- Print --- */
   /* La geometrie A4 et la densite vivent desormais dans les regles d'ecran :
      l'impression n'a plus qu'a retirer le decor et forcer les sauts. */
@@ -446,10 +458,9 @@
 </head>
 <body>
 
-<!-- ============ PAGE 1 ============ -->
+<!-- PAGE 1 -->
 <section class="page">
-
-  <aside class="sidebar">
+<aside class="sidebar">
     <img class="photo" src="photo-johan-remy.jpg"
          alt="Portrait de Johan Remy" width="640" height="640">
     <div class="name">
@@ -480,7 +491,7 @@
       <li>
         <span class="label">Localisation</span>
         Cannes, France
-       
+
       </li>
     </ul>
 
@@ -551,8 +562,8 @@
     </div>
 
   </aside>
-
   <main class="main">
+
 
     <header>
       <div class="headline">
@@ -565,13 +576,17 @@
 
     <h2>Profil</h2>
     <div class="summary">
-      <p>Quinze ans d’expérience dans le développement web, précédés de neuf années dans l’industrie. J’accompagne les projets sur toute leur durée : audit, cadrage, architecture, développement, mise en production et transmission. Mon périmètre couvre les sites web, l’e-commerce, les applications métier, les SaaS, les dashboards, les ERP, les CRM et les API.</p>
+      <p><strong>Quinze ans d’expérience dans le développement web</strong>, précédés de neuf années dans l’industrie. J’accompagne les projets sur toute leur durée : <strong>audit, cadrage, architecture, développement, mise en production et transmission</strong>. Mon périmètre couvre les sites web, l’e-commerce, les applications métier, les SaaS, les dashboards, les ERP, les CRM et les API.</p>
 
-      <p>Le travail d’équipe et la prise de responsabilités traversent mon parcours, dès mes années dans l’industrie, où j’ai notamment été chef d’équipe. Cette expérience s’est prolongée dans le web, puis pendant plus de deux ans comme lead technique d’une équipe de neuf personnes chez Smart Global Governance, startup SaaS : architecture front-end, conventions, revues de code, contrôles automatisés et accompagnement de la montée en compétences. En freelance depuis neuf ans, je suis l’interlocuteur direct du client, de la compréhension du besoin jusqu’à la production.</p>
+      <p>Le travail d’équipe et la prise de responsabilités traversent mon parcours : chef d’équipe dans l’industrie, puis accompagnement de développeurs dans le web et <strong>lead développeur fullstack au sein d’une équipe de neuf personnes</strong> chez Smart Global Governance pendant deux ans et demi. Cette mission associait développements, revues de code, pair programming et accompagnement des développeurs juniors.</p>
 
-      <p>Aujourd’hui, j’orchestre plusieurs agents IA pour accélérer le développement, avec 100 % du code généré par l’IA. Je garde la maîtrise de l’architecture et de la qualité, grâce aux tests automatisés, à la CI/CD et à la revue de code.</p>
+      <p><strong>Freelance depuis 2018</strong>, je suis l’interlocuteur direct du client, de la compréhension du besoin jusqu’à la mise en production, l’hébergement et la maintenance.</p>
 
-      <p>Je conçois également mes propres produits — applications web, dashboards et API multi-tenant — avec une attention constante aux coûts d’exploitation, de maintenance et d’évolution. J’interviens sur des projets neufs comme existants, notamment lorsque la dette technique freine leur progression. Un audit et un cadrage peuvent précéder tout engagement de développement pour clarifier les priorités et poser des bases solides.</p>
+      <p>Aujourd’hui, j’orchestre plusieurs agents IA selon mon workflow <strong>AIOD : concevoir, développer, consolider</strong>. Mes derniers projets sont réalisés avec <strong>100 % du code généré par l’IA</strong>. Je garde la maîtrise du cadrage, de l’architecture et de la validation. Des sessions de consolidation transforment les bonnes pratiques en conventions techniques et en <strong>garde-fous automatisés dans la CI/CD</strong>.</p>
+
+      <p>Sous <strong>Graines Digitales</strong>, je développe également mes propres produits, dont une <strong>API SaaS Symfony de gestion de contenu multi-clients et multi-projets</strong>, avec une attention constante aux coûts d’exploitation, de maintenance et d’évolution.</p>
+
+      <p>J’interviens sur des <strong>projets neufs comme existants</strong>, notamment lorsque la dette technique freine leur progression. Un <strong>audit et un cadrage</strong> peuvent précéder le développement pour clarifier les priorités et poser des bases solides.</p>
 
       <div class="tags-row">
         <span>Orchestration multi-agents</span>
@@ -587,79 +602,55 @@
     </div>
 
     <h2>Expérience</h2>
-
     <div class="xp">
-      <div class="xp-title">Freelance — Développeur Fullstack</div>
+      <div class="xp-title">Yudou RH — Capnour — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-domains"><span>Multi-secteurs</span><span>Freelance</span></div>
-        <div class="xp-location">
-          <span>Essaouira</span>
-          <span class="xp-period">Nov. 2016 → aujourd'hui</span>
-        </div>
-        <br/>
-        <div class="xp-activities">Modern Sites web · E-commerce · CRM · SaaS · Audit &amp; passation</div>
-        <span class="xp-stack">Symfony · API Platform · Nuxt · PostgreSQL · Sylius · EasyAdmin · Docker · VPS</span>
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2026</span></div>
       </div>
-      <br/>
       <div class="xp-body">
-        <p>
-          Dix missions menées en parallèle de mon activité principale, résumées ici et <em>détaillées en pages 3 et 4</em>.
+        <p class="mission-lead">
+          Conception et développement de Capnour, une <strong>plateforme SaaS de recrutement</strong> mettant en relation des profils basés en Europe avec les entreprises marocaines. Sa particularité : prendre en compte les périodes où le candidat sera <strong>physiquement présent au Maroc</strong>.
         </p>
-    <br/>
-        <div class="xp-mission">
-          <strong>Yudou RH · Capnour</strong> — 2026 · SaaS de recrutement Europe → Maroc · Nuxt 4 · Symfony 8 / API Platform
-        </div>
-        <div class="xp-mission">
-          <strong>MLK · My Little Kasbah</strong> — 2026 · Site &amp; CRM Nuxt 4 · API SaaS Symfony 8 · temps réel &amp; push · PageSpeed &gt; 90
-        </div>
-        <div class="xp-mission">
-          <strong>Smart Global Governance</strong> — 2023 – 2025 · Lead dev, équipe de 9 · Dashboard IA Nuxt/Python · GRC Low-Code
-        </div>
-        <div class="xp-mission">
-          <strong>Kazen Garden</strong> — 2022 · E-commerce headless Nuxt 3 · dashboard Sylius · Stripe et banque locale sans SDK
-        </div>
-        <div class="xp-mission">
-          <strong>Délit d'Influence</strong> — 2021 – 2022 · Conseil &amp; dev Symfony sur quatre applications d'un même écosystème
-        </div>
-        <div class="xp-mission">
-          <strong>LOGIGROUP</strong> — 2021 · Mission en ESN · audit Ruby on Rails / React · documentation complète · passation
-        </div>
-        <div class="xp-mission">
-          <strong>Villa Gonatouki</strong> — 2020 · Nuxt 2 headless · Symfony / API Platform · traduction auto, trois langues
-        </div>
-        <div class="xp-mission">
-          <strong>Immobilière Essaouira</strong> — 2019 – 2020 · Nuxt 2 headless · SEO technique, SSR, schema.org · top 3
-        </div>
-        <div class="xp-mission">
-          <strong>ABITHEA Littoral Provence</strong> — 2018 · CRM sur-mesure Symfony / EasyAdmin · devis &amp; factures PDF
-        </div>
-        <div class="xp-mission">
-          <strong>Altraway CE</strong> — 2016 – 2018 · E-commerce voyages CE · PHP / Symfony · ETL fournisseurs, auto-connexion
-        </div>
-<br/>
-        <ul class="xp-axes">
-          <li><strong>Projets conçus et menés de A à Z</strong>, en interlocuteur technique unique : besoin, cadrage,
-            conception, développement, mise en production, hébergement et maintenance —
-            Yudou RH, MLK, Kazen Garden, Villa Gonatouki, Immobilière Essaouira, ABITHEA.
-          </li>
-          <li><strong>Interventions sur plateformes existantes</strong>, base de code et contexte métier déjà en place —
-            Smart Global Governance, Altraway CE, LOGIGROUP, Délit d'Influence.
-          </li>
-          <li><strong>Fil conducteur technique</strong> — Symfony / API Platform en back, Nuxt en front,
-            architecture headless, déploiement Docker sur VPS.
-          </li>
-        </ul>
-
+        <p>
+          Développement d’un site public et de trois espaces authentifiés avec <strong>Nuxt 4</strong>, organisés en Layers, et d’une API avec <strong>Symfony, API Platform et PostgreSQL</strong>. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
       </div>
     </div>
-
+    <div class="xp">
+      <div class="xp-title">MLK — My Little Kasbah — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2026</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Développement d’un <strong>site web immobilier</strong> avec <strong>Nuxt 4</strong> en architecture headless.
+        </p>
+        <p>
+          La gestion du contenu repose sur une <strong>API SaaS Symfony multi-clients et multi-projets</strong>, développée sous <strong>Graines Digitales</strong> pour mes clients. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
+        </p>
+        <p>
+          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+    </div>
   </main>
 </section>
 
-<!-- ============ PAGE 2 ============ -->
+<!-- PAGE 2 -->
 <section class="page">
-
-  <aside class="sidebar">
+<aside class="sidebar">
 
     <h2>Langues</h2>
     <ul class="lang-list">
@@ -693,407 +684,276 @@
     </ul>
 
   </aside>
-
   <main class="main">
-
     <h2>Expérience (suite)</h2>
+    <div class="xp">
+      <div class="xp-title">Smart Global Governance — Lead Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2023 – 2025</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Mission freelance de <strong>lead développeur fullstack</strong> au sein d’une <strong>équipe de neuf personnes</strong> : points quotidiens, revues de code, pair programming et workflow Git structuré, avec conventions de commits, gestion des branches et CI/CD GitLab/GitHub.
+        </p>
+        <p>
+          Pendant deux ans, interventions sur une <strong>plateforme Low-Code</strong> en <strong>Vue.js, Golang et MySQL</strong> : refonte complète de l’UX/UI sur la base d’un Design System, réécriture du moteur de logique conditionnelle et de son query builder, mise en place d’un système de Drill Down et de loaders avancés pour les workflows.
+        </p>
+        <p>
+          Corrections de bugs, nouvelles fonctionnalités et amélioration continue de la stabilité et de l’expérience utilisateur.
+        </p>
+        <p>
+          Durant les <strong>six derniers mois</strong> de ma mission chez Smart Global Governance, mise en place <strong>en solo du socle complet Nuxt 3</strong> du dashboard d’<strong>OptiValue</strong>, une plateforme d’IA d’aide à la réponse aux appels d’offres et aux questionnaires d’audit et de conformité.
+        </p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">Kazen Garden — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2022</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Développement d’un site e-commerce avec <strong>Nuxt 3</strong> et d’un back-end en architecture headless avec <strong>Symfony, Sylius et API Platform</strong>. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">Délit d'Influence — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2021 – 2022</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Mission de <strong>conseil et de développement Symfony</strong> sur un ensemble d’applications : site vitrine, plateforme e-commerce, CRM et application web.
+        </p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">LOGIGROUP — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2021</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Mission de <strong>passation technique</strong> sur une plateforme e-commerce développée en <strong>Ruby</strong> : rédaction de la documentation et transfert de connaissances.
+        </p>
+      </div>
+    </div>
+  </main>
+</section>
 
+<!-- PAGE 3 -->
+<section class="page page-wide">
+<aside class="sidebar"></aside>
+  <main class="main">
+    <h2>Expérience (suite)</h2>
+    <div class="xp">
+      <div class="xp-title">Villa Gonatouki — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2020</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Développement d’un site web avec <strong>Nuxt 2</strong> et d’un back-end en architecture headless avec <strong>Symfony et API Platform</strong>. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">Immobilière Essaouira — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2019 – 2020</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Développement d’un site web avec <strong>Nuxt 2</strong> et d’un back-end en architecture headless avec <strong>Symfony et API Platform</strong>. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">ABITHEA Littoral Provence — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-location"><span>Freelance</span><span class="xp-period">2018</span></div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Conception et réalisation d’un <strong>CRM sur mesure</strong> dédié à la <strong>gestion des devis et des factures</strong>.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">Altraway CE — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-domains"><span>E-commerce voyages</span><span>Temps plein</span></div>
+        <div class="xp-location">
+          <span>À distance</span>
+          <span class="xp-period">2016 – 2018</span>
+        </div>
+        <span class="xp-stack">Symfony · ETL</span>
+      </div>
+      <div class="xp-body">
+        <p>
+          Amélioration d’une <strong>plateforme e-commerce de voyages</strong> destinée aux comités d’entreprise : interventions sur l’ETL et mise en place de l’<strong>auto-connexion des membres des CE</strong>.
+        </p>
+      </div>
+    </div>
     <div class="xp">
       <div class="xp-title">Philae — Développeur Fullstack</div>
       <div class="xp-meta">
         <div class="xp-domains"><span>ESN</span><span>Période d'essai</span></div>
         <div class="xp-location">
           <span>Aix-en-Provence</span>
-          <span class="xp-period">Avr. → Oct. 2016</span>
+          <span class="xp-period">2016</span>
         </div>
         <div class="xp-activities">Sites web · ETL</div>
         <span class="xp-stack">PHP · JavaScript · Symfony</span>
       </div>
       <div class="xp-body">
         <p>
-          Mission courte mais dense — recruté pour des interventions front et back, j'ai pris en charge la refonte complète de l'ETL :
-          pipeline d'import de séjours et de vols depuis des sources externes, alimentant une plateforme e-commerce dédiée aux comités d'entreprise.
-        </p>
-        <p>
-          À la fin de la mission, le client principal souhaite me garder et propose un contrat full remote.
-          C'est ainsi que débute ma carrière freelance.
+          Recruté initialement pour des interventions front et back, j’ai rapidement pris en charge la <strong>refonte complète d’un ETL</strong> pour le compte d’un client : un pipeline d’import de séjours et de vols depuis des sources externes vers la base de données, alimentant une plateforme e-commerce dédiée aux comités d’entreprise.
         </p>
       </div>
     </div>
-
     <div class="xp">
       <div class="xp-title">Groupe Automobile IDM — Développeur Fullstack</div>
       <div class="xp-meta">
         <div class="xp-domains"><span>Groupe Automobile</span><span>CDI</span></div>
         <div class="xp-location">
           <span>Marseille</span>
-          <span class="xp-period">Janv. 2015 → Avr. 2016</span>
+          <span class="xp-period">2015 – 2016</span>
         </div>
         <div class="xp-activities">Sites web · ERP · Référentiel constructeurs automobiles</div>
         <span class="xp-stack">Symfony · Sonata · JavaScript · ERP</span>
       </div>
       <div class="xp-body">
         <p>
-          Premier poste Symfony — une ambition de longue date. Environnement ERP sous Sonata et une dizaine de sites vitrines par concession automobile.
+          Développements front &amp; back sur un <strong>ERP Symfony / Sonata</strong> et une dizaine de sites vitrines pour des concessions automobiles.
         </p>
         <p>
-          En plus des développements courants sur les sites, j'ai proposé et mis en œuvre une refonte de l'architecture des formulaires : les règles de validation, jusqu'là dupliquées en dur dans chaque site, ont été centralisées côté back dans l'ERP Symfony — une seule source de vérité pour l'ensemble du groupe.
+          En parallèle des développements courants, j’ai proposé puis mis en œuvre une <strong>refonte de l’architecture des formulaires</strong> : les règles de validation, auparavant dupliquées dans chaque site, ont été centralisées côté back dans l’ERP Symfony, avec une seule source de vérité pour l’ensemble du groupe.
         </p>
         <p>
-          J'ai également intégré un import automatisé des données véhicules depuis le référentiel national, mis en place un moteur de recherche véhicule et participé au développement du configurateur de véhicule.
+          J’ai également intégré un <strong>import automatisé</strong> des données véhicules depuis le référentiel national, mis en place un <strong>moteur de recherche véhicule</strong> et participé au développement du <strong>configurateur de véhicule</strong>.
         </p>
       </div>
     </div>
+  </main>
+</section>
 
+<!-- PAGE 4 -->
+<section class="page page-wide">
+<aside class="sidebar"></aside>
+  <main class="main">
+    <h2>Expérience (suite)</h2>
     <div class="xp">
       <div class="xp-title">Quai 13 — Développeur Fullstack</div>
       <div class="xp-meta">
         <div class="xp-domains"><span>Agence web</span><span>CDI</span></div>
         <div class="xp-location">
           <span>Marseille</span>
-          <span class="xp-period">Mai → Déc. 2014</span>
+          <span class="xp-period">2014</span>
         </div>
         <div class="xp-activities">WordPress · Prestashop</div>
         <span class="xp-stack">PHP · jQuery · JavaScript · Bootstrap CSS · MySQL · WordPress · Prestashop</span>
       </div>
       <div class="xp-body">
         <p>
-          Continuité en agence web : production de sites WordPress et Prestashop, montée en compétences sur ces deux CMS.
+          Production de sites <strong>WordPress et Prestashop</strong>, avec une montée en compétences sur ces deux CMS et des interventions sur plusieurs projets clients en parallèle.
         </p>
         <p>
-          Encadrement de stagiaires et développeurs juniors — premier rôle de transmission, dans la continuité de mon passage chef d'équipe chez Orsid.
+          <strong>Accompagnement de stagiaires et de développeurs juniors</strong>, avec un rôle de transmission technique.
         </p>
         <p>
-          Avec un dev senior, mise en place d'un script Shell de synchronisation permettant d'intervenir rapidement sur n'importe quel projet : code source, base de données et ressources (images, PDF) synchronisés en une commande. Une première approche de la culture DevEx et du tooling d'équipe.
+          Mise en place d’un <strong>script Shell</strong> permettant de synchroniser en <strong>une seule commande</strong> le code source, la base de données et les ressources (images, PDF…). Cet outil permettait d’intervenir rapidement sur n’importe quel projet : une première approche concrète de la culture DevEx et du tooling d’équipe.
         </p>
       </div>
     </div>
-
     <div class="xp">
       <div class="xp-title">Espace Privé — Développeur Fullstack</div>
       <div class="xp-meta">
         <div class="xp-domains"><span>Agence web</span><span>CDI</span></div>
         <div class="xp-location">
           <span>Marseille</span>
-          <span class="xp-period">Nov. 2012 → Mai 2014</span>
+          <span class="xp-period">2012 – 2014</span>
         </div>
         <div class="xp-activities">Sites web · App web</div>
         <span class="xp-stack">PHP · jQuery · JavaScript · Bootstrap CSS · MySQL</span>
       </div>
       <div class="xp-body">
         <p>
-          Produit cadré, cadence serrée : une douzaine de sites livrés en 5 jours chacun —
-          maquette, 5 gabarits, pixel perfect, responsive. Forge de ma rigueur front-end et de ma vitesse d'exécution.
+          Réalisation d’une <strong>douzaine de sites web</strong> : de la maquette à l’intégration responsive et à la livraison, avec cinq gabarits de pages par projet et une exigence <strong>pixel perfect</strong>.
         </p>
         <p>
-          Projet hors cadre : application d'affichage des séances en temps réel sur grand écran pour un cinéma —
-          première expérience d'un rendu dynamique piloté par les données.
+          Ce contexte m’a permis de développer ma <strong>rigueur front-end</strong>, ma vitesse d’exécution et mes réflexes d’intégration et de production.
+        </p>
+        <p>
+          J’ai également développé une <strong>application d’affichage des séances en temps réel</strong> pour un cinéma : un affichage dynamique piloté par les données, première expérience d’un rendu temps réel connecté à une source externe.
         </p>
       </div>
     </div>
-
     <div class="xp">
       <div class="xp-title">Varibase — Développeur Fullstack</div>
       <div class="xp-meta">
         <div class="xp-domains"><span>Marketing relationnel</span><span>CDI</span></div>
         <div class="xp-location">
           <span>Marseille</span>
-          <span class="xp-period">Févr. 2011 → Nov. 2012</span>
+          <span class="xp-period">2011 – 2012</span>
         </div>
         <div class="xp-activities">Site web · CRM · Intranet · Datamining</div>
         <span class="xp-stack">PHP · jQuery · JavaScript · MySQL · SQL Server · CRM · C#</span>
       </div>
       <div class="xp-body">
         <p>
-          Recruté pour développer les landing pages des campagnes marketing, j'ai rapidement élargi ma mission en identifiant deux besoins non couverts dans l'équipe.
+          Recruté pour développer des <strong>mini-sites</strong> et les <strong>landing pages</strong> des campagnes marketing, j’ai rapidement élargi ma mission en identifiant deux besoins non couverts dans l’équipe.
         </p>
         <p>
-          J'ai conçu un outil interne en C# connecté à SQL Server pour automatiser les traitements du dataminer : normalisation, dédoublonnage et segmentation des bases de données — lui libérant un temps significatif sur des tâches répétitives.
+          J’ai conçu un <strong>outil interne en C#</strong> connecté à <strong>SQL Server</strong> pour automatiser les traitements du dataminer : normalisation, dédoublonnage et segmentation des bases de données. Résultat : un gain de temps significatif sur des tâches répétitives et manuelles.
         </p>
         <p>
-          J'ai ensuite mis en place un intranet (mini CRM) permettant aux équipes marketing de consulter directement les données de campagnes, sans solliciter le dataminer à chaque besoin.
+          J’ai ensuite mis en place un <strong>intranet de type mini CRM</strong> permettant aux équipes marketing de consulter les données de campagnes <strong>en autonomie</strong>, réduisant leur dépendance au dataminer pour les demandes quotidiennes.
         </p>
       </div>
     </div>
-
     <div class="xp">
       <div class="xp-title">Orsid Provence (devenue Doca Poste)<br>Opérateur → Chef d'équipe</div>
       <div class="xp-meta">
         <div class="xp-domains"><span>Éditique</span><span>CDI</span></div>
         <div class="xp-location">
           <span>Aix-en-Provence</span>
-          <span class="xp-period">2000 → 2008</span>
+          <span class="xp-period">2000 – 2008</span>
         </div>
         <span class="xp-stack">Éditique · Production · Management</span>
       </div>
       <div class="xp-body">
         <p>
-          9 ans dans l'éditique au service de grands comptes — production de millions de documents critiques (factures, relevés de compte, fiches de paie).
+          <strong>Neuf ans dans l’éditique</strong> au service de grands comptes : production de millions de documents (factures, relevés de compte, fiches de paie), dans un environnement à fort volume et haute exigence.
         </p>
         <p>
-          Promu chef d'équipe en 2003 après 3 ans : encadrement de 6 personnes, objectif zéro raté sur des flux à fort volume et haute exigence.
+          Devenu <strong>chef d’équipe après trois ans</strong> : <strong>encadrement de six personnes</strong>, coordination de la production, gestion de la qualité et des délais.
         </p>
       </div>
     </div>
-
   </main>
 </section>
-
-<!-- ============ PAGE 3 ============ -->
-<section class="page page-annexe">
-
-  <aside class="sidebar"></aside>
-
-  <main class="main">
-
-    <h2>Missions freelance — détail</h2>
-
-    <div class="detail-intro">
-      <p>
-        Dix missions menées en parallèle de mon activité principale, entre 2016 et 2026,
-        <em>détaillées sur cette feuille et la suivante</em>.
-        Cinq d'entre elles — Smart Global Governance, Altraway CE, LOGIGROUP, Délit d'Influence
-        et ABITHEA — ont été conduites pour des clients français.
-      </p>
-      <br/>
-      <p>
-        <strong>Projets conçus et menés de A à Z</strong> — expression du besoin, cadrage, conception, développement,
-        mise en production, hébergement et maintenance, en interlocuteur technique unique du client :
-        Yudou RH, MLK, Kazen Garden, Villa Gonatouki, Immobilière Essaouira, ABITHEA.
-      </p>
-      <p>
-        <strong>Interventions sur plateformes existantes</strong> — reprise d'une base de code et d'un contexte métier
-        déjà en place : Smart Global Governance (lead dev en startup, deux ans et demi), Altraway CE (amélioration continue sur deux ans),
-        LOGIGROUP (mission en ESN : audit, documentation et passation), Délit d'Influence (conseil sur un parc applicatif).
-      </p>
-      <p>
-        <strong>Fil conducteur technique</strong> — Symfony / API Platform en back, Nuxt en front,
-        architecture headless, déploiement Docker sur VPS.
-      </p>
-    </div>
-
-    <div class="detail-cols">
-
-      <div class="mission">
-        <div class="mission-title">Yudou RH — Capnour · 2026</div>
-        <p class="mission-lead">
-          Capnour, la plateforme SaaS de recrutement de Yudou RH : elle met en relation des profils basés en Europe
-          avec les entreprises marocaines, et a été conçue et menée de A à Z. Sa donnée différenciante :
-          les périodes où le candidat sera physiquement présent au Maroc.
-        </p>
-        <ul class="mission-livrables">
-          <li>un site public développé avec Nuxt 4,</li>
-          <li>trois espaces authentifiés — candidat, entreprise, administration — développés avec Nuxt 4,</li>
-          <li>une API développée avec Symfony 8 et API Platform, sur PostgreSQL,</li>
-          <li>une infrastructure conteneurisée Docker déployée sur VPS, avec préproduction dédiée.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Quatre applications construites sur un socle Nuxt commun en Layers, chacune déployée indépendamment — le partagé est écrit une fois, chaque espace garde son propre poids</li>
-          <li>Modèle économique à crédits : le dévoilement d'un profil débite le compte en une seule opération indivisible, et le solde ne peut pas devenir négatif — garanti par la base de données elle-même, pas seulement par le code</li>
-          <li>Comptes multi-utilisateurs par entreprise, avec deux niveaux de droits, sur une authentification par jeton et renouvellement de session</li>
-          <li>Recherche plein texte côté serveur, adossée à un vocabulaire métier normalisé et enrichi — suggestions et auto-complétion sur les intitulés de poste</li>
-          <li>Intégration d'un ATS tiers : les profils professionnels y restent maîtres et descendent en réplique, les données propres à la plateforme restent locales — une seule source de vérité par tranche de donnée, jamais deux</li>
-          <li>Trilingue français / arabe / anglais, avec l'arabe lu de droite à gauche ; un test bloque toute traduction manquante</li>
-          <li>Contrat d'API typé de bout en bout : la description OpenAPI est générée depuis le back, les types TypeScript du front en sont dérivés, et l'intégration continue refuse tout écart</li>
-          <li>Delivery assisté par IA : le dépôt est découpé en périmètres, chacun confié à un agent spécialisé travaillant sur sa propre branche ; spécifications, invariants d'architecture et conventions sont versionnés et font foi</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">MLK — My Little Kasbah · 2026</div>
-        <ul class="mission-livrables">
-          <li>un site web développé avec Nuxt 4,</li>
-          <li>une API SaaS développée avec Symfony 8 et API Platform,</li>
-          <li>un dashboard d'administration (CRM) développé avec Nuxt 4.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Performance web optimisée (PageSpeed &gt; 90, Fast 4G ~ 80)</li>
-          <li>Préchargement intelligent des images</li>
-          <li>Navigation sans rupture visuelle</li>
-          <li>Maîtrise avancée du state réactif et des transitions UI</li>
-          <li>Orchestration intelligente du chargement des contenus</li>
-          <li>Données en temps réel &amp; notifications push</li>
-          <li>Traduction automatique avec override manuel</li>
-          <li>Architecture documentée &amp; conventions techniques intégrées dans le CI/CD</li>
-          <li>Développement IA-Spec-Driven : spécifications exécutables comme source de vérité, code généré par Codex, revue et architecture maîtrisées</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">Smart Global Governance · 2023 – 2025</div>
-        <p class="mission-lead">
-          Mission longue durée en startup, dans un rôle de lead dev au sein d'une équipe de neuf personnes :
-          daily quotidiens, revues de code et pair programming, sur un workflow Git rigoureux — conventions
-          de commits, branches, CI/CD GitLab et GitHub.
-        </p>
-        <div class="mission-part">Dashboard IA — Opti Value · front Nuxt</div>
-        <ul class="mission-points">
-          <li>Clean Architecture</li>
-          <li>Stratégies de chargement : Eager Loading, Smart Prefetch, Deferred Async Loading</li>
-          <li>WebSocket : flux de données en temps réel</li>
-          <li>Maîtrise avancée des transitions et de l'état réactif</li>
-          <li>Découpage atomique des composants : responsabilité unique, slots intelligents</li>
-          <li>Internationalisation</li>
-          <li>Typage strict : DTO, modèles, payloads</li>
-          <li>Documentation : specs Markdown, JSDoc stricte, README par couche applicative</li>
-        </ul>
-        <div class="mission-part">Dashboard IA — Opti Value · back Python</div>
-        <ul class="mission-points">
-          <li>Refactorisation et clarification des endpoints d'API</li>
-          <li>Centralisation des constantes et énumérations — source de vérité unique, partagée front et back</li>
-          <li>Standards d'API : données de premier rendu, données d'arrière-plan</li>
-          <li>Prévention des requêtes N+1, optimisation SQL (EXPLAIN, ANALYZE)</li>
-          <li>Intégrité et cohérence des données : contraintes et index ciblés, simples et composites</li>
-          <li>Réponses HTTP standardisées et unifiées</li>
-          <li>Commandes CLI pour la gestion de la base de données</li>
-        </ul>
-        <div class="mission-part">Plateforme GRC Low-Code · Vue, Golang, MySQL</div>
-        <ul class="mission-points">
-          <li>Développements front et back sur deux ans</li>
-          <li>Refonte complète de l'UX/UI sur un Design System unifié</li>
-          <li>Refonte du système de logique conditionnelle</li>
-          <li>Refonte du Query Builder, l'éditeur de logique conditionnelle</li>
-          <li>Système de Drill Down</li>
-          <li>Loaders avancés pour les workflows</li>
-          <li>Corrections de bugs et amélioration continue de la stabilité</li>
-          <li>Évolutions sur les fonctionnalités existantes</li>
-          <li>Veille sur la cohérence globale et l'expérience utilisateur</li>
-        </ul>
-      </div>
-
-
-    </div>
-
-  </main>
-</section>
-
-<!-- ============ PAGE 4 ============ -->
-<section class="page page-annexe">
-
-  <aside class="sidebar"></aside>
-
-  <main class="main">
-
-    <h2>Missions freelance — détail (suite)</h2>
-
-    <div class="detail-cols">
-
-      <div class="mission">
-        <div class="mission-title">Kazen Garden · 2022</div>
-        <ul class="mission-livrables">
-          <li>un site e-commerce développé avec Nuxt 3,</li>
-          <li>une API développée avec Symfony et API Platform,</li>
-          <li>un dashboard e-commerce Sylius,</li>
-          <li>une infrastructure conteneurisée Docker déployée sur VPS.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Tunnel de commande entièrement découplé, front Nuxt consommant l'API Platform</li>
-          <li>Gestion du catalogue, des commandes et du marchandisage autonome pour le client via Sylius</li>
-          <li>Double intégration de paiement : Stripe et une solution bancaire locale, cette dernière sans SDK moderne ni documentation équivalente</li>
-          <li>SEO, performance et internationalisation traités dès la conception</li>
-          <li>Déploiement Docker sur VPS avec pipeline CI/CD automatisé</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">Délit d'Influence · 2021 – 2022</div>
-        <p class="mission-lead">
-          Mission de conseil et de développement Symfony sur un parc applicatif existant :
-        </p>
-        <ul class="mission-livrables">
-          <li>des évolutions et de la maintenance sur des sites vitrines déjà en place,</li>
-          <li>des développements sur une plateforme e-commerce Symfony maison,</li>
-          <li>des évolutions sur un CRM interne et une application web métier.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Reprise d'un e-commerce Symfony maison : lecture d'une base de code sans les garde-fous d'un framework e-commerce du marché, et évolutions sans régression</li>
-          <li>Rendu serveur Symfony / Twig sur l'ensemble du parc</li>
-          <li>Position de conseil technique dans la durée, au-delà du développement : arbitrages d'architecture et priorisation avec le client</li>
-          <li>Intervention sur quatre applications d'un même écosystème, aux historiques et aux niveaux de qualité hétérogènes</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">LOGIGROUP · 2021 — mission en ESN</div>
-        <ul class="mission-livrables">
-          <li>un audit de la plateforme e-commerce existante, développée en Ruby on Rails avec un front React,</li>
-          <li>une documentation technique et fonctionnelle complète,</li>
-          <li>un transfert de connaissances vers l'équipe entrante.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Cartographie de l'application, de ses dépendances et de sa chaîne de déploiement</li>
-          <li>Rédaction de la documentation manquante, condition de la reprise par un tiers</li>
-          <li>Passation menée sans interruption de service</li>
-          <li>Montée en compétence rapide sur une stack hors de mon quotidien — Ruby on Rails et React — jusqu'au niveau nécessaire pour la documenter et la transmettre</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">Villa Gonatouki · 2020</div>
-        <ul class="mission-livrables">
-          <li>un site web développé avec Nuxt 2,</li>
-          <li>une API développée avec Symfony et API Platform,</li>
-          <li>un dashboard d'administration développé avec Symfony EasyAdmin.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Traduction automatique via Google Cloud Translation — publication unique, diffusion multilingue sans coût de traduction</li>
-          <li>Trois langues servies depuis une saisie unique du contenu</li>
-          <li>Génération instantanée des images aux bons formats et poids, pour un site très visuel sans dégrader le chargement</li>
-          <li>Architecture headless : front Nuxt découplé, contenu géré depuis EasyAdmin et exposé par API Platform</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">Immobilière Essaouira · 2019 – 2020</div>
-        <ul class="mission-livrables">
-          <li>un site web développé avec Nuxt 2,</li>
-          <li>une API développée avec Symfony et API Platform,</li>
-          <li>un dashboard d'administration développé avec Symfony EasyAdmin.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>SEO technique traité dès la conception, sur un marché très concurrentiel</li>
-          <li>Rendu serveur (SSR) Nuxt au service de l'indexabilité</li>
-          <li>Données structurées schema.org sur les annonces, ouvrant l'accès aux résultats enrichis</li>
-          <li>Métadonnées dynamiques, maillage interne, performance de chargement</li>
-          <li>Gestion du catalogue de biens autonome pour le client via EasyAdmin</li>
-          <li>Positionnement du site dans les trois premiers résultats sur ses requêtes cibles</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">ABITHEA Littoral Provence · 2018</div>
-        <ul class="mission-livrables">
-          <li>un CRM sur-mesure conçu de A à Z, développé avec Symfony et EasyAdmin, dédié à la gestion des devis et des factures.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Modélisation complète du processus commercial : clients, biens, devis, factures</li>
-          <li>Back-office EasyAdmin adapté au métier plutôt qu'un CRM du marché plié au forceps</li>
-          <li>Génération des devis et factures en PDF, avec numérotation légale continue</li>
-          <li>Suivi des paiements et relances des impayés intégrés à l'outil</li>
-          <li>Suivi du cycle de vente et historisation, en remplacement des fichiers bureautiques</li>
-          <li>Recueil du besoin, développement et accompagnement à la prise en main assurés seul</li>
-        </ul>
-      </div>
-
-      <div class="mission">
-        <div class="mission-title">Altraway CE · 2016 – 2018</div>
-        <ul class="mission-livrables">
-          <li>des évolutions continues sur une plateforme e-commerce de voyages destinée aux comités d'entreprise,</li>
-          <li>un ETL d'intégration des catalogues et disponibilités fournisseurs,</li>
-          <li>un mécanisme d'auto-connexion des salariés depuis les portails de leur CE.</li>
-        </ul>
-        <ul class="mission-points">
-          <li>Stack PHP / Symfony, sur une base PrestaShop</li>
-          <li>Intégration automatisée de catalogues et de disponibilités fournisseurs hétérogènes</li>
-          <li>Auto-connexion depuis les portails CE : suppression de la friction de création de compte à l'entrée du tunnel</li>
-          <li>Mission d'amélioration continue sur deux ans, sur une plateforme en production</li>
-        </ul>
-      </div>
-
-    </div>
-
-  </main>
-</section>
-
 </body>
 </html>
