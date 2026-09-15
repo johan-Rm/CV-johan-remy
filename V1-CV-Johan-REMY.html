@@ -238,6 +238,17 @@
   .summary p + p { margin-top: 2.8mm; }
   .summary strong { color: #000; font-weight: 700; }
 
+  /* Expertises : blocs courts après le profil. */
+  .expertises { font-size: 9.6pt; line-height: 1.55; }
+  .expertise + .expertise { margin-top: 3.5mm; }
+  .expertise h3 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--olive-dark);
+    margin-bottom: 1mm;
+  }
+  .expertise p { text-align: justify; }
+
   .tags-row {
     margin-top: 3mm;
     display: flex;
@@ -285,6 +296,8 @@
   .xp > .xp-title {
     margin-bottom: 0.6mm;
   }
+  .xp-domains > span:last-child { font-weight: 700; }
+
   .xp-location {
     display: flex;
     justify-content: space-between;
@@ -305,11 +318,19 @@
     color: var(--muted);
     letter-spacing: 0.2px;
   }
-  .xp-stack {
+  .xp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1mm;
+    margin-top: 1.5mm;
+  }
+  .xp-tags span {
+    font-size: 7.8pt;
+    line-height: 1.3;
     color: var(--olive-dark);
-    font-style: normal;
-    display: block;
-    margin-top: 0.5mm;
+    border: 1px solid var(--olive-light);
+    border-radius: 2px;
+    padding: 0.2mm 1.4mm;
   }
   .xp-body {
     font-size: 9.2pt;
@@ -426,10 +447,11 @@
   }
 
   /* Expériences présentées dans une seule chronologie sur quatre pages. */
-  .page:nth-of-type(2) .main { zoom: 0.92; }
+  .page:nth-of-type(2) .main { zoom: 0.85; }
   .page-wide .xp-body { font-size: 9pt; line-height: 1.45; }
   .page-wide .xp { margin-bottom: 4mm; }
-  .page:nth-of-type(3) .main { zoom: 0.95; }
+  .page:nth-of-type(3) .main { zoom: 0.79; }
+  .page-wide:last-of-type .main { zoom: 0.79; }
   .page-wide:last-of-type .xp-body { font-size: 9pt; line-height: 1.45; }
   .page-wide:last-of-type .xp { margin-bottom: 3mm; }
   .page-wide:last-of-type .xp-meta { font-size: 8pt; }
@@ -600,50 +622,42 @@
       </div>
     </div>
 
-    <h2>Expérience</h2>
-    <div class="xp">
-      <div class="xp-title">Yudou RH — Capnour — Développeur Fullstack</div>
-      <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2026</span></div>
+    <h2>Expertises clés</h2>
+    <div class="expertises">
+      <div class="expertise">
+        <h3>Architecture &amp; qualité</h3>
+        <p>Conception d’architectures hexagonales et API-first, séparation des responsabilités et découplage front/back. Application des principes SOLID, KISS et YAGNI pour un code lisible, maintenable et évolutif.</p>
       </div>
-      <div class="xp-body">
-        <p class="mission-lead">
-          Conception et développement de Capnour, une <strong>plateforme SaaS de recrutement</strong> mettant en relation des profils basés en Europe avec les entreprises marocaines. Sa particularité : prendre en compte les périodes où le candidat sera <strong>physiquement présent au Maroc</strong>.
-        </p>
-        <p>
-          Développement d’un site public et de trois espaces authentifiés avec <strong>Nuxt 4</strong>, organisés en Layers, et d’une API avec <strong>Symfony, API Platform et PostgreSQL</strong>. Stack dockerisée et hébergée sur VPS.
-        </p>
-        <p>
-          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
-        </p>
-        <p>
-          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
-        </p>
+      <div class="expertise">
+        <h3>Reprise de code &amp; dette technique</h3>
+        <p>Diagnostic de l’existant, identification des zones fragiles et priorisation des corrections selon leur impact métier. Refactorisation ciblée et modernisation progressive, avec des tests pour sécuriser les changements.</p>
       </div>
-    </div>
-    <div class="xp">
-      <div class="xp-title">MLK — My Little Kasbah — Développeur Fullstack</div>
-      <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2026</span></div>
+      <div class="expertise">
+        <h3>Interfaces &amp; expérience utilisateur</h3>
+        <p>Design systems, composants typés et réutilisables, fidélité aux maquettes, accessibilité et internationalisation. Gestion de l’état et des flux temps réel ; optimisation des chargements, du rendu et des Core Web Vitals.</p>
       </div>
-      <div class="xp-body">
-        <p class="mission-lead">
-          Développement d’un <strong>site web immobilier</strong> avec <strong>Nuxt 4</strong> en architecture headless.
-        </p>
-        <p>
-          La gestion du contenu repose sur une <strong>API SaaS Symfony multi-clients et multi-projets</strong>, développée sous <strong>Graines Digitales</strong> pour mes clients. Stack dockerisée et hébergée sur VPS.
-        </p>
-        <p>
-          Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
-        </p>
-        <p>
-          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
-        </p>
-        <p>
-          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
-        </p>
+      <div class="expertise">
+        <h3>Backend &amp; conception d’API</h3>
+        <p>Conception contract-first, séparation des couches métier et d’accès aux données, validation stricte des échanges. Authentification, rôles et permissions, gestion des versions et documentation OpenAPI ; architectures headless, multi-clients et multi-projets.</p>
+      </div>
+      <div class="expertise">
+        <h3>Données &amp; traitements</h3>
+        <p>Modélisation relationnelle, normalisation et intégrité des données. Indexation et optimisation des requêtes, migrations versionnées, pipelines ETL et scripts de traitement ; centralisation des référentiels pour limiter les incohérences.</p>
+      </div>
+      <div class="expertise">
+        <h3>Fiabilité &amp; livraison</h3>
+        <p>Tests unitaires, d’intégration et de bout en bout, contrôles qualité automatisés et pipelines CI/CD. Conteneurisation, gestion des environnements, suivi des erreurs et des performances en production.</p>
+      </div>
+      <div class="expertise">
+        <h3>Leadership &amp; transmission</h3>
+        <p>Revues de code, pair programming et mentorat. Documentation des choix techniques, conventions partagées et coordination avec les équipes produit et design. Outils CLI et scripts de configuration pour faciliter la prise en main des projets et le travail quotidien de l’équipe.</p>
+      </div>
+      <div class="expertise">
+        <h3>IA &amp; méthode de travail</h3>
+        <p>Tâches cadrées, agents spécialisés et worktrees isolés ; revue et validation des changements. Consolidation des retours en documentation, conventions et contrôles automatisés pour fiabiliser les itérations suivantes.</p>
       </div>
     </div>
+
   </main>
 </section>
 
@@ -684,11 +698,86 @@
 
   </aside>
   <main class="main">
-    <h2>Expérience (suite)</h2>
+    <h2>Expérience</h2>
+    <div class="xp">
+      <div class="xp-title">Yudou RH — Capnour — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-domains"><span>Recrutement · Ressources humaines</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2026</span></div>
+        <div class="xp-activities">SaaS de recrutement · Site public · API</div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Conception et développement de Capnour, une <strong>plateforme SaaS de recrutement</strong> mettant en relation des profils basés en Europe avec les entreprises marocaines. Sa particularité : prendre en compte les périodes où le candidat sera <strong>physiquement présent au Maroc</strong>.
+        </p>
+        <p>
+          Développement d’un site public et de trois espaces authentifiés avec <strong>Nuxt 4</strong>, organisés en Layers, et d’une API avec <strong>Symfony, API Platform et PostgreSQL</strong>. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+      <div class="xp-tags">
+        <span>Nuxt 4</span>
+        <span>Vue 3</span>
+        <span>TypeScript</span>
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>API Platform</span>
+        <span>PostgreSQL</span>
+        <span>Docker</span>
+        <span>OAuth</span>
+        <span>VPS</span>
+        <span>Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="xp-title">MLK — My Little Kasbah — Développeur Fullstack</div>
+      <div class="xp-meta">
+        <div class="xp-domains"><span>Immobilier</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2026</span></div>
+        <div class="xp-activities">Site immobilier · API de gestion de contenu</div>
+      </div>
+      <div class="xp-body">
+        <p class="mission-lead">
+          Développement d’un <strong>site web immobilier</strong> avec <strong>Nuxt 4</strong> en architecture headless.
+        </p>
+        <p>
+          La gestion du contenu repose sur une <strong>API SaaS Symfony multi-clients et multi-projets</strong>, développée sous <strong>Graines Digitales</strong> pour mes clients. Stack dockerisée et hébergée sur VPS.
+        </p>
+        <p>
+          Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
+        </p>
+        <p>
+          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
+        </p>
+        <p>
+          Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
+        </p>
+      </div>
+      <div class="xp-tags">
+        <span>Nuxt 4</span>
+        <span>Vue 3</span>
+        <span>TypeScript</span>
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>Docker</span>
+        <span>Google Cloud Translate API</span>
+        <span>MySQL</span>
+        <span>OAuth</span>
+        <span>VPS</span>
+        <span>Tailwind CSS</span>
+      </div>
+    </div>
     <div class="xp">
       <div class="xp-title">Smart Global Governance — Lead Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2023 – 2025</span></div>
+        <div class="xp-domains"><span>Éditeur de logiciels · Gouvernance et conformité</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2023 – 2025</span></div>
+        <div class="xp-activities">Plateforme low-code · Dashboard IA</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
@@ -701,14 +790,39 @@
           Corrections de bugs, nouvelles fonctionnalités et amélioration continue de la stabilité et de l’expérience utilisateur.
         </p>
         <p>
-          Durant les <strong>six derniers mois</strong> de ma mission chez Smart Global Governance, mise en place <strong>en solo du socle complet Nuxt 3</strong> du dashboard d’<strong>OptiValue</strong>, une plateforme d’IA d’aide à la réponse aux appels d’offres et aux questionnaires d’audit et de conformité.
+          Durant les <strong>six derniers mois</strong> de ma mission chez Smart Global Governance, mise en place <strong>en solo du socle complet Nuxt 3</strong> du dashboard d’<strong>OptiValue</strong>, une plateforme d’IA d’aide à la réponse aux appels d’offres et aux questionnaires d’audit et de conformité. L’API était développée en <strong>Python avec Azure Functions</strong>.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>Vue 3</span>
+        <span>TypeScript</span>
+        <span>Golang</span>
+        <span>MySQL</span>
+        <span>Nuxt 3</span>
+        <span>Python</span>
+        <span>Azure Functions</span>
+        <span>WebSockets</span>
+        <span>Docker</span>
+        <span>OAuth</span>
+        <span>Workflows + scripts</span>
+        <span>Bootstrap CSS</span>
+        <span>Tailwind CSS</span>
+      </div>
     </div>
+  </main>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page page-wide">
+<aside class="sidebar"></aside>
+  <main class="main">
+    <h2>Expérience (suite)</h2>
     <div class="xp">
       <div class="xp-title">Kazen Garden — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2022</span></div>
+        <div class="xp-domains"><span>E-commerce</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2022</span></div>
+        <div class="xp-activities">Site e-commerce · API headless</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
@@ -721,41 +835,67 @@
           Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>Nuxt 3</span>
+        <span>Vue 3</span>
+        <span>TypeScript</span>
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>Sylius</span>
+        <span>API Platform</span>
+        <span>Docker</span>
+        <span>MySQL</span>
+        <span>OAuth</span>
+        <span>VPS</span>
+        <span>Tailwind CSS</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">Délit d'Influence — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2021 – 2022</span></div>
+        <div class="xp-domains"><span>Agence de communication</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2021 – 2022</span></div>
+        <div class="xp-activities">Sites web · E-commerce · CRM · Application web</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
           Mission de <strong>conseil et de développement Symfony</strong> sur un ensemble d’applications : site vitrine, plateforme e-commerce, CRM et application web.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>MySQL</span>
+        <span>Tailwind CSS</span>
+        <span>JavaScript</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">LOGIGROUP — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2021</span></div>
+        <div class="xp-domains"><span>ESN</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2021</span></div>
+        <div class="xp-activities">E-commerce · Documentation · Passation technique</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
           Mission de <strong>passation technique</strong> sur une plateforme e-commerce développée en <strong>Ruby</strong> : rédaction de la documentation et transfert de connaissances.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>Ruby</span>
+        <span>React.js</span>
+        <span>MySQL</span>
+        <span>Docker</span>
+        <span>Tailwind CSS</span>
+      </div>
     </div>
-  </main>
-</section>
-
-<!-- PAGE 3 -->
-<section class="page page-wide">
-<aside class="sidebar"></aside>
-  <main class="main">
-    <h2>Expérience (suite)</h2>
     <div class="xp">
       <div class="xp-title">Villa Gonatouki — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2020</span></div>
+        <div class="xp-domains"><span>Hébergement touristique · Maison d’hôtes</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2020</span></div>
+        <div class="xp-activities">Site e-commerce · API headless</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
@@ -767,12 +907,27 @@
         <p>
           Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
         </p>
+      </div>
+      <div class="xp-tags">
+        <span>Nuxt 2</span>
+        <span>Vue 3</span>
+        <span>TypeScript</span>
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>API Platform</span>
+        <span>Docker</span>
+        <span>MySQL</span>
+        <span>OAuth</span>
+        <span>VPS</span>
+        <span>Tailwind CSS</span>
       </div>
     </div>
     <div class="xp">
       <div class="xp-title">Immobilière Essaouira — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2019 – 2020</span></div>
+        <div class="xp-domains"><span>Agence immobilière</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2019 – 2020</span></div>
+        <div class="xp-activities">Site immobilier · API headless</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
@@ -785,11 +940,26 @@
           Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>Nuxt 2</span>
+        <span>Vue 3</span>
+        <span>TypeScript</span>
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>API Platform</span>
+        <span>Docker</span>
+        <span>MySQL</span>
+        <span>OAuth</span>
+        <span>VPS</span>
+        <span>Tailwind CSS</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">ABITHEA Littoral Provence — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-location"><span>Freelance</span><span class="xp-period">2018</span></div>
+        <div class="xp-domains"><span>Immobilier</span><span>Freelance</span></div>
+        <div class="xp-location"><span>Essaouira</span><span class="xp-period">2018</span></div>
+        <div class="xp-activities">CRM sur mesure · Devis · Facturation</div>
       </div>
       <div class="xp-body">
         <p class="mission-lead">
@@ -799,23 +969,46 @@
           Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>EasyAdmin</span>
+        <span>MySQL</span>
+        <span>OAuth</span>
+        <span>Bootstrap CSS</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">Altraway CE — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-domains"><span>E-commerce voyages</span><span>Temps plein</span></div>
+        <div class="xp-domains"><span>E-commerce voyages</span><span>CDI</span></div>
         <div class="xp-location">
-          <span>À distance</span>
+          <span>Essaouira</span>
           <span class="xp-period">2016 – 2018</span>
         </div>
-        <span class="xp-stack">Symfony · ETL</span>
+        <div class="xp-activities">Site e-commerce · ETL</div>
       </div>
       <div class="xp-body">
         <p>
           Amélioration d’une <strong>plateforme e-commerce de voyages</strong> destinée aux comités d’entreprise : interventions sur l’ETL et mise en place de l’<strong>auto-connexion des membres des CE</strong>.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>JavaScript</span>
+        <span>Symfony</span>
+        <span>MySQL</span>
+        <span>Bootstrap CSS</span>
+      </div>
     </div>
+  </main>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page page-wide">
+<aside class="sidebar"></aside>
+  <main class="main">
+    <h2>Expérience (suite)</h2>
     <div class="xp">
       <div class="xp-title">Philae — Développeur Fullstack</div>
       <div class="xp-meta">
@@ -825,12 +1018,18 @@
           <span class="xp-period">2016</span>
         </div>
         <div class="xp-activities">Sites web · ETL</div>
-        <span class="xp-stack">PHP · JavaScript · Symfony</span>
       </div>
       <div class="xp-body">
         <p>
           Recruté initialement pour des interventions front et back, j’ai rapidement pris en charge la <strong>refonte complète d’un ETL</strong> pour le compte d’un client : un pipeline d’import de séjours et de vols depuis des sources externes vers la base de données, alimentant une plateforme e-commerce dédiée aux comités d’entreprise.
         </p>
+      </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>JavaScript</span>
+        <span>Symfony</span>
+        <span>MySQL</span>
+        <span>Bootstrap CSS</span>
       </div>
     </div>
     <div class="xp">
@@ -842,7 +1041,6 @@
           <span class="xp-period">2015 – 2016</span>
         </div>
         <div class="xp-activities">Sites web · ERP · Référentiel constructeurs automobiles</div>
-        <span class="xp-stack">Symfony · Sonata · JavaScript · ERP</span>
       </div>
       <div class="xp-body">
         <p>
@@ -855,15 +1053,15 @@
           J’ai également intégré un <strong>import automatisé</strong> des données véhicules depuis le référentiel national, mis en place un <strong>moteur de recherche véhicule</strong> et participé au développement du <strong>configurateur de véhicule</strong>.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>Symfony</span>
+        <span>Sonata</span>
+        <span>JavaScript</span>
+        <span>MySQL</span>
+        <span>Bootstrap CSS</span>
+      </div>
     </div>
-  </main>
-</section>
-
-<!-- PAGE 4 -->
-<section class="page page-wide">
-<aside class="sidebar"></aside>
-  <main class="main">
-    <h2>Expérience (suite)</h2>
     <div class="xp">
       <div class="xp-title">Quai 13 — Développeur Fullstack</div>
       <div class="xp-meta">
@@ -872,8 +1070,7 @@
           <span>Marseille</span>
           <span class="xp-period">2014</span>
         </div>
-        <div class="xp-activities">WordPress · Prestashop</div>
-        <span class="xp-stack">PHP · jQuery · JavaScript · Bootstrap CSS · MySQL · WordPress · Prestashop</span>
+        <div class="xp-activities">Sites web - Sites E-commerce</div>
       </div>
       <div class="xp-body">
         <p>
@@ -886,6 +1083,15 @@
           Mise en place d’un <strong>script Shell</strong> permettant de synchroniser en <strong>une seule commande</strong> le code source, la base de données et les ressources (images, PDF…). Cet outil permettait d’intervenir rapidement sur n’importe quel projet : une première approche concrète de la culture DevEx et du tooling d’équipe.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>jQuery</span>
+        <span>JavaScript</span>
+        <span>Bootstrap CSS</span>
+        <span>MySQL</span>
+        <span>WordPress</span>
+        <span>Prestashop</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">Espace Privé — Développeur Fullstack</div>
@@ -896,7 +1102,6 @@
           <span class="xp-period">2012 – 2014</span>
         </div>
         <div class="xp-activities">Sites web · App web</div>
-        <span class="xp-stack">PHP · jQuery · JavaScript · Bootstrap CSS · MySQL</span>
       </div>
       <div class="xp-body">
         <p>
@@ -909,6 +1114,13 @@
           J’ai également développé une <strong>application d’affichage des séances en temps réel</strong> pour un cinéma : un affichage dynamique piloté par les données, première expérience d’un rendu temps réel connecté à une source externe.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>jQuery</span>
+        <span>JavaScript</span>
+        <span>Bootstrap CSS</span>
+        <span>MySQL</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">Varibase — Développeur Fullstack</div>
@@ -918,8 +1130,7 @@
           <span>Marseille</span>
           <span class="xp-period">2011 – 2012</span>
         </div>
-        <div class="xp-activities">Site web · CRM · Intranet · Datamining</div>
-        <span class="xp-stack">PHP · jQuery · JavaScript · MySQL · SQL Server · CRM · C#</span>
+        <div class="xp-activities">Sites web · CRM · Intranet · Datamining</div>
       </div>
       <div class="xp-body">
         <p>
@@ -932,6 +1143,14 @@
           J’ai ensuite mis en place un <strong>intranet de type mini CRM</strong> permettant aux équipes marketing de consulter les données de campagnes <strong>en autonomie</strong>, réduisant leur dépendance au dataminer pour les demandes quotidiennes.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>PHP</span>
+        <span>jQuery</span>
+        <span>JavaScript</span>
+        <span>MySQL</span>
+        <span>SQL Server</span>
+        <span>C#</span>
+      </div>
     </div>
     <div class="xp">
       <div class="xp-title">Orsid Provence (devenue Doca Poste)<br>Opérateur → Chef d'équipe</div>
@@ -941,7 +1160,6 @@
           <span>Aix-en-Provence</span>
           <span class="xp-period">2000 – 2008</span>
         </div>
-        <span class="xp-stack">Éditique · Production · Management</span>
       </div>
       <div class="xp-body">
         <p>
@@ -951,8 +1169,15 @@
           Devenu <strong>chef d’équipe après trois ans</strong> : <strong>encadrement de six personnes</strong>, coordination de la production, gestion de la qualité et des délais.
         </p>
       </div>
+      <div class="xp-tags">
+        <span>Éditique</span>
+        <span>Production</span>
+        <span>Management</span>
+      </div>
     </div>
   </main>
 </section>
+
+
 </body>
 </html>
