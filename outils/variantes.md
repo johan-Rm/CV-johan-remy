@@ -1,28 +1,33 @@
 # Les versions du CV
 
-Les trois variantes partagent le même parcours, les mêmes expertises et la même mise en page. `index.html` reprend V2.
+Les trois variantes partagent le même parcours, les mêmes expertises et la même mise en page. `index.html` conserve une ancienne version et ne fait pas partie de cette actualisation.
 
 | HTML | PDF | Destinataire |
 | --- | --- | --- |
-| `V0-CV-Johan-REMY.html` | `V0-CV-Johan-REMY.pdf` | Clients freelance ; coordonnées françaises et marocaines |
+| `V0-CV-Johan-REMY.html` | `V0-CV-Johan-REMY.pdf` | France et Maroc ; coordonnées françaises et marocaines |
 | `V1-CV-Johan-REMY.html` | `V1-CV-Johan-REMY.pdf` | Employeurs au Maroc ; téléphone marocain et localisation à Essaouira |
 | `V2-CV-Johan-REMY.html` | `V2-CV-Johan-REMY.pdf` | Employeurs en France ; téléphone français et localisation à Cannes |
 
 ## Différences à conserver
 
-- Le titre HTML : « Développeur Full Stack » pour V0, « Lead Développeur Full Stack » pour V1, V2 et `index.html`.
-- Le téléphone et la localisation dans la rubrique Contact.
+- Titre HTML commun : « Senior Développeur Full Stack ».
+- V0 : deux téléphones, Essaouira et Cannes ; mobilité en France limitée aux Alpes-Maritimes (06).
+- V1 : téléphone marocain et Essaouira ; aucune mention de mobilité française.
+- V2 : téléphone français, Cannes, nationalité française et mobilité Alpes-Maritimes (06).
+- Disponibilité « Dès que possible » dans les trois variantes.
+- L’intention de rejoindre une équipe en CDI en première page est réservée à V2.
+- Les missions freelance et Altraway CE indiquent « À distance » dans V2 et « Essaouira » dans V0/V1. Le nom « Immobilière Essaouira » reste intact.
 
-Les autres changements de contenu ou de présentation sont à reporter dans les quatre HTML. Les noms des PDF et leurs titres ne mentionnent pas le marché visé.
+Les modifications communes concernent les trois variantes numérotées. Les PDF sont générés depuis leurs HTML respectifs ; leurs noms ne mentionnent pas le marché visé.
 
 ## Organisation des quatre pages
 
-1. Profil et huit blocs d’expertises, dont la méthode de travail avec l’IA ; colonne identité, contact, stack et domaines.
-2. Capnour, My Little Kasbah et Smart Global Governance ; colonne langues, formation, savoir-être et méthode.
-3. Expériences de Kazen Garden à Altraway CE, en pleine largeur avec un liseré olive.
-4. Expériences de Philae à Orsid Provence, avec la même présentation en pleine largeur.
+1. Accroche et expériences Capnour, My Little Kasbah et Smart Global Governance ; colonne identité, contact, formation et stack. Espacements aérés entre les expériences.
+2. Expériences de Kazen Garden à Altraway CE, en pleine largeur avec un liseré olive.
+3. Expériences de Philae à Orsid Provence, avec la même présentation en pleine largeur.
+4. « A PROPOS DE MOI » et expertises clés ; colonne langues, savoir-être, méthode et domaines.
 
-Les missions freelance comportent le secteur, le statut, la localisation, les dates, les réalisations, puis la stack sous forme de tags après la description. Les secteurs ont été déduits des informations disponibles et restent à valider par Johan. La localisation des missions freelance et d’Altraway CE est Essaouira, conformément à sa demande.
+La photo, le texte justifié, les répétitions et les listes de technologies sont conservés à la demande de Johan. Le site obsolète est retiré des coordonnées. Philae indique CDI. Le titre AFPA mentionne le niveau 6 (bac+3/4), confirmé par Johan.
 
 ## Mise en page et contrôle
 

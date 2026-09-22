@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>CV — Johan REMY · Lead Développeur Full Stack</title>
+<title>CV — Johan REMY · Senior Développeur Full Stack</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rationale&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -338,7 +338,13 @@
     text-align: justify;
   }
   .xp-body p + p { margin-top: 2mm; }
-  .page:nth-of-type(2) .xp { margin-bottom: 3mm; }
+  /* Première page : davantage d’espace entre les expériences et leurs paragraphes. */
+  .page-experience-intro .xp { margin-bottom: 8mm; }
+  .page-experience-intro .xp > .xp-title { margin-bottom: 1.2mm; }
+  .page-experience-intro .xp-meta { margin-bottom: 2mm; }
+  .page-experience-intro .xp-body { line-height: 1.65; }
+  .page-experience-intro .xp-body p + p { margin-top: 3mm; }
+  .page-experience-intro .xp-tags { margin-top: 2.5mm; }
 
   .xp-axes {
     list-style: none;
@@ -446,15 +452,14 @@
     margin: 1.8mm 0 0.8mm;
   }
 
-  /* Expériences présentées dans une seule chronologie sur quatre pages. */
-  .page:nth-of-type(2) .main { zoom: 0.85; }
+  /* Expériences sur trois pages, puis profil détaillé et expertises. */
   .page-wide .xp-body { font-size: 9pt; line-height: 1.45; }
   .page-wide .xp { margin-bottom: 4mm; }
-  .page:nth-of-type(3) .main { zoom: 0.79; }
-  .page-wide:last-of-type .main { zoom: 0.79; }
-  .page-wide:last-of-type .xp-body { font-size: 9pt; line-height: 1.45; }
-  .page-wide:last-of-type .xp { margin-bottom: 3mm; }
-  .page-wide:last-of-type .xp-meta { font-size: 8pt; }
+  .page-experience-middle .main { zoom: 0.79; }
+  .page-experience-end .main { zoom: 0.79; }
+  .page-experience-end .xp-body { font-size: 9pt; line-height: 1.45; }
+  .page-experience-end .xp { margin-bottom: 3mm; }
+  .page-experience-end .xp-meta { font-size: 8pt; }
 
   /* --- Print --- */
   /* La geometrie A4 et la densite vivent desormais dans les regles d'ecran :
@@ -481,7 +486,7 @@
 <body>
 
 <!-- PAGE 1 -->
-<section class="page">
+<section class="page page-experience-intro">
 <aside class="sidebar">
     <img class="photo" src="photo-johan-remy.jpg"
          alt="Portrait de Johan Remy" width="640" height="640">
@@ -490,7 +495,7 @@
       <span class="last">Remy</span>
     </div>
     <br>
-    <div class="tagline">Je pilote la vision,<br>l’architecture et la qualité.<br>Les agents écrivent le code.</div>
+    <div class="tagline">De la conception à la livraison,<br>avec exigence technique<br>et esprit d’équipe.</div>
  
     <h2>Contact</h2>
     <ul class="contact-list">
@@ -507,12 +512,21 @@
         <a href="https://www.linkedin.com/in/johanrm">linkedin.com/in/johanrm</a>
       </li>
       <li>
-        <span class="label">Site</span>
-        <a href="https://graines.digitales.online">graines.digitales.online</a>
-      </li>
-      <li>
         <span class="label">Localisation</span>
         Essaouira, Maroc
+      </li>
+      <li>
+        <span class="label">Disponibilité</span>
+        Dès que possible
+      </li>
+    </ul>
+
+    <h2>Formation</h2>
+    <ul class="edu-list">
+      <li>
+        <strong>Concepteur Développeur d'Applications</strong>
+        <span>AFPA · 2009 – 2010</span>
+        <br><span>Titre professionnel de niveau 6 (bac+3/4)</span>
       </li>
     </ul>
 
@@ -567,26 +581,11 @@
       </div>
     </div>
 
-    <h2>Domaines</h2>
-    <div class="skill-tags">
-      <span>Logiciel SaaS</span>
-      <span>GRC</span>
-      <span>Start-up</span>
-      <span>Agence web</span>
-      <span>Agence de com</span>
-      <span>Agence immobilière</span>
-      <span>Maisons d'hôtes</span>
-      <span>Groupe Automobile</span>
-      <span>ESN</span>
-      <span>Marketing relationnel</span>
-      <span>Éditique</span>
-    </div>
+
 
   </aside>
   <main class="main">
-
-
-    <header>
+<header>
       <div class="headline">
         Senior Développeur Full Stack<br>
         <span class="accent">Orchestration Multi Agents<br>
@@ -594,110 +593,10 @@
       </div>
       <div class="sub-headline">Symfony · Nuxt · Python · API Platform<br>VSCode · Codex · Claude Code · Claude Design · GIT worktree</div>
     </header>
-
-    <h2>Profil</h2>
-    <div class="summary">
-      <p><strong>Quinze ans d’expérience dans le développement web</strong>, précédés de neuf années dans l’industrie. J’accompagne les projets sur toute leur durée : <strong>audit, cadrage, architecture, développement, mise en production et transmission</strong>. Mon périmètre couvre les sites web, l’e-commerce, les applications métier, les SaaS, les dashboards, les ERP, les CRM et les API.</p>
-
-      <p>Le travail d’équipe et la prise de responsabilités traversent mon parcours : chef d’équipe dans l’industrie, puis accompagnement de développeurs dans le web et <strong>lead développeur fullstack au sein d’une équipe de neuf personnes</strong> chez Smart Global Governance pendant deux ans et demi. Cette mission associait développements, revues de code, pair programming et accompagnement des développeurs juniors.</p>
-
-      <p><strong>Freelance depuis 2018</strong>, je suis l’interlocuteur direct du client, de la compréhension du besoin jusqu’à la mise en production, l’hébergement et la maintenance.</p>
-
-      <p>Aujourd’hui, j’orchestre plusieurs agents IA selon mon workflow <strong>AIOD : concevoir, développer, consolider</strong>. Mes derniers projets sont réalisés avec <strong>100 % du code généré par l’IA</strong>. Je garde la maîtrise du cadrage, de l’architecture et de la validation. Des sessions de consolidation transforment les bonnes pratiques en conventions techniques et en <strong>garde-fous automatisés dans la CI/CD</strong>.</p>
-
-      <p>J’interviens sur des <strong>projets neufs comme existants</strong>, notamment lorsque la dette technique freine leur progression. Un <strong>audit et un cadrage</strong> peuvent précéder le développement pour clarifier les priorités et poser des bases solides.</p>
-
-      <p>Je suis ouvert aux <strong>projets en équipe qui explorent le développement assisté par l’IA</strong>, jusqu’à la génération complète du code.</p>
-
-      <div class="tags-row">
-        <span>Orchestration multi-agents</span>
-        <span>AI-Powered</span>
-        <span>Git Worktree</span>
-        <span>Lead Dev &amp; Mentorat</span>
-        <span>Audit &amp; Cadrage</span>
-        <span>Clean Architecture</span>
-        <span>Clean code</span>
-        <span>Tests &amp; CI/CD</span>
-        <span>Éditeur SaaS</span>
-      </div>
+    <div class="summary intro">
+      <p><strong>Quinze ans d’expérience en développement web, de la conception à la mise en production.</strong> Architecture, développement full stack et accompagnement des équipes, sur des projets neufs comme sur des applications à faire évoluer.</p>
     </div>
 
-    <h2>Expertises clés</h2>
-    <div class="expertises">
-      <div class="expertise">
-        <h3>Architecture &amp; qualité</h3>
-        <p>Conception d’architectures hexagonales et API-first, séparation des responsabilités et découplage front/back. Application des principes SOLID, KISS et YAGNI pour un code lisible, maintenable et évolutif.</p>
-      </div>
-      <div class="expertise">
-        <h3>Reprise de code &amp; dette technique</h3>
-        <p>Diagnostic de l’existant, identification des zones fragiles et priorisation des corrections selon leur impact métier. Refactorisation ciblée et modernisation progressive, avec des tests pour sécuriser les changements.</p>
-      </div>
-      <div class="expertise">
-        <h3>Interfaces &amp; expérience utilisateur</h3>
-        <p>Design systems, composants typés et réutilisables, fidélité aux maquettes, accessibilité et internationalisation. Gestion de l’état et des flux temps réel ; optimisation des chargements, du rendu et des Core Web Vitals.</p>
-      </div>
-      <div class="expertise">
-        <h3>Backend &amp; conception d’API</h3>
-        <p>Conception contract-first, séparation des couches métier et d’accès aux données, validation stricte des échanges. Authentification, rôles et permissions, gestion des versions et documentation OpenAPI ; architectures headless, multi-clients et multi-projets.</p>
-      </div>
-      <div class="expertise">
-        <h3>Données &amp; traitements</h3>
-        <p>Modélisation relationnelle, normalisation et intégrité des données. Indexation et optimisation des requêtes, migrations versionnées, pipelines ETL et scripts de traitement ; centralisation des référentiels pour limiter les incohérences.</p>
-      </div>
-      <div class="expertise">
-        <h3>Fiabilité &amp; livraison</h3>
-        <p>Tests unitaires, d’intégration et de bout en bout, contrôles qualité automatisés et pipelines CI/CD. Conteneurisation, gestion des environnements, suivi des erreurs et des performances en production.</p>
-      </div>
-      <div class="expertise">
-        <h3>Leadership &amp; transmission</h3>
-        <p>Revues de code, pair programming et mentorat. Documentation des choix techniques, conventions partagées et coordination avec les équipes produit et design. Outils CLI et scripts de configuration pour faciliter la prise en main des projets et le travail quotidien de l’équipe.</p>
-      </div>
-      <div class="expertise">
-        <h3>IA &amp; méthode de travail</h3>
-        <p>Tâches cadrées, agents spécialisés et worktrees isolés ; revue et validation des changements. Consolidation des retours en documentation, conventions et contrôles automatisés pour fiabiliser les itérations suivantes.</p>
-      </div>
-    </div>
-
-  </main>
-</section>
-
-<!-- PAGE 2 -->
-<section class="page">
-<aside class="sidebar">
-
-    <h2>Langues</h2>
-    <ul class="lang-list">
-      <li><strong>Français</strong><span>Langue maternelle</span></li>
-      <li><strong>Anglais</strong><span>Professionnel · technique</span></li>
-    </ul>
-
-    <h2>Formation</h2>
-    <ul class="edu-list">
-      <li>
-        <strong>Concepteur Développeur d'Applications</strong>
-        <span>AFPA · 2009 – 2010</span>
-      </li>
-    </ul>
-
-    <h2>Soft skills</h2>
-    <ul class="contact-list" style="font-size:8.8pt;">
-      <li>· Vision système &amp; pédagogie</li>
-      <li>· Rigueur &amp; sens du détail</li>
-      <li>· Bienveillance &amp; exigence technique</li>
-      <li>· Transmission &amp; mentorat</li>
-    </ul>
-
-    <h2>Méthode</h2>
-    <ul class="contact-list" style="font-size:8.6pt;">
-      <li>· Orchestration multi-agents IA<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(skills · orchestration · codegen)</span></li>
-      <li>· Isolation structurelle par couches<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(documentation, contrats, workflows)</span></li>
-      <li>· Loop engineering & Preview par worktree<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(génération → review → itération)</span></li>
-      <li>· Consolidation périodique<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(anti-patterns → convention → garde-fou CI/CD)</span></li>
-      <li>· Workflow Git structuré<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(conventions de commits, branches, revue de code)</span></li>
-    </ul>
-
-  </aside>
-  <main class="main">
     <h2>Expérience</h2>
     <div class="xp">
       <div class="xp-title">Yudou RH — Capnour — Développeur Fullstack</div>
@@ -714,7 +613,7 @@
           Développement d’un site public et de trois espaces authentifiés avec <strong>Nuxt 4</strong>, organisés en Layers, et d’une API avec <strong>Symfony, API Platform et PostgreSQL</strong>. Stack dockerisée et hébergée sur VPS.
         </p>
         <p>
-          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
+          <strong>Développement assisté par l’IA</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
         </p>
         <p>
           Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
@@ -752,7 +651,7 @@
           Mise en place de la <strong>traduction automatique</strong> via Google Cloud Translate API et de l’<strong>affichage instantané des images</strong>. Site <strong>SEO on-page ready</strong>, avec une expérience utilisateur optimisée.
         </p>
         <p>
-          Projet réalisé avec <strong>100 % du code généré par l’IA</strong>, selon mon <strong>workflow AIOD</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
+          <strong>Développement assisté par l’IA</strong>, sous ma direction pour le cadrage, l’architecture et la validation.
         </p>
         <p>
           Prise en charge du projet de bout en bout : expression du besoin, cadrage, conception, développement, mise en production, hébergement et maintenance, en <strong>interlocuteur technique unique</strong> du client.
@@ -812,8 +711,8 @@
   </main>
 </section>
 
-<!-- PAGE 3 -->
-<section class="page page-wide">
+<!-- PAGE 2 -->
+<section class="page page-wide page-experience-middle">
 <aside class="sidebar"></aside>
   <main class="main">
     <h2>Expérience (suite)</h2>
@@ -1004,15 +903,15 @@
   </main>
 </section>
 
-<!-- PAGE 4 -->
-<section class="page page-wide">
+<!-- PAGE 3 -->
+<section class="page page-wide page-experience-end">
 <aside class="sidebar"></aside>
   <main class="main">
     <h2>Expérience (suite)</h2>
     <div class="xp">
       <div class="xp-title">Philae — Développeur Fullstack</div>
       <div class="xp-meta">
-        <div class="xp-domains"><span>ESN</span><span>Période d'essai</span></div>
+        <div class="xp-domains"><span>ESN</span><span>CDI</span></div>
         <div class="xp-location">
           <span>Aix-en-Provence</span>
           <span class="xp-period">2016</span>
@@ -1175,6 +1074,118 @@
         <span>Management</span>
       </div>
     </div>
+  </main>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page page-profile">
+<aside class="sidebar">
+
+    <h2>Langues</h2>
+    <ul class="lang-list">
+      <li><strong>Français</strong><span>Langue maternelle</span></li>
+      <li><strong>Anglais</strong><span>Professionnel · technique</span></li>
+    </ul>
+
+
+    <h2>Soft skills</h2>
+    <ul class="contact-list" style="font-size:8.8pt;">
+      <li>· Vision système &amp; pédagogie</li>
+      <li>· Rigueur &amp; sens du détail</li>
+      <li>· Bienveillance &amp; exigence technique</li>
+      <li>· Transmission &amp; mentorat</li>
+    </ul>
+
+    <h2>Méthode</h2>
+    <ul class="contact-list" style="font-size:8.6pt;">
+      <li>· Orchestration multi-agents IA<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(skills · orchestration · codegen)</span></li>
+      <li>· Isolation structurelle par couches<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(documentation, contrats, workflows)</span></li>
+      <li>· Loop engineering & Preview par worktree<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(génération → review → itération)</span></li>
+      <li>· Consolidation périodique<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(anti-patterns → convention → garde-fou CI/CD)</span></li>
+      <li>· Workflow Git structuré<span style="display:block; opacity:0.75; font-size:7.8pt; padding-left:1.5mm;">(conventions de commits, branches, revue de code)</span></li>
+    </ul>
+
+    <h2>Domaines</h2>
+    <div class="skill-tags">
+      <span>Logiciel SaaS</span>
+      <span>GRC</span>
+      <span>Start-up</span>
+      <span>Agence web</span>
+      <span>Agence de com</span>
+      <span>Agence immobilière</span>
+      <span>Maisons d'hôtes</span>
+      <span>Groupe Automobile</span>
+      <span>ESN</span>
+      <span>Marketing relationnel</span>
+      <span>Éditique</span>
+    </div>
+
+  </aside>
+  <main class="main">
+
+    <h2>A PROPOS DE MOI</h2>
+    <div class="summary">
+      <p><strong>Quinze ans d’expérience dans le développement web</strong>, précédés de neuf années dans l’industrie. J’accompagne les projets sur toute leur durée : <strong>audit, cadrage, architecture, développement, mise en production et transmission</strong>. Mon périmètre couvre les sites web, l’e-commerce, les applications métier, les SaaS, les dashboards, les ERP, les CRM et les API.</p>
+
+      <p>Le travail d’équipe et la prise de responsabilités traversent mon parcours : chef d’équipe dans l’industrie, puis accompagnement de développeurs dans le web et <strong>lead développeur fullstack au sein d’une équipe de neuf personnes</strong> chez Smart Global Governance pendant deux ans et demi. Cette mission associait développements, revues de code, pair programming et accompagnement des développeurs juniors.</p>
+
+      <p><strong>Freelance depuis 2018</strong>, je suis l’interlocuteur direct du client, de la compréhension du besoin jusqu’à la mise en production, l’hébergement et la maintenance.</p>
+
+      <p>J’interviens sur des <strong>projets neufs ainsi que sur des applications existantes</strong>, notamment pour réduire la dette technique. Un <strong>audit et un cadrage</strong> permettent de clarifier les priorités avant le développement.</p>
+
+      <p>Aujourd’hui, j’orchestre plusieurs agents IA selon mon workflow <strong>AIOD : concevoir, développer, consolider</strong>. Mes derniers projets intègrent le <strong>développement assisté par l’IA</strong>, sous ma direction pour le cadrage, l’architecture et la validation. Des sessions de consolidation transforment les bonnes pratiques en conventions techniques et en <strong>garde-fous automatisés dans la CI/CD</strong>.</p>
+
+      <p>Je souhaite rejoindre une équipe pour <strong>contribuer durablement à ses projets, partager mon expérience et participer aux choix techniques</strong>. Je suis également intéressé par les équipes qui explorent le <strong>développement assisté par l’IA</strong>, jusqu’à la génération complète du code.</p>
+
+      <div class="tags-row">
+        <span>Orchestration multi-agents</span>
+        <span>AI-Powered</span>
+        <span>Git Worktree</span>
+        <span>Lead Dev &amp; Mentorat</span>
+        <span>Audit &amp; Cadrage</span>
+        <span>Clean Architecture</span>
+        <span>Clean code</span>
+        <span>Tests &amp; CI/CD</span>
+        <span>Éditeur SaaS</span>
+      </div>
+    </div>
+
+    <h2>Expertises clés</h2>
+    <div class="expertises">
+      <div class="expertise">
+        <h3>Architecture &amp; qualité</h3>
+        <p>Conception d’architectures hexagonales et API-first, séparation des responsabilités et découplage front/back. Application des principes SOLID, KISS et YAGNI pour un code lisible, maintenable et évolutif.</p>
+      </div>
+      <div class="expertise">
+        <h3>Reprise de code &amp; dette technique</h3>
+        <p>Diagnostic de l’existant, identification des zones fragiles et priorisation des corrections selon leur impact métier. Refactorisation ciblée et modernisation progressive, avec des tests pour sécuriser les changements.</p>
+      </div>
+      <div class="expertise">
+        <h3>Interfaces &amp; expérience utilisateur</h3>
+        <p>Design systems, composants typés et réutilisables, fidélité aux maquettes, accessibilité et internationalisation. Gestion de l’état et des flux temps réel ; optimisation des chargements, du rendu et des Core Web Vitals.</p>
+      </div>
+      <div class="expertise">
+        <h3>Backend &amp; conception d’API</h3>
+        <p>Conception contract-first, séparation des couches métier et d’accès aux données, validation stricte des échanges. Authentification, rôles et permissions, gestion des versions et documentation OpenAPI ; architectures headless, multi-clients et multi-projets.</p>
+      </div>
+      <div class="expertise">
+        <h3>Données &amp; traitements</h3>
+        <p>Modélisation relationnelle, normalisation et intégrité des données. Indexation et optimisation des requêtes, migrations versionnées, pipelines ETL et scripts de traitement ; centralisation des référentiels pour limiter les incohérences.</p>
+      </div>
+      <div class="expertise">
+        <h3>Fiabilité &amp; livraison</h3>
+        <p>Tests unitaires, d’intégration et de bout en bout, contrôles qualité automatisés et pipelines CI/CD. Conteneurisation, gestion des environnements, suivi des erreurs et des performances en production.</p>
+      </div>
+      <div class="expertise">
+        <h3>Leadership &amp; transmission</h3>
+        <p>Revues de code, pair programming et mentorat. Documentation des choix techniques, conventions partagées et coordination avec les équipes produit et design. Outils CLI et scripts de configuration pour faciliter la prise en main des projets et le travail quotidien de l’équipe.</p>
+      </div>
+      <div class="expertise">
+        <h3>IA &amp; méthode de travail</h3>
+        <p>Tâches cadrées, agents spécialisés et worktrees isolés ; revue et validation des changements. Consolidation des retours en documentation, conventions et contrôles automatisés pour fiabiliser les itérations suivantes.</p>
+      </div>
+    </div>
+
   </main>
 </section>
 
