@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Johan REMY — Dossier de compétences informatique</title>
+<meta name="description" content="Dossier de compétences informatique de Johan REMY, senior développeur full stack : orchestration multi-agents, architecture, audit et conseil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rationale&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* --- Charte : couleurs et écritures --- */
+  :root {
+    --olive: #6B7A4A;
+    --olive-dark: #525E38;
+    --olive-deep: #3B4429;
+    --olive-pale: #DDE2CF;
+    --olive-paler: #F1F2E9;
+    --noir: #212121;
+    --blanc: #FAFAF6;
+    --gris-300: #D3D1CB;
+    --gris-500: #8A8884;
+    --gris-700: #4F4D4A;
+    --serif: 'Rationale', 'Newsreader', Georgia, serif;
+    --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --label-col: 31mm;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* --- Impression : A4, pied de page numéroté --- */
+  @page {
+    size: A4;
+    margin: 15mm 16mm 17mm;
+    background: #FAFAF6;
+    @bottom-left {
+      content: "Johan REMY — Dossier de compétences informatique";
+      font-family: 'Inter', sans-serif; font-weight: 300; font-size: 7.5pt;
+      color: #8A8884;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-family: 'Inter', sans-serif; font-weight: 300; font-size: 7.5pt;
+      color: #8A8884;
+    }
+  }
+
+  html {
+    background: var(--olive-paler);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: var(--blanc);
+    color: var(--noir);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 9pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* À l'écran : une feuille centrée, pour relire avant impression */
+  @media screen {
+    body {
+      max-width: 210mm;
+      margin: 24px auto;
+      padding: 15mm 16mm;
+      box-shadow: 0 4px 24px rgba(33, 33, 33, .08);
+    }
+  }
+  @media screen and (max-width: 640px) {
+    body { margin: 0; padding: 20px 16px; }
+    :root { --label-col: 1fr; }
+    .xp-head, .kv-row, .pills-row, .formation { grid-template-columns: 1fr !important; }
+    .row { padding-left: 0; }
+    .row-label { position: static; width: auto; margin-bottom: 1mm; }
+    .cards-2, .cards-3, .head-meta { grid-template-columns: 1fr !important; }
+  }
+  @media print {
+    html, body { background: var(--blanc); }
+  }
+
+  strong { font-weight: 500; color: var(--noir); }
+  em { font-style: italic; color: var(--olive); }
+
+  /* --- Intitulés de la charte --- */
+  .lab {
+    font-size: 7.2pt;
+    font-weight: 400;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--olive);
+  }
+  .lab.mut { color: var(--gris-500); }
+  .ct { font-weight: 500; font-size: 9.6pt; line-height: 1.35; color: var(--noir); }
+  .cd { color: var(--gris-700); }
+  .num { font-family: var(--serif); color: var(--olive); line-height: 1; }
+
+  /* --- Logo --- */
+  .logo { display: block; flex: none; }
+  .logo-reserve { --logo-flower: var(--blanc); --logo-drop: var(--blanc); --logo-drop-opacity: .32; }
+  .logo-olive { --logo-flower: var(--olive); --logo-drop: var(--olive); --logo-drop-opacity: .5; }
+
+  /* --- En-tête : aplat olive --- */
+  .head {
+    background: var(--olive);
+    color: var(--blanc);
+    border-radius: 14px;
+    padding: 9mm 10mm 8mm;
+    break-inside: avoid;
+  }
+  .head-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .head-top .lab { color: rgba(250, 250, 246, .72); }
+  .head-top .logo { width: 11mm; height: 12.9mm; }
+  .head-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 34pt;
+    line-height: 1;
+    letter-spacing: -.01em;
+    margin-top: 4mm;
+  }
+  .head-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 16pt;
+    line-height: 1.2;
+    margin-top: 2.5mm;
+  }
+  .head-stack {
+    margin-top: 3mm;
+    font-size: 7.4pt;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--olive-pale);
+  }
+  .head-rule { width: 16mm; height: 1px; background: rgba(250, 250, 246, .5); margin: 6mm 0 5mm; }
+  .head-meta { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6mm; }
+  .head-meta .lab { color: rgba(250, 250, 246, .72); display: block; margin-bottom: 1.2mm; }
+  .head-meta .val { font-weight: 400; font-size: 9pt; line-height: 1.45; }
+  .head-meta ul { list-style: none; }
+
+  /* --- Sections --- */
+  section { margin-top: 9mm; }
+  h2.t {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 22pt;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    color: var(--noir);
+    break-after: avoid;
+  }
+  h2.t em { font-style: normal; }
+  .chapo {
+    margin-top: 3.5mm;
+    font-size: 10pt;
+    line-height: 1.65;
+    color: var(--gris-700);
+    text-wrap: pretty;
+  }
+  .chapo strong { color: var(--noir); }
+
+  .group { margin-top: 6mm; }
+  .group > h3 { margin-bottom: 2.5mm; break-after: avoid; }
+
+  /* Encadrés olive très pâle sur fond blanc cassé */
+  .cards { display: grid; gap: 3.5mm; }
+  .cards-2 { grid-template-columns: 1fr 1fr; }
+  .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card {
+    background: var(--olive-paler);
+    border-radius: 10px;
+    padding: 4mm 4.5mm;
+    break-inside: avoid;
+  }
+  .card .ct { margin-bottom: 1.5mm; }
+
+  /* Puces : un petit point olive */
+  .bullets { list-style: none; }
+  .bullets li {
+    position: relative;
+    padding-left: 3.6mm;
+    margin-top: 1.1mm;
+    color: var(--gris-700);
+    text-wrap: pretty;
+    break-inside: avoid;
+  }
+  .bullets li::before {
+    content: "";
+    position: absolute;
+    left: .4mm;
+    top: .62em;
+    width: 1.3mm;
+    height: 1.3mm;
+    border-radius: 50%;
+    background: var(--olive);
+  }
+
+  /* Étiquettes, comme les « mots retenus » de la charte */
+  .pills-row { display: grid; grid-template-columns: var(--label-col) 1fr; gap: 4mm; align-items: baseline; padding: 2.5mm 0; border-top: 1px solid var(--gris-300); }
+  .pills-row:last-child { border-bottom: 1px solid var(--gris-300); }
+  .pills-label { font-weight: 500; }
+  .pills { display: flex; flex-wrap: wrap; gap: 1.6mm; }
+  .pill {
+    border: 1px solid var(--gris-300);
+    border-radius: 9999px;
+    padding: .7mm 2.6mm;
+    font-size: 8.2pt;
+    color: var(--gris-700);
+  }
+
+  /* Libellé à gauche, valeur à droite, filets fins */
+  .kv { margin-top: 4mm; }
+  .kv-row {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 4mm;
+    padding: 2.2mm 0;
+    border-top: 1px solid var(--gris-300);
+    break-inside: avoid;
+  }
+  .kv-row:last-child { border-bottom: 1px solid var(--gris-300); }
+  .kv dt { font-weight: 500; color: var(--noir); }
+  .kv dd { color: var(--gris-700); }
+
+  .formation {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 4mm;
+    align-items: baseline;
+    margin-top: 4mm;
+    padding: 3mm 0;
+    border-top: 1px solid var(--gris-300);
+    border-bottom: 1px solid var(--gris-300);
+  }
+  .formation .num { font-size: 13pt; }
+
+  /* --- Expériences --- */
+  /* Nouvelle page à l'impression : la marge ne sert qu'à l'écran. */
+  .xp-section { break-before: page; }
+  @media print { .xp-section { margin-top: 0; } }
+  .xp {
+    margin-top: 6.5mm;
+    padding-top: 4.5mm;
+    border-top: 1px solid var(--gris-300);
+  }
+  .xp-head {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 4mm;
+    margin-bottom: 3.5mm;
+    break-inside: avoid;
+    break-after: avoid;
+  }
+  .xp-when { display: flex; flex-direction: column; gap: 1.5mm; }
+  .xp-dates { font-family: var(--serif); font-size: 12.5pt; line-height: 1.15; color: var(--olive); }
+  .xp-org {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 17pt;
+    line-height: 1.1;
+    color: var(--noir);
+  }
+  .xp-poste {
+    margin-top: 1.4mm;
+    font-size: 7.6pt;
+    font-weight: 400;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--olive-dark);
+  }
+  .xp-meta { margin-top: 1mm; font-size: 8.4pt; color: var(--gris-500); }
+  .xp-meta .sep { color: var(--olive); padding: 0 .6mm; }
+
+  /* Libellé posé en absolu : le texte reste un flux simple, que Chrome
+     découpe proprement d'une page à l'autre (une grille s'y prête mal). */
+  .row {
+    position: relative;
+    padding-left: calc(var(--label-col) + 4mm);
+    margin-top: 2.8mm;
+  }
+  .row-label { position: absolute; left: 0; top: 0; width: var(--label-col); padding-top: .55mm; }
+  .row-body > p { color: var(--gris-700); text-wrap: pretty; }
+  .row-body > p + p { margin-top: 1.5mm; }
+  .row-body > .bullets:first-child > li:first-child { margin-top: 0; }
+  .row-body .sub {
+    color: var(--olive-dark);
+    margin-top: 3mm;
+    margin-bottom: .5mm;
+    break-after: avoid;
+  }
+  .row-body .sub:first-child { margin-top: 0; }
+
+  .env { margin-top: 3.5mm; }
+  .env-card {
+    background: var(--olive-paler);
+    border-radius: 10px;
+    padding: 2.5mm 4.5mm;
+    break-inside: avoid;
+  }
+  .env-card > p { color: var(--gris-700); }
+  .kv-env { margin-top: 0; font-size: 8.4pt; }
+  .kv-env .kv-row { grid-template-columns: 34mm 1fr; padding: 1.1mm 0; border-top: 1px solid rgba(107, 122, 74, .18); }
+  .kv-env .kv-row:first-child { border-top: 0; }
+  .kv-env .kv-row:last-child { border-bottom: 0; }
+
+  /* --- Clôture --- */
+  .end {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8mm;
+    margin-top: 7mm;
+    padding-top: 4mm;
+    border-top: 1px solid var(--gris-300);
+    break-inside: avoid;
+  }
+  .end-sig { display: flex; align-items: center; gap: 4mm; }
+  .end-sig .logo { width: 8mm; height: 9.4mm; }
+  .end-name { font-family: var(--serif); font-size: 15pt; line-height: 1; }
+  .end-note { font-size: 8.2pt; color: var(--gris-500); text-align: right; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 100 117">
+    <svg x="10" y="0" width="90" height="90.9" viewBox="0 0 200 200" preserveAspectRatio="none"><path style="fill:var(--logo-drop,#6B7A4A);opacity:var(--logo-drop-opacity,.5)" d="M 100 14 C 130 26 162 70 168 118 C 172 162 142 184 100 184 C 58 184 28 162 32 118 C 38 70 70 26 100 14 Z"/></svg>
+    <svg x="0" y="20.94" width="68.6" height="96.06" viewBox="0 0 469 653" preserveAspectRatio="none"><path style="fill:var(--logo-flower,#212121)" d="M234.0,29.5L228.5,34.0L225.5,39.0L211.5,56.0L199.5,74.0L195.5,83.0L191.5,89.0L191.5,91.0L186.5,101.0L186.5,103.0L184.5,107.0L184.5,110.0L182.5,114.0L182.5,118.0L181.5,119.0L181.5,123.0L180.5,124.0L180.5,129.0L179.5,130.0L179.0,144.5L178.0,144.5L166.0,133.5L157.0,128.5L155.0,126.5L148.0,123.5L146.0,121.5L140.0,118.5L138.0,118.5L135.0,116.5L133.0,116.5L126.0,113.5L123.0,113.5L122.0,112.5L119.0,112.5L114.0,110.5L110.0,110.5L109.0,109.5L105.0,109.5L104.0,108.5L99.0,108.5L98.0,107.5L64.0,107.5L62.0,108.5L60.5,111.0L62.5,135.0L63.5,136.0L63.5,140.0L64.5,141.0L64.5,144.0L66.5,148.0L66.5,151.0L67.5,152.0L69.5,160.0L78.5,178.0L89.5,193.0L104.0,206.5L113.0,211.5L115.0,213.5L125.0,218.5L127.0,218.5L137.0,222.5L145.0,223.5L146.0,224.5L150.0,224.5L151.0,225.5L173.5,227.0L173.0,228.5L169.0,229.5L151.0,238.5L149.0,240.5L144.0,242.5L139.0,246.5L130.0,251.5L122.0,257.5L116.0,263.5L115.0,263.5L97.5,281.0L97.5,282.0L88.5,292.0L82.5,301.0L81.5,304.0L77.5,309.0L70.5,324.0L68.5,326.0L65.5,336.0L69.0,338.5L94.0,339.5L95.0,338.5L106.0,338.5L107.0,337.5L114.0,337.5L115.0,336.5L125.0,335.5L126.0,334.5L129.0,334.5L130.0,333.5L136.0,332.5L142.0,329.5L147.0,328.5L161.0,321.5L181.0,306.5L181.5,309.0L180.5,310.0L180.5,313.0L179.5,314.0L178.5,319.0L170.5,334.0L154.0,351.5L147.0,356.5L141.0,359.5L138.0,359.5L137.0,358.5L107.0,358.5L106.0,359.5L100.0,359.5L99.0,360.5L90.0,361.5L86.0,363.5L76.0,365.5L62.0,372.5L52.0,379.5L42.5,389.0L35.5,400.0L35.5,402.0L32.5,408.0L31.5,415.0L30.5,416.0L30.5,423.0L29.5,424.0L29.5,428.0L30.5,429.0L30.5,438.0L31.5,439.0L31.5,443.0L32.5,444.0L32.5,447.0L33.5,448.0L33.5,451.0L34.5,452.0L34.5,455.0L35.5,456.0L37.5,464.0L40.5,469.0L41.5,474.0L44.5,479.0L44.5,481.0L46.5,483.0L46.5,485.0L49.5,490.0L49.5,492.0L52.5,497.0L52.5,499.0L54.5,503.0L55.5,513.0L56.5,514.0L56.5,518.0L57.5,519.0L57.5,526.0L58.5,527.0L58.5,538.0L59.5,539.0L59.5,544.0L58.5,545.0L58.5,560.0L57.5,561.0L56.5,572.0L55.5,573.0L55.5,576.0L54.5,577.0L54.5,580.0L53.5,581.0L51.5,589.0L45.5,601.0L42.5,604.0L40.5,608.0L29.5,620.0L32.0,623.5L34.0,623.5L38.0,621.5L47.0,615.5L64.5,599.0L75.5,582.0L75.5,580.0L78.5,575.0L78.5,573.0L80.5,569.0L80.5,566.0L81.5,565.0L81.5,560.0L82.5,559.0L82.5,541.0L81.5,540.0L81.5,535.0L80.5,534.0L80.5,531.0L79.5,530.0L78.5,525.0L74.5,517.0L74.5,515.0L63.5,492.0L63.5,474.0L62.5,473.0L62.5,471.0L63.5,470.0L63.5,459.0L64.5,458.0L64.5,453.0L65.5,452.0L66.5,443.0L67.5,442.0L68.5,436.0L70.5,433.0L70.5,431.0L73.5,426.0L73.5,424.0L75.5,422.0L79.5,414.0L86.5,406.0L86.5,405.0L101.0,391.5L116.0,381.5L130.0,374.5L137.0,372.5L142.0,369.5L150.0,370.5L151.0,371.5L154.0,371.5L155.0,372.5L166.0,375.5L190.0,387.5L205.0,398.5L210.0,403.5L211.0,403.5L233.0,425.5L238.0,424.5L256.0,405.5L257.0,405.5L267.0,396.5L281.0,386.5L301.0,376.5L303.0,376.5L306.0,374.5L308.0,374.5L312.0,372.5L315.0,372.5L319.0,370.5L328.0,369.5L342.0,376.5L344.0,376.5L355.0,382.5L372.0,394.5L384.5,407.0L390.5,415.0L398.5,430.0L399.5,435.0L401.5,438.0L402.5,445.0L403.5,446.0L404.5,456.0L405.5,457.0L405.5,466.0L406.5,467.0L406.5,486.0L405.5,487.0L405.5,495.0L403.5,497.0L403.5,499.0L397.5,509.0L397.5,511.0L394.5,516.0L394.5,518.0L390.5,526.0L390.5,529.0L387.5,537.0L386.5,554.0L387.5,555.0L387.5,563.0L388.5,564.0L389.5,571.0L397.5,589.0L402.5,596.0L407.5,601.0L407.5,602.0L409.0,602.5L415.0,609.5L430.0,620.5L436.0,623.5L438.0,623.5L439.5,622.0L439.5,619.0L427.5,606.0L417.5,588.0L417.5,586.0L415.5,582.0L415.5,579.0L413.5,575.0L413.5,571.0L412.5,570.0L412.5,566.0L411.5,565.0L411.5,558.0L410.5,557.0L410.5,530.0L411.5,529.0L411.5,522.0L412.5,521.0L413.5,510.0L414.5,509.0L414.5,506.0L415.5,505.0L415.5,502.0L416.5,501.0L417.5,496.0L431.5,465.0L431.5,463.0L433.5,459.0L433.5,456.0L436.5,449.0L436.5,445.0L437.5,444.0L438.5,435.0L439.5,434.0L439.5,422.0L438.5,421.0L438.5,415.0L437.5,414.0L435.5,404.0L430.5,394.0L427.5,390.0L415.0,377.5L406.0,371.5L398.0,367.5L396.0,367.5L393.0,365.5L387.0,364.5L383.0,362.5L380.0,362.5L375.0,360.5L371.0,360.5L370.0,359.5L365.0,359.5L364.0,358.5L332.0,358.5L331.0,359.5L329.0,359.5L324.0,357.5L318.0,352.5L314.0,350.5L299.5,335.0L292.5,323.0L292.5,321.0L288.5,311.0L288.5,308.0L287.5,307.0L289.0,306.5L294.0,311.5L307.0,320.5L325.0,329.5L327.0,329.5L340.0,334.5L349.0,335.5L350.0,336.5L354.0,336.5L355.0,337.5L362.0,337.5L363.0,338.5L373.0,338.5L374.0,339.5L399.0,338.5L403.5,336.0L403.5,333.0L401.5,330.0L401.5,328.0L398.5,322.0L396.5,320.0L393.5,314.0L393.5,312.0L391.5,310.0L390.5,307.0L388.5,305.0L387.5,302.0L381.5,293.0L374.5,285.0L374.5,284.0L353.0,262.5L352.0,262.5L346.0,256.5L338.0,250.5L327.0,244.5L325.0,242.5L320.0,240.5L318.0,238.5L311.0,235.5L309.0,233.5L305.0,232.5L295.5,227.0L310.0,226.5L311.0,225.5L324.0,224.5L325.0,223.5L329.0,223.5L330.0,222.5L336.0,221.5L337.0,220.5L342.0,219.5L345.0,217.5L347.0,217.5L367.0,205.5L382.5,190.0L391.5,177.0L401.5,156.0L401.5,153.0L404.5,146.0L404.5,142.0L406.5,137.0L407.5,120.0L408.5,119.0L408.5,110.0L404.0,107.5L372.0,107.5L371.0,108.5L366.0,108.5L365.0,109.5L361.0,109.5L360.0,110.5L356.0,110.5L355.0,111.5L344.0,113.5L343.0,114.5L335.0,116.5L332.0,118.5L330.0,118.5L311.0,128.5L308.0,131.5L301.0,135.5L291.0,144.5L290.5,141.0L289.5,140.0L289.5,127.0L288.5,126.0L287.5,117.0L286.5,116.0L286.5,113.0L284.5,109.0L283.5,103.0L281.5,100.0L281.5,98.0L277.5,90.0L277.5,88.0L274.5,84.0L270.5,75.0L256.5,54.0L252.5,50.0L240.5,34.0L236.0,29.5L235.0,29.5Z M212.5,236.0L214.0,235.5L217.0,239.5L223.0,243.5L230.5,246.0L230.0,277.5L224.5,273.0L224.5,272.0L216.5,264.0L212.5,258.0L212.5,256.0L211.5,255.0L211.5,250.0L210.5,249.0L211.5,239.0L212.5,237.0Z M255.5,236.0L256.0,235.5L257.5,237.0L258.5,251.0L257.5,252.0L257.5,256.0L251.5,266.0L241.0,276.5L239.5,276.0L239.5,273.0L238.5,272.0L238.5,247.0L242.0,244.5L244.0,244.5L248.0,242.5L255.0,236.5Z M189.5,312.0L190.0,311.5L192.5,314.0L192.5,315.0L202.5,327.0L202.5,333.0L201.5,334.0L200.5,346.0L198.5,351.0L198.5,355.0L197.5,356.0L196.5,363.0L195.5,364.0L191.5,377.0L189.0,377.5L179.0,371.5L172.0,369.5L167.0,366.5L155.0,363.5L153.5,362.0L159.0,358.5L176.5,340.0L185.5,324.0L189.0,312.5Z M278.5,312.0L280.5,312.0L281.5,318.0L286.5,328.0L286.5,330.0L288.5,332.0L293.5,341.0L308.0,356.5L315.5,362.0L315.0,363.5L312.0,363.5L311.0,364.5L300.0,367.5L295.0,370.5L293.0,370.5L281.0,376.5L279.0,378.5L277.5,377.0L277.5,374.0L275.5,371.0L275.5,369.0L272.5,362.0L271.5,354.0L270.5,353.0L270.5,350.0L268.5,345.0L266.5,327.0L278.5,313.0Z"/></svg>
+  </symbol>
+</svg>
+
+<header class="head">
+  <div class="head-top">
+    <span class="lab">Dossier de compétences informatique</span>
+    <svg class="logo logo-reserve" viewBox="0 0 100 117" role="img" aria-label="Logo"><use href="#logo"/></svg>
+  </div>
+  <h1 class="head-name">Johan REMY</h1>
+  <p class="head-title">Senior Développeur Full Stack<br>Orchestration Multi Agents<br>Architecture Audit Conseil</p>
+  <p class="head-stack">Symfony · Nuxt · Python · API Platform<br>VSCode · Codex · Claude Code · Claude Design · GIT worktree</p>
+  <div class="head-rule"></div>
+  <div class="head-meta">
+    <div><span class="lab">Poste recherché</span><span class="val">Lead développeur full stack<br>Chef de projet digital</span></div>
+    <div><span class="lab">Langues</span><ul class="val"><li>Anglais : professionnel / technique</li><li>Français : langue maternelle</li></ul></div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2 class="t">Présentation <em>générale</em></h2>
+    <div class="chapo"><p>Johan REMY, 48 ans, originaire de Marseille et récemment de retour en France après dix années au Maroc. Je cumule <strong>quinze ans d’expérience dans le développement web</strong>, précédés de neuf années dans l’industrie. J’accompagne les projets sur toute leur durée : <strong>audit, cadrage, architecture, développement, mise en production et transmission</strong>. Mon périmètre couvre les sites web, l’e-commerce, les applications métier, les SaaS, les dashboards, les ERP, les CRM et les API.</p></div>
+  </section>
+
+  <section>
+    <h2 class="t">Domaines de <em>compétences</em></h2>
+    <div class="group"><h3 class="lab">Compétences métier</h3>
+<div class="cards cards-2">
+<div class="card"><h4 class="ct">Analyse et conception</h4><ul class="bullets"><li>Recueil et analyse des besoins avec le chef de projet, les référents métier et les parties prenantes ; traduction en fonctionnalités.</li><li>Rédaction de spécifications fonctionnelles et techniques ; modélisation des contenus, des données et de leurs relations.</li><li>Audit et analyse de l’existant, étude de faisabilité et cadrage des solutions avant réalisation.</li></ul></div>
+<div class="card"><h4 class="ct">Accessibilité, protection des données et sécurité</h4><ul class="bullets"><li>Développement dans le respect des référentiels d’accessibilité WCAG et RGAA.</li><li>Prise en compte du RGPD et de la protection des données personnelles dès la conception.</li><li>Sécurité applicative : authentification, gestion des sessions, renouvellement des jetons et contrôle d’accès par rôles et permissions (RBAC).</li><li>Journalisation, alertes et surveillance du fonctionnement des API.</li></ul></div>
+<div class="card"><h4 class="ct">Données et modélisation</h4><ul class="bullets"><li>Modélisation relationnelle et normalisation, de la première à la troisième forme normale ; intégrité par contraintes et migrations versionnées.</li><li>Index ciblés : simples, composites, partiels et GIN ; analyse des performances SQL avec EXPLAIN et ANALYZE et prévention des requêtes N+1.</li><li>Pipelines d’import et de traitement (ETL) ; nettoyage, dédoublonnage et segmentation de bases de données.</li><li>Source de vérité unique pour les référentiels et les règles partagées.</li><li>Données structurées Schema.org / JSON-LD.</li></ul></div>
+<div class="card"><h4 class="ct">Développement, tests et documentation</h4><ul class="bullets"><li>Conception, développement et déploiement de sites web et d’applications métier.</li><li>Tests unitaires, d’intégration, fonctionnels et de bout en bout ; tests de contrats d’API et tests visuels des interfaces ; recette avant mise en production.</li><li>Revues de code et diffusion des bonnes pratiques de développement.</li><li>Rédaction et maintien de la documentation technique et fonctionnelle ; passation et transfert de connaissances.</li><li>Documentation des API avec OpenAPI et des choix techniques.</li></ul></div>
+<div class="card"><h4 class="ct">Architecture et qualité du code</h4><ul class="bullets"><li>Découplage entre front-end et back-end, approche API-first et architecture hexagonale.</li><li>Clean Architecture et principes SOLID, KISS et YAGNI ; composants à responsabilité unique.</li><li>Typage strict des DTO, des modèles et des payloads ; contrats de données partagés entre front-end et back-end, générés depuis OpenAPI ou des schémas communs.</li><li>Conception contract-first : contrats d’interface définis en amont, versionnement des API et validation stricte des données échangées par schémas.</li><li>Reprise de l’existant : audit, réécriture ciblée, refonte d’architecture, montée de version progressive et réduction de la dette technique.</li></ul></div>
+<div class="card"><h4 class="ct">Produits web livrés — expérience utilisateur et performance</h4><ul class="bullets"><li>Données en temps réel (WebSocket, long polling, SSE) et notifications push navigateur.</li><li>Design system unifié et composants réutilisables ; internationalisation des interfaces.</li><li>Traduction automatique des contenus et priorité aux préférences utilisateur.</li><li>Modes de couleur et système d’ambiances.</li><li>Navigation sans rupture visuelle et gestion avancée de l’état réactif, y compris la synchronisation entre onglets.</li><li>Stratégies de chargement : chargement anticipé (Eager Loading), chargement asynchrone différé en arrière-plan (Deferred Async Loading) et préchargement intelligent des contenus prioritaires (Smart Prefetch).</li><li>Affichage instantané des images.</li><li>Performance mobile, Core Web Vitals et audits Lighthouse ; préparation au référencement naturel (SEO On-page Ready).</li></ul></div>
+</div>
+</div>
+<div class="group"><h3 class="lab">Compétences fonctionnelles</h3>
+<div class="cards cards-2">
+<div class="card"><h4 class="ct">Pilotage et conduite de projet</h4><ul class="bullets"><li>Conduite agile : Scrum, points quotidiens, suivi des tâches et gestion structurée des branches.</li><li>Collaboration avec les équipes projet : design, infrastructure et métier.</li><li>Pair programming, mentorat et accompagnement de développeurs juniors ; encadrement d’une équipe de développeurs ; coordination technique.</li><li>Respect des critères de qualité, de délais et de satisfaction utilisateur.</li></ul></div>
+<div class="card"><h4 class="ct">Gestion de contenu</h4><ul class="bullets"><li>Modélisation des types de contenus, de leurs champs et de leurs relations.</li><li>Arborescence, catégories et médias ; back-offices d’édition sur mesure.</li><li>Contenus multilingues et traduction ; droits d’accès et cloisonnement par client ou par projet.</li><li>Exposition des contenus par API ; migration et reprise de données depuis des sources externes.</li></ul></div>
+<div class="card"><h4 class="ct">Architecture et exploitation</h4><ul class="bullets"><li>Architecture full stack, headless et SaaS ; intégration d’API et de sources de données externes.</li><li>Mise en production, hébergement, maintenance corrective et évolutive.</li><li>Conteneurisation avec Docker, gestion de plusieurs environnements et intégration continue (GitLab CI/CD, workflows GitHub).</li><li>Supervision, contrôles qualité automatisés et suivi des erreurs en production.</li><li>Outillage de l’équipe (DevEx) : outils en ligne de commande et scripts de configuration.</li><li>Amélioration continue des processus et des outils de développement.</li></ul></div>
+<div class="card"><h4 class="ct">Développement assisté par l’IA</h4><ul class="bullets"><li>Direction du développement assisté par l’IA : cadrage, architecture et validation des réalisations.</li><li>Tâches cadrées, agents spécialisés et worktrees isolés ; relecture et validation de chaque changement.</li><li>Consolidation des retours en documentation, conventions et contrôles automatisés.</li></ul></div>
+</div>
+</div>
+<div class="group"><h3 class="lab">Secteurs d’intervention</h3>
+<div class="pills-row"><span class="pills-label">Types de solutions</span><div class="pills"><span class="pill">sites web et portails de contenu</span><span class="pill">e-commerce</span><span class="pill">applications métier, SaaS, CRM, ERP et dashboards</span></div></div>
+<div class="pills-row"><span class="pills-label">Types de structures</span><div class="pills"><span class="pill">start-up</span><span class="pill">ESN</span><span class="pill">éditeur de logiciels SaaS</span><span class="pill">agence web</span><span class="pill">agence de communication</span><span class="pill">agence immobilière</span><span class="pill">maison d’hôtes</span><span class="pill">groupe automobile</span></div></div>
+<div class="pills-row"><span class="pills-label">Secteurs</span><div class="pills"><span class="pill">immobilier</span><span class="pill">tourisme et hôtellerie</span><span class="pill">e-commerce et voyages</span><span class="pill">automobile</span><span class="pill">recrutement et ressources humaines</span><span class="pill">gouvernance, risques et conformité</span><span class="pill">marketing relationnel</span><span class="pill">éditique industrielle</span></div></div>
+</div>
+  </section>
+
+  <section>
+    <h2 class="t">Compétences <em>techniques</em></h2>
+    <dl class="kv"><div class="kv-row"><dt>Gestion de contenu et CMS</dt><dd>gestion de contenu headless via API Symfony et API Platform ; WordPress ; PrestaShop et Sylius pour l’e-commerce ; back-offices Symfony avec EasyAdmin et Sonata.</dd></div><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript, TypeScript, Python, Golang ; C# et Shell dans des expériences antérieures.</dd></div><div class="kv-row"><dt>Back-end</dt><dd>Symfony, API Platform, Sylius, EasyAdmin, Sonata, Symfony Messenger.</dd></div><div class="kv-row"><dt>Front-end</dt><dd>Twig, Vue.js, Nuxt, Tailwind CSS, Bootstrap, jQuery.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL, PostgreSQL, SQL Server.</dd></div><div class="kv-row"><dt>Tests</dt><dd>tests unitaires, d’intégration et fonctionnels avec Vitest, Cypress et Playwright.</dd></div><div class="kv-row"><dt>Infrastructure et outils</dt><dd>Docker, VPS, Git, GitLab CI/CD, workflows GitHub, VSCode.</dd></div><div class="kv-row"><dt>Intégrations</dt><dd>OAuth, JWT, WebSockets, Google Cloud Translate API, Systempay.</dd></div><div class="kv-row"><dt>Documentation</dt><dd>spécifications Markdown, JSDoc, README par couche applicative.</dd></div><div class="kv-row"><dt>Développement assisté par l’IA</dt><dd>Codex, Claude Code, Codeium ; cadrage, architecture et validation des réalisations.</dd></div></dl>
+  </section>
+
+  <section>
+    <h2 class="t">La <em>formation</em></h2>
+    <div class="formation"><span class="num">Septembre 2009 – juin 2010</span><div><div class="ct">AFPA</div><div class="cd">Concepteur Développeur d’Applications — Titre professionnel de niveau 6 (bac+3/4).</div></div></div>
+  </section>
+
+  <section class="xp-section">
+    <h2 class="t">Expériences <em>professionnelles</em></h2>
+    <p class="chapo">Les périodes intègrent la création et, lorsqu’elles sont précisées, la maintenance et les évolutions des projets.</p>
+    <article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Juin – septembre 2026</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Yudou RH — Capnour</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Conception et développement de Capnour, une plateforme SaaS de recrutement reliant des profils basés en Europe aux entreprises marocaines, en tenant compte des périodes de présence des candidats au Maroc.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack, <strong>interlocuteur technique unique du client</strong>. Prise en charge du projet <strong>de bout en bout</strong> : recueil des besoins, cadrage, conception, développement, mise en production, hébergement et maintenance. Marge de décision portant sur le technique et sur le fonctionnel : proposition de fonctionnalités et arbitrage du périmètre avec le client, au-delà de la seule exécution. Direction du développement assisté par l’IA, avec responsabilité du cadrage, de l’architecture et de la validation.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec la direction de Yudou RH, <strong>seul interlocuteur du projet</strong> : recueil des besoins, cadrage fonctionnel et validation des livraisons. Aucune autre partie prenante, ni côté client, ni en prestation externe ; intervention en <strong>autonomie complète</strong> sur les choix techniques.</p></div></div><div class="row"><div class="row-label lab">Réalisations</div><div class="row-body"><ul class="bullets"><li>Recueil des besoins auprès du client et cadrage des fonctionnalités attendues.</li><li>Conception d’une architecture Nuxt Layers avec un socle commun et des applications distinctes pour le site public et les espaces candidat, entreprise et administration.</li><li>Conception et développement de l’API avec Symfony, API Platform et PostgreSQL.</li><li>Direction du développement assisté par l’IA : cadrage, architecture et validation.</li><li>Mise en production, hébergement et maintenance, en tant qu’interlocuteur technique unique du client.</li><li>Mise en œuvre de la gestion des sessions et du renouvellement des jetons via un relais serveur Nuxt vers l’API Symfony.</li><li>Encadrement de la visibilité des profils et de leur exposition aux recruteurs par des règles métier intégrant le consentement du candidat.</li><li>Intégration de la synchronisation asynchrone des candidatures avec Jarvi via Symfony Messenger.</li><li>Fiabilisation des échanges front-end/back-end par des contrats TypeScript générés depuis OpenAPI et des tests des règles métier.</li><li>Mise en place des notifications push navigateur.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>TypeScript, PHP.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Nuxt 4, Vue 3, Pinia, Symfony, API Platform, Symfony Messenger, Tailwind CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>PostgreSQL.</dd></div><div class="kv-row"><dt>Infrastructure et déploiement</dt><dd>Docker, VPS.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Services et authentification</dt><dd>OAuth, JWT, Jarvi.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Recrutement et ressources humaines.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Janvier – juin 2026</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">MLK — My Little Kasbah</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Création et livraison d’un site immobilier en architecture headless, fondé sur Blueprint immobilier et adossé à une API SaaS Symfony 8 / API Platform de gestion de contenu multi-clients et multi-projets reposant sur PostgreSQL. Ce socle est conçu et maintenu au sein de ma propre structure de produits, et réutilisé d’un client à l’autre.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack, <strong>interlocuteur technique unique du client</strong>. Prise en charge du projet <strong>de bout en bout</strong> : recueil des besoins, cadrage, conception, développement, mise en production, hébergement et maintenance. Marge de décision portant sur le technique et sur le fonctionnel : proposition de fonctionnalités et arbitrage du périmètre avec le client, au-delà de la seule exécution. Direction du développement assisté par l’IA, avec responsabilité du cadrage, de l’architecture et de la validation.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec le fondateur de My Little Kasbah, <strong>seul interlocuteur du projet</strong> : recueil des besoins, cadrage fonctionnel et validation des livraisons. Aucune autre partie prenante, ni côté client, ni en prestation externe ; intervention en <strong>autonomie complète</strong> sur les choix techniques.</p></div></div><div class="row"><div class="row-label lab">Réalisations</div><div class="row-body"><ul class="bullets"><li>Recueil des besoins auprès du client et cadrage des fonctionnalités attendues.</li><li>Développement de l’interface Nuxt 4 et de la gestion de contenu via l’API SaaS Symfony.</li><li>Intégration de la traduction automatique via Google Cloud Translate API et de l’affichage instantané des images ; préparation du référencement naturel des pages et optimisation de l’expérience utilisateur.</li><li>Direction du développement assisté par l’IA : cadrage, architecture et validation.</li><li>Mise en production, hébergement et maintenance, en tant qu’interlocuteur technique unique du client.</li><li>Développement du back-office de gestion des biens immobiliers, médias, catégories et traductions, avec contrôle de l’appartenance au projet.</li><li>Génération des types TypeScript à partir de schémas YAML partagés pour fiabiliser les contrats de données.</li><li>Conception d’une navigation par écrans avec préchargement ciblé des images et rendu différé des contenus non prioritaires.</li><li>Mise en place du sitemap dynamique et des données structurées Schema.org / JSON-LD.</li><li>Intégration d’attributs ARIA et prise en compte des préférences de réduction des animations.</li><li>Tests des transformations de données et du chargement de l’accueil, notamment avec Vitest et Playwright.</li><li>Mise en place des notifications push navigateur.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>TypeScript, PHP.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Nuxt 4, Vue 3, Pinia, Nuxt UI, Symfony 8, API Platform, Tailwind CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>PostgreSQL.</dd></div><div class="kv-row"><dt>Infrastructure et déploiement</dt><dd>Docker, VPS.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Services et authentification</dt><dd>Google Cloud Translate API, OAuth.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Immobilier ; gestion de contenu.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Janvier 2023 – juin 2025</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Smart Global Governance</h3>
+      <div class="xp-poste">Lead développeur full stack</div>
+      <div class="xp-meta">2 ans et 6 mois <span class="sep">·</span> Valbonne (06560), France <span class="sep">·</span> Mission à distance <span class="sep">·</span> Freelance</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Au sein d’un éditeur de logiciels de gouvernance, de gestion des risques et de conformité (GRC), interventions pendant deux ans sur une plateforme low-code en Vue.js, Golang et MySQL. Durant les six derniers mois de la mission, conception et développement intégral, seul, du front-end de la version 1 du dashboard SaaS OptiValue (www.optivalue.ai) — une plateforme d’IA d’aide à la réponse aux appels d’offres et aux questionnaires d’audit et de conformité — en Nuxt 3, sur un back-end Python / PostgreSQL porté par l’équipe Python.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p><strong>Lead développeur full stack</strong> au sein d’une <strong>équipe de neuf développeurs</strong>, rattaché au directeur technique. Rôle de <strong>référent technique sans responsabilité hiérarchique</strong> : l’influence passait par les revues de code, le pair programming et le mentorat, et non par un lien d’encadrement. Développements front-end et back-end sur la plateforme GRC ; conception et développement intégral, <strong>seul</strong>, du front-end de la version 1 d’OptiValue sous Nuxt 3, du socle jusqu’aux écrans livrés. Prise d’initiative sur les évolutions de l’API et de PostgreSQL : propositions techniques, avec réalisation confiée à l’équipe Python.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Rattachement au directeur technique. Au sein de l’équipe de neuf développeurs : travail quotidien avec les autres développeurs front-end sur le code partagé de la plateforme GRC, OptiValue restant mon <strong>périmètre exclusif</strong> ; échanges avec l’équipe Python pour les évolutions back-end d’OptiValue. Échanges avec les testeurs pour la recette avant mise en production. En externe, collaboration avec l’agence Ipsoon (www.ipsoon.fr), spécialisée en Design System, pour la refonte de l’interface GRC.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><h4 class="ct sub">OptiValue — Front-end de la version 1, conçu et développé seul</h4><ul class="bullets"><li>Conception du socle Nuxt selon les principes de la Clean Architecture et structuration des composants atomiques : responsabilité unique et slots intelligents.</li><li>Orchestration du chargement progressif du dashboard : autorisations et données prioritaires d’abord, puis données complémentaires en arrière-plan. Combinaison du chargement anticipé (Eager Loading), du chargement asynchrone différé (Deferred Async Loading) et du préchargement intelligent des contenus prioritaires (Smart Prefetch).</li><li>Orchestration des flux de données en temps réel via WebSocket avec le pattern Mediator : distribution des événements pour actualiser les documents, projets et indicateurs. Mise en place des notifications push navigateur d’OptiValue.</li><li>Gestion avancée des transitions de l’interface et de l’état réactif ; mise en place de l’internationalisation.</li><li>Structuration du typage strict des DTO, des modèles et des payloads pour clarifier les contrats de données.</li><li>Documentation de l’application : spécifications Markdown, documentation JSDoc stricte et README par couche applicative.</li></ul><h4 class="ct sub">OptiValue — Propositions d’évolution back-end et collaboration avec l’équipe Python</h4><ul class="bullets"><li>Proposition de refactorisation et de clarification des endpoints de l’API Python, avec standardisation et unification des réponses HTTP.</li><li>Proposition de centralisation des constantes et des énumérations dans une source de vérité unique partagée entre le front-end et le back-end.</li><li>Proposition de standards d’API distinguant les données nécessaires au premier affichage (first-render data) de celles chargées en arrière-plan (background data).</li><li>Proposition de prévention des requêtes N+1 et d’analyse des performances SQL avec EXPLAIN et ANALYZE pour guider les optimisations.</li><li>Proposition d’évolutions du schéma PostgreSQL et des migrations associées pour renforcer l’intégrité et la cohérence des données : contraintes et index ciblés, simples, composites, partiels et GIN. Mise en œuvre confiée à l’équipe Python.</li><li>Proposition de commandes en ligne de commande (CLI) pour la gestion de la base de données, réalisées par l’équipe Python.</li></ul><h4 class="ct sub">Plateforme GRC low-code — Développement et refonte fonctionnelle</h4><ul class="bullets"><li>Développements front-end Vue.js et back-end Golang sur une base MySQL.</li><li>Refonte complète de l’UX/UI à partir d’un Design System unifié, en collaboration avec l’agence Ipsoon.</li><li>Réécriture du moteur de logique conditionnelle et de son Query Builder, l’éditeur permettant de construire les règles.</li><li>Mise en place d’un système de Drill Down pour explorer les données à différents niveaux de détail.</li><li>Intégration d’un système avancé de loaders pour les workflows et mise en place des notifications push navigateur de la plateforme GRC.</li><li>Correction des anomalies, développement de nouvelles fonctionnalités, amélioration continue de l’existant et veille sur la stabilité, à la cohérence globale et à l’expérience utilisateur.</li></ul><h4 class="ct sub">Organisation et pratiques de développement</h4><ul class="bullets"><li>Collaboration en Scrum : points quotidiens, suivi des tâches dans ClickUp et workflow Git lié aux tâches (ClickUp-driven Git flow), avec conventions de commits et gestion structurée des branches.</li><li>Participation aux revues de code, au pair programming et au mentorat des développeurs.</li><li>Contribution à l’intégration continue avec GitLab CI/CD, les workflows GitHub et Docker.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>TypeScript, JavaScript, Python, Golang, SQL.</dd></div><div class="kv-row"><dt>Front-end</dt><dd>Nuxt 3, Vue 3, Tailwind CSS, Bootstrap CSS ; Clean Architecture, Design System, internationalisation.</dd></div><div class="kv-row"><dt>Back-end et intégrations</dt><dd>Python, Azure Functions, Golang, WebSockets, OAuth.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>PostgreSQL (OptiValue), MySQL (plateforme GRC).</dd></div><div class="kv-row"><dt>Infrastructure et outils</dt><dd>Docker, Git, GitLab CI/CD, workflows GitHub, scripts, ClickUp.</dd></div><div class="kv-row"><dt>Documentation</dt><dd>Markdown, JSDoc, README par couche applicative.</dd></div><div class="kv-row"><dt>Méthodes</dt><dd>Scrum, revues de code, pair programming, mentorat.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Gouvernance, gestion des risques et conformité ; appels d’offres et questionnaires d’audit.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Août – décembre 2022</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Kazen Garden</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Création en 2022 d’un site e-commerce de séjours en architecture headless : interface initialement sous Nuxt 3 et back-end PHP/Symfony avec Sylius et API Platform. Maintenance et évolutions poursuivies depuis, dont le passage à Nuxt 4 et un parcours de réservation avec paiement en ligne. Prise en charge du projet de bout en bout, du recueil des besoins à la mise en production, à l’hébergement et à la maintenance, en tant qu’interlocuteur technique unique du client.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack, <strong>interlocuteur technique unique du client</strong>. Prise en charge du projet <strong>de bout en bout</strong> : recueil des besoins, cadrage, conception, développement, mise en production, hébergement et maintenance. Marge de décision portant sur le technique et sur le fonctionnel, y compris les règles de réservation et de calcul du prix. Responsabilité des évolutions du site depuis sa création en 2022.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec la direction de Kazen Garden, <strong>seul</strong> interlocuteur côté client : recueil des besoins, cadrage fonctionnel et validation des livraisons. Échanges techniques avec le support Systempay et l’établissement bancaire pour l’ouverture du contrat monétique, le paramétrage et la recette des paiements en ligne.</p></div></div><div class="row"><div class="row-label lab">Réalisations</div><div class="row-body"><ul class="bullets"><li>Recueil des besoins auprès du client et cadrage des fonctionnalités attendues.</li><li>Conception de l’architecture technique et développement du back-end e-commerce avec Symfony, Sylius et API Platform.</li><li>Développement de l’interface utilisateur avec Nuxt 3, Vue 3, TypeScript et Tailwind CSS, puis évolution vers Nuxt 4.</li><li>Intégration de la traduction automatique des contenus via Google Cloud Translate API.</li><li>Affichage instantané des images par un préchargement adapté aux dimensions de l’écran, avec limitation des chargements inutiles lors des changements de page.</li><li>Préparation du site au référencement naturel sur les pages.</li><li>Dockerisation de l’environnement applicatif et déploiement sur VPS.</li><li>Prise en charge de l’hébergement et de la maintenance du site.</li><li>Développement et livraison d’un parcours de réservation de séjours avec calcul du prix et choix entre paiement intégral et acompte.</li><li>Intégration des paiements Systempay et du contrôle des confirmations reçues.</li><li>Instrumentation des indicateurs LCP, INP et CLS avec web-vitals en développement pour accompagner les optimisations de performance.</li><li>Mise en place des notifications push navigateur.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, TypeScript.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Symfony, Sylius, API Platform, Nuxt 3 puis Nuxt 4, Vue 3, Pinia, Tailwind CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Infrastructure et déploiement</dt><dd>Docker, VPS, Git.</dd></div><div class="kv-row"><dt>Services et authentification</dt><dd>Google Cloud Translate API, OAuth, Systempay.</dd></div><div class="kv-row"><dt>Métier</dt><dd>E-commerce de séjours ; réservation et paiement en ligne.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Septembre 2021 – avril 2022</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Délit d’Influence</h3>
+      <div class="xp-poste">Lead développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Conseil et développement Symfony pour une agence de communication, sur un site vitrine, une plateforme e-commerce, un CRM et une application web.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p><strong>Lead développeur full stack</strong> freelance, en charge du conseil technique et des développements PHP/Symfony sur plusieurs applications de l’agence. <strong>Encadrement de l’ensemble des développeurs internes de l’agence</strong>. Participation directe aux échanges avec les clients finaux.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec le dirigeant de l’agence, qui confiait les projets et validait les livraisons. <strong>Encadrement de l’équipe de développeurs internes</strong> de Délit d’Influence sur les applications de l’agence. Contact direct avec les clients finaux de l’agence lors des échanges projet.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Conseil technique et développements PHP/Symfony sur les différents projets de l’agence.</li><li>Encadrement des développeurs internes de l’agence sur les projets Symfony.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Symfony, Tailwind CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Communication ; sites web, e-commerce, CRM et application web.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Mai – septembre 2021</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">LOGIGROUP</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Passation technique d’une plateforme e-commerce développée en Ruby, dans le cadre d’une mission freelance pour LOGIGROUP.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack freelance chargé de la passation technique d’une plateforme e-commerce : rédaction de la documentation et transfert de connaissances à l’équipe technique interne, par écrit et en sessions de transmission. Mission cadrée par un chef de projet côté LOGIGROUP.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Mission pilotée par un chef de projet côté LOGIGROUP. Transfert réalisé auprès de l’équipe technique interne qui reprenait la maintenance de la plateforme, sous forme de documentation écrite et de sessions de transmission en direct.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Rédaction de la documentation de la plateforme e-commerce.</li><li>Transfert de connaissances auprès de l’équipe technique interne : documentation écrite et sessions de transmission en direct.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>Ruby.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>React.js, Tailwind CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Infrastructure et déploiement</dt><dd>Docker.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>E-commerce ; documentation et passation technique.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Mars – septembre 2020</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Villa Gonatouki</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Création d’un site web pour une maison d’hôtes, avec une interface Nuxt 2 et un back-end Symfony / API Platform en architecture headless.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack, <strong>interlocuteur technique unique du client</strong>. Prise en charge du projet <strong>de bout en bout</strong> : recueil des besoins, cadrage, conception, développement, mise en production, hébergement et maintenance. Marge de décision portant sur le technique et sur le fonctionnel, y compris le parcours de demande de réservation.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec les propriétaires de la maison d’hôtes, <strong>seuls interlocuteurs du projet</strong> : recueil des besoins, cadrage fonctionnel et validation des livraisons. Aucune autre partie prenante, ni côté client, ni en prestation externe ; intervention en <strong>autonomie complète</strong> sur les choix techniques.</p></div></div><div class="row"><div class="row-label lab">Réalisations</div><div class="row-body"><ul class="bullets"><li>Recueil des besoins auprès du client et cadrage des fonctionnalités attendues.</li><li>Développement du site sous Nuxt 2 et du back-end sous Symfony et API Platform.</li><li>Intégration de la traduction automatique via Google Cloud Translate API et de l’affichage instantané des images.</li><li>Préparation du référencement naturel des pages et optimisation de l’expérience utilisateur.</li><li>Mise en production, hébergement et maintenance, en tant qu’interlocuteur technique unique du client.</li><li>Développement d’un parcours de demande de réservation : choix de chambre, dates de séjour, nombre d’adultes et d’enfants, coordonnées et envoi de la demande.</li><li>Centralisation de l’état du parcours avec Vuex et conception d’interfaces de présentation plein écran et de galeries.</li><li>Structuration de l’administration des chambres, services et activités avec Symfony/EasyAdmin et intégration de la traduction automatique au back-office.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>JavaScript, PHP.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Nuxt 2, Vue.js, Vuex, Vuetify, Symfony, API Platform, EasyAdmin.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Infrastructure et déploiement</dt><dd>Docker, VPS.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Services et authentification</dt><dd>OAuth, Google Cloud Translate API.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Hébergement touristique ; maison d’hôtes.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Février 2019 – décembre 2025</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Immobilière Essaouira</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Création d’un site immobilier avec une interface Nuxt 2 et un back-end Symfony / API Platform en architecture headless, puis maintenance et évolutions pour ce client direct jusqu’à fin 2025.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack, <strong>interlocuteur technique unique du client</strong>. Prise en charge du projet <strong>de bout en bout</strong> : recueil des besoins, cadrage, conception, développement, mise en production, hébergement et maintenance. Marge de décision portant sur le technique et sur le fonctionnel, y compris la structure du catalogue et des recherches. Maintenance et évolutions poursuivies jusqu’à fin 2025.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec le dirigeant de l’agence Immobilière Essaouira <strong>sur six ans</strong> : recueil des besoins, cadrage fonctionnel et validation des livraisons. Échanges avec les agents immobiliers, utilisateurs du back-office, sur la saisie des biens, des médias et des documents, et prise en compte de leurs retours dans les évolutions.</p></div></div><div class="row"><div class="row-label lab">Réalisations</div><div class="row-body"><ul class="bullets"><li>Recueil des besoins auprès du client et cadrage des fonctionnalités attendues.</li><li>Développement du site sous Nuxt 2 et du back-end sous Symfony et API Platform.</li><li>Intégration de la traduction automatique via Google Cloud Translate API et de l’affichage instantané des images.</li><li>Préparation du référencement naturel des pages et optimisation de l’expérience utilisateur.</li><li>Mise en production, hébergement et maintenance, en tant qu’interlocuteur technique unique du client.</li><li>Développement d’un catalogue immobilier avec prix, surfaces, localisation, galeries, vidéos, documents PDF et biens associés.</li><li>Gestion de l’état des recherches et des contenus dans des modules Vuex.</li><li>Génération des sitemaps par famille de contenus et configuration de la mise en cache des pages et composants.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>JavaScript, PHP.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Nuxt 2, Vue.js, Vuex, Bootstrap CSS, Symfony, API Platform.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Infrastructure et déploiement</dt><dd>Docker, VPS.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Services et authentification</dt><dd>OAuth, Google Cloud Translate API.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Immobilier.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Mai – novembre 2018</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">ABITHEA Littoral Provence</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> Freelance <span class="sep">·</span> Client direct</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Conception et réalisation d’un CRM sur mesure pour la gestion des devis et des factures dans le secteur immobilier.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack, <strong>interlocuteur technique unique du client</strong>. Prise en charge du projet <strong>de bout en bout</strong> : recueil des besoins, cadrage, conception, développement, mise en production, hébergement et maintenance. Marge de décision portant sur le technique et sur le fonctionnel, y compris les règles de gestion des devis et des factures.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Relation directe avec plusieurs interlocuteurs chez ABITHEA Littoral Provence : recueil des besoins de gestion des devis et des factures, cadrage fonctionnel et validation des livraisons. Aucune prestation externe ; intervention en <strong>autonomie complète</strong> sur les choix techniques.</p></div></div><div class="row"><div class="row-label lab">Réalisations</div><div class="row-body"><ul class="bullets"><li>Recueil des besoins auprès du client et cadrage des fonctionnalités attendues.</li><li>Conception et développement du CRM de gestion des devis et des factures avec Symfony et EasyAdmin.</li><li>Mise en production, hébergement et maintenance, en tant qu’interlocuteur technique unique du client.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Symfony, EasyAdmin, Bootstrap CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Services et authentification</dt><dd>OAuth.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Immobilier ; gestion des devis et des factures.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Octobre 2016 – février 2018</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Altraway CE</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">À distance <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Amélioration d’une plateforme e-commerce de voyages destinée aux comités d’entreprise. Recrutement par Altraway CE à la suite de la refonte de son ETL, que j’avais menée l’année précédente chez Philae, son prestataire.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack en CDI, <strong>seul développeur de la plateforme</strong> et rattaché directement au dirigeant. Responsabilité technique complète des évolutions de la plateforme de voyages, des traitements ETL et de l’auto-connexion des membres des comités d’entreprise.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Rattachement direct au dirigeant d’Altraway CE, en l’absence d’autre développeur dans l’entreprise. Échanges avec les comités d’entreprise clients pour la mise en place de l’auto-connexion de leurs membres.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Interventions sur l’ETL de la plateforme de voyages.</li><li>Mise en place de l’auto-connexion des membres des comités d’entreprise.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Symfony, Bootstrap CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>E-commerce de voyages pour les comités d’entreprise.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Avril – octobre 2016</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Philae</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">Aix-en-Provence <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Refonte de l’ETL d’Altraway CE, client de Philae : alimentation de sa plateforme e-commerce destinée aux comités d’entreprise à partir de sources externes de séjours et de vols.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack en CDI chez Philae. Recruté pour des interventions front-end et back-end, puis rapidement chargé, <strong>seul</strong>, de la refonte complète de l’ETL du client Altraway CE. Périmètre strictement technique, la relation client étant portée par Philae.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Intervention au sein de Philae, <strong>seul</strong> sur la refonte de l’ETL. La relation avec le client Altraway CE était portée par Philae, sans contact direct de ma part. Altraway CE m’a ensuite recruté : c’est l’expérience suivante de ce dossier.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Après un recrutement initial pour des interventions front-end et back-end, prise en charge rapide, seul, de la refonte complète de l’ETL pour le compte du client Altraway CE.</li><li>Développement du pipeline d’import des séjours et des vols depuis les sources externes vers la base de données.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Symfony, Bootstrap CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>E-commerce de voyages ; import de séjours et de vols.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Janvier 2015 – avril 2016</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Groupe Automobile IDM</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">Marseille <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Développement d’un ERP Symfony / Sonata et d’une dizaine de sites vitrines pour des concessions automobiles.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack en CDI au sein de la DSI du groupe, rattaché à un product owner. Développements sur l’ERP et sur les sites des concessions. Prise d’initiative sur la refonte de l’architecture des formulaires : proposition portée devant ma hiérarchie, validée par elle, puis mise en œuvre en parallèle des développements courants.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Travail au sein de la DSI du groupe, sous le pilotage d’un product owner. Échanges avec l’équipe design et le marketing du groupe pour les sites des concessions, et avec l’administration des ventes pour les données véhicules et les dossiers. Refonte de l’architecture des formulaires proposée à ma hiérarchie et validée par elle avant mise en œuvre.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Développements front-end et back-end de l’ERP et des sites du groupe.</li><li>En parallèle des développements courants, proposition à ma hiérarchie et mise en œuvre après validation de la refonte de l’architecture des formulaires : centralisation dans l’ERP Symfony des règles de validation auparavant dupliquées entre les sites, avec une seule source de vérité pour l’ensemble du groupe.</li><li>Intégration d’un import automatisé des données véhicules depuis le référentiel national.</li><li>Mise en place d’un moteur de recherche de véhicules et participation au développement du configurateur.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>Symfony, Sonata, Bootstrap CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Automobile ; ERP et sites de concessions.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Mai – décembre 2014</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Quai 13</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">Marseille <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Production de sites web et e-commerce sous WordPress et PrestaShop, avec plusieurs projets clients menés en parallèle au sein d’une agence web.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack en CDI sur plusieurs projets clients en parallèle, au sein de l’équipe de développeurs de l’agence. Accompagnement technique des stagiaires et des développeurs juniors par entraide, sans mandat formel de tutorat ; création d’un outil de synchronisation pour faciliter les interventions sur les projets.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Projets confiés par le dirigeant, le directeur commercial et un chef de projet de l’agence. Travail avec les graphistes et directeurs artistiques dont j’intégrais les maquettes, avec les chefs de projet sur les plannings et la recette, et avec les autres développeurs confirmés de l’équipe. Contact direct avec les clients de l’agence. Accompagnement des stagiaires et des développeurs juniors par entraide.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Développement de sites WordPress et PrestaShop pour plusieurs clients en parallèle, avec une montée en compétences sur ces deux CMS.</li><li>Accompagnement des stagiaires et développeurs juniors par la transmission technique, en entraide au sein de l’équipe.</li><li>Création d’un script Shell synchronisant en une commande le code source, la base de données et les ressources (images, PDF…). Cet outil permettait d’intervenir rapidement sur n’importe quel projet : une première approche concrète de l’amélioration de l’expérience développeur (DevEx) et de l’outillage d’équipe.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript, Shell.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>jQuery, Bootstrap CSS, WordPress, Prestashop.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Agence web ; sites web et e-commerce.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Novembre 2012 – mai 2014</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Espace Privé</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">Marseille <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Réalisation d’une douzaine de sites web en agence et d’une application d’affichage des séances de cinéma en temps réel.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack en CDI, <strong>seul développeur de l’agence</strong>, intervenant de la maquette à l’intégration responsive et à la livraison des sites. Réalisation également d’une application d’affichage des séances de cinéma en temps réel. Projets confiés et suivis par le dirigeant de l’agence, sans contact avec les clients finaux.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Seul développeur de l’agence, avec des projets confiés et suivis par son dirigeant. Travail quotidien avec les graphistes et directeurs artistiques internes, dont j’intégrais les maquettes à raison de cinq gabarits par projet. Aucun contact avec les clients finaux, la relation étant portée par l’agence.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Réalisation des sites de la maquette à l’intégration responsive et à la livraison, avec cinq gabarits par projet et une exigence pixel perfect. Ce contexte a renforcé ma rigueur front-end, ma vitesse d’exécution et mes réflexes d’intégration et de production.</li><li>Développement d’une application d’affichage dynamique des séances de cinéma, pilotée par les données : une première expérience de rendu en temps réel connecté à une source externe.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>jQuery, Bootstrap CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>Git.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Agence web ; sites web et affichage de séances de cinéma.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Février 2011 – novembre 2012</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Varibase</h3>
+      <div class="xp-poste">Développeur full stack</div>
+      <div class="xp-meta">Marseille <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Recruté pour développer les mini-sites et les landing pages des campagnes marketing, j’ai rapidement élargi mon périmètre initial en identifiant deux besoins non couverts dans l’équipe. J’ai pris l’initiative de concevoir des outils internes pour automatiser les traitements du dataminer et donner aux équipes marketing un accès autonome aux données des campagnes, en collaboration avec le dataminer.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Développeur full stack en CDI, initialement recruté pour les mini-sites et landing pages. Tâches cadrées par une chef de projet. Élargissement du périmètre <strong>à mon initiative</strong> : conception d’un outil de traitement des données et d’un intranet de type CRM pour répondre à deux besoins non couverts.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Travail sous le cadrage d’une chef de projet chargée de définir mes tâches, avec l’équipe design, le dataminer et les équipes marketing. Collaboration avec le dataminer pour automatiser ses traitements ; mise à disposition des données de campagnes aux équipes marketing pour renforcer leur autonomie.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Développement des mini-sites et landing pages des campagnes marketing.</li><li>Conception, à mon initiative et en collaboration avec le dataminer, d’un outil interne en C# connecté à SQL Server pour automatiser ses traitements : normalisation, dédoublonnage et segmentation des bases de données. Résultat : un gain de temps significatif sur des tâches répétitives et manuelles.</li><li>Mise en place, au-delà de ma mission initiale, d’un intranet de type mini CRM permettant aux équipes marketing de consulter les données des campagnes en autonomie, réduisant leur dépendance au dataminer pour les demandes quotidiennes.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement technique</div><div class="row-body"><div class="env-card"><dl class="kv kv-env"><div class="kv-row"><dt>Langages</dt><dd>PHP, JavaScript, C#, HTML, CSS.</dd></div><div class="kv-row"><dt>Frameworks et solutions</dt><dd>jQuery, Bootstrap CSS.</dd></div><div class="kv-row"><dt>SGBD</dt><dd>MySQL, SQL Server.</dd></div><div class="kv-row"><dt>Outils de versionnement</dt><dd>SVN.</dd></div><div class="kv-row"><dt>Métier</dt><dd>Marketing relationnel ; campagnes marketing, traitement de données et CRM.</dd></div></dl></div></div></div>
+</article>
+<article class="xp">
+  <header class="xp-head">
+    <div class="xp-when"><span class="xp-dates">Janvier 2000 – décembre 2008</span></div>
+    <div class="xp-who">
+      <h3 class="xp-org">Orsid Provence (devenue Doca Poste)</h3>
+      <div class="xp-poste">Opérateur, puis chef d’équipe</div>
+      <div class="xp-meta">Aix-en-Provence <span class="sep">·</span> CDI</div>
+    </div>
+  </header>
+  <div class="row"><div class="row-label lab">Contexte</div><div class="row-body"><p>Production industrielle de documents pour de grands comptes dans le secteur de l’éditique : factures, relevés de compte et fiches de paie.</p></div></div><div class="row"><div class="row-label lab">Rôle</div><div class="row-body"><p>Opérateur, puis chef d’équipe après trois ans, rattaché au responsable de production. <strong>Encadrement de six personnes</strong> et coordination de la production, avec responsabilité de la qualité et des délais. Marge de décision sur l’organisation de l’équipe : répartition du travail, ordre de passage des travaux et gestion des priorités au quotidien.</p></div></div><div class="row"><div class="row-label lab">Collaborations</div><div class="row-body"><p>Rattachement au responsable de production. <strong>Encadrement de six personnes</strong> après trois ans comme opérateur, pour la réalisation de documents destinés à de grands comptes. Échanges avec le service informatique pour la préparation des fichiers et des chaînes de composition, avec la maintenance des machines sur les arrêts et les réglages, et avec le commercial et l’ordonnancement pour le placement des commandes dans le planning.</p></div></div><div class="row"><div class="row-label lab">Missions</div><div class="row-body"><ul class="bullets"><li>Production, pendant neuf ans, de millions de documents pour de grands comptes, dans un environnement à fort volume et à haut niveau d’exigence en matière de qualité et de délais.</li><li>Évolution vers un poste de chef d’équipe après trois ans ; encadrement de six personnes et coordination de la production.</li></ul></div></div><div class="row env"><div class="row-label lab mut">Environnement métier</div><div class="row-body"><div class="env-card"><p>Éditique, Production, Management.</p></div></div></div>
+</article>
+  </section>
+</main>
+
+<footer class="end">
+  <div class="end-sig">
+    <svg class="logo logo-olive" viewBox="0 0 100 117" role="img" aria-label="Logo"><use href="#logo"/></svg>
+    <span class="end-name">Johan REMY</span>
+  </div>
+  <span class="end-note">Dossier de compétences informatique — septembre 2026</span>
+</footer>
+</body>
+</html>
