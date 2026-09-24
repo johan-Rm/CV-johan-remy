@@ -6,7 +6,7 @@ Les trois variantes partagent le même parcours, les mêmes expertises et la mê
 | --- | --- | --- |
 | `V0-CV-Johan-REMY.html` | `V0-CV-Johan-REMY.pdf` | France et Maroc ; coordonnées françaises et marocaines |
 | `V1-CV-Johan-REMY.html` | `V1-CV-Johan-REMY.pdf` | Employeurs au Maroc ; téléphone marocain et localisation à Essaouira |
-| `V2-CV-Johan-REMY.html` | `V2-CV-Johan-REMY.pdf` | Employeurs en France ; téléphone français et localisation à Cannes |
+| `Johan-REMY-CV.html` (V2) | `Johan-REMY-CV.pdf` | Employeurs en France ; téléphone français et localisation à Cannes |
 
 ## Différences à conserver
 

@@ -31,7 +31,7 @@ FEUILLES_ATTENDUES = 4
 VARIANTES = {
     "V0-CV-Johan-REMY.html": "V0-CV-Johan-REMY.pdf",
     "V1-CV-Johan-REMY.html": "V1-CV-Johan-REMY.pdf",
-    "V2-CV-Johan-REMY.html": "V2-CV-Johan-REMY.pdf",
+    "Johan-REMY-CV.html": "Johan-REMY-CV.pdf",
 }
 
 NAVIGATEURS = ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser")
