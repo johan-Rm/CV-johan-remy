@@ -17,15 +17,15 @@ Les trois variantes partagent le même parcours, les mêmes expertises et la mê
 - Disponibilité « Dès que possible » dans les trois variantes.
 - L’intention de rejoindre une équipe en CDI en première page est réservée à V2.
 - « A PROPOS DE MOI » s’ouvre sur « Originaire de Marseille, je suis récemment revenu en France » dans V0 et V2 seulement : V1 affiche Essaouira. Les durées (six ans en France, neuf ans et demi au Maroc, dont huit en freelance) sont communes aux trois.
-- Les missions freelance et Altraway CE indiquent « À distance » dans V2 et « Essaouira » dans V0/V1. Le nom « Immobilière Essaouira » reste intact.
+- Les missions freelance et Altraway CE indiquent « À distance » dans V2 et « Essaouira » dans V0/V1, suivis de « Client direct » ou « Mission » sauf pour Altraway CE (CDI). Le nom « Immobilière Essaouira » reste intact.
 
 Les modifications communes concernent les trois variantes numérotées. Les PDF sont générés depuis leurs HTML respectifs ; leurs noms ne mentionnent pas le marché visé.
 
 ## Organisation des quatre pages
 
 1. Accroche et expériences Capnour, My Little Kasbah et Smart Global Governance ; colonne identité, contact, formation et stack. Espacements aérés entre les expériences.
-2. Expériences de Kazen Garden à Altraway CE, en pleine largeur avec un liseré olive.
-3. Expériences de Philae à Orsid Provence, avec la même présentation en pleine largeur.
+2. Expériences de Kazen Garden à ABITHEA Littoral Provence, en pleine largeur avec un liseré olive.
+3. Expériences d’Altraway CE à Orsid Provence, avec la même présentation en pleine largeur.
 4. « A PROPOS DE MOI » et expertises clés ; colonne langues, savoir-être, méthode et domaines.
 
 La photo, le texte justifié, les répétitions et les listes de technologies sont conservés à la demande de Johan. Le site obsolète est retiré des coordonnées. Philae indique CDI. Le titre AFPA mentionne le niveau 6 (bac+3/4), confirmé par Johan.
