@@ -84,9 +84,9 @@ def verifier(pdf):
     texte = subprocess.run(["pdftotext", str(pdf), "-"],
                            capture_output=True, text=True).stdout
     # Repères communs aux trois variantes, répartis sur les quatre pages.
-    manquants = [s for s in ("Expertises clés", "Smart Global Governance",
+    manquants = [s for s in ("Domaines de compétences", "Smart Global Governance",
                              "Concepteur D\u00e9veloppeur", "Altraway",
-                             "IA & méthode de travail", "Orsid Provence")
+                             "Leadership et transmission", "Orsid Provence")
                  if s not in texte]
     print(f"  {pages} feuilles, {len(texte.split())} mots")
     if pages != str(FEUILLES_ATTENDUES):
