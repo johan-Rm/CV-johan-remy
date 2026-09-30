@@ -1,6 +1,6 @@
 # Les versions du CV
 
-Les trois variantes partagent le même parcours, les mêmes expertises et la même mise en page. `index.html` conserve une ancienne version et ne fait pas partie de cette actualisation.
+Les trois variantes partagent le même parcours, les mêmes expertises et la même mise en page. `index.html`, la page d'accueil du site, est une copie exacte de `Johan-REMY-CV.html` : la recopier après chaque modification du CV.
 
 | HTML | PDF | Destinataire |
 | --- | --- | --- |
