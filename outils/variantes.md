@@ -10,13 +10,13 @@ Les trois variantes partagent le même parcours, les mêmes expertises et la mê
 
 ## Différences à conserver
 
-- Titre HTML commun : « Senior Développeur Full Stack ».
+- Titre HTML commun : « Développeur Full Stack senior ». L’accroche précise : « Applications web, SaaS & outils métier sur mesure · Architecture, reprise & refonte · API & automatisations · Agents IA & orchestration multi-agents · Lead technique ».
 - V0 : deux téléphones, Essaouira et Cannes ; mobilité en France limitée aux Alpes-Maritimes (06).
 - V1 : téléphone marocain et Essaouira ; aucune mention de mobilité française.
 - V2 : téléphone français, Cannes, nationalité française et mobilité Alpes-Maritimes (06).
 - Disponibilité « Dès que possible » dans les trois variantes.
 - L’intention de rejoindre une équipe, en première page, est réservée à V2.
-- « A PROPOS DE MOI » s’ouvre sur « Originaire de Marseille, je suis récemment revenu en France » dans V0 et V2 seulement : V1 affiche Essaouira. Les durées (six ans en France, neuf ans et demi au Maroc, dont huit en freelance) sont communes aux trois.
+- « A PROPOS DE MOI » reprend le texte fourni par Johan, avec ses passages en gras et un séparateur après les trois paragraphes de présentation, dans les trois variantes.
 - Les missions freelance et Altraway CE indiquent « À distance » dans V2 et « Essaouira » dans V0/V1, suivis de « Client direct » ou « Mission » sauf pour Altraway CE (CDI). Le nom « Immobilière Essaouira » reste intact.
 
 Les modifications communes concernent les trois variantes numérotées. Les PDF sont générés depuis leurs HTML respectifs ; leurs noms ne mentionnent pas le marché visé.
